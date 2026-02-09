@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../navigation/types";
@@ -14,26 +14,64 @@ export default function HomeScreen() {
   const navigation = useNavigation<HomeScreenNavigationProp>();
   const { resetInactivityTimer } = useInactivity();
 
-  const handleNavigateToProductos = () => {
+  const handleStartTour = () => {
     resetInactivityTimer();
     navigation.navigate("Productos");
   };
 
   return (
     <View style={styles.container} onTouchStart={resetInactivityTimer}>
-      <Text style={styles.title}>Pantalla Home</Text>
-      <Text style={styles.subtitle}>Bienvenido a EcoFrog</Text>
+      {/* Background Frog Image */}
+      <Image
+        source={require("../assets/home/frogBackgroundHome.png")}
+        style={styles.backgroundFrog}
+        resizeMode="contain"
+      />
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={handleNavigateToProductos}
-      >
-        <Text style={styles.buttonText}>Ir a Productos</Text>
-      </TouchableOpacity>
+      {/* Logo */}
+      <Image
+        source={require("../assets/ecofrogLogo.png")}
+        style={styles.logo}
+        resizeMode="contain"
+      />
 
-      <Text style={styles.info}>
-        Inactividad de 15 segundos activará el modo sleep
-      </Text>
+      <View style={styles.content}>
+        {/* Tagline */}
+        <Text style={styles.tagline}>
+          Leaders in sustainable cleaning and disinfection solutions in your
+          sector with{" "}
+          <Text style={styles.taglineHighlight}>ozonated water</Text>
+        </Text>
+
+        {/* Start Tour Button */}
+        <TouchableOpacity style={styles.button} onPress={handleStartTour}>
+          <Text style={styles.buttonText}>Start the Tour</Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* Eco Message */}
+      <View style={styles.ecoMessage}>
+        <Text style={styles.ecoTitle}>REDUCE | REUSE | RECYCLE</Text>
+        <Text style={styles.ecoSubtitle}>ECOFROG'S MIND IS A GREEN FUTURE</Text>
+        {/* Icons */}
+        <View style={styles.iconsContainer}>
+          <Image
+            source={require("../assets/home/iconEco.png")}
+            style={styles.icon}
+            resizeMode="contain"
+          />
+          <Image
+            source={require("../assets/home/iconRecicle.png")}
+            style={styles.icon}
+            resizeMode="contain"
+          />
+          <Image
+            source={require("../assets/home/iconStats.png")}
+            style={styles.icon}
+            resizeMode="contain"
+          />
+        </View>
+      </View>
     </View>
   );
 }
@@ -46,33 +84,90 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 20,
   },
-  title: {
-    fontSize: 32,
-    fontWeight: "bold",
-    marginBottom: 10,
-    color: "#2c3e50",
+  backgroundFrog: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    width: 750,
+    height: 750,
+    opacity: 1,
   },
-  subtitle: {
-    fontSize: 18,
-    color: "#7f8c8d",
+  logo: {
+    marginTop: 240,
+    flex: 1,
+    width: 800,
+    height: 280,
+  },
+  content: {
+    flex: 1,
+    marginTop: 40,
+    alignItems: "center",
+    justifyContent: "space-around",
+  },
+  tagline: {
+    flex: 1,
+    width: 650,
+    fontFamily: "Exo-Regular",
+    fontSize: 34,
+    lineHeight: 42,
+    textAlign: "center",
+    color: "#000",
     marginBottom: 40,
+    paddingHorizontal: 20,
+  },
+  taglineHighlight: {
+    fontFamily: "Exo-Bold",
+    fontSize: 34,
+    lineHeight: 42,
+    color: "#009FE3",
   },
   button: {
-    backgroundColor: "#3498db",
+    width: "auto",
+    height: 60,
+    backgroundColor: "#009FE3",
+    borderRadius: 10,
     paddingHorizontal: 30,
-    paddingVertical: 15,
-    borderRadius: 8,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     marginBottom: 20,
   },
   buttonText: {
+    fontFamily: "Exo-Regular",
+    fontWeight: 500,
     color: "#fff",
-    fontSize: 16,
-    fontWeight: "600",
+    fontSize: 28,
   },
-  info: {
-    fontSize: 12,
-    color: "#95a5a6",
+  ecoMessage: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "flex-end",
+    marginBottom: 40,
+  },
+  ecoTitle: {
+    fontFamily: "Exo-Bold",
+    fontSize: 20,
+    lineHeight: 24,
     textAlign: "center",
-    marginTop: 20,
+    color: "#009FE3",
+    marginBottom: 5,
+  },
+  ecoSubtitle: {
+    fontFamily: "Exo-Bold",
+    fontSize: 20,
+    lineHeight: 24,
+    textAlign: "center",
+    color: "#000",
+    marginBottom: 20,
+  },
+  iconsContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 30,
+  },
+  icon: {
+    width: 60,
+    height: 60,
   },
 });
