@@ -1,9 +1,11 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../navigation/types";
 import { useInactivity } from "../context/InactivityContext";
+import Navbar from "../components/Navbar";
 
 type ProductosScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -20,31 +22,38 @@ export default function ProductosScreen() {
   };
 
   return (
-    <View style={styles.container} onTouchStart={resetInactivityTimer}>
-      <Text style={styles.title}>Productos</Text>
-      <Text style={styles.subtitle}>Lista de productos disponibles</Text>
+    <SafeAreaView style={styles.safeArea} edges={["top"]}>
+      <Navbar />
+      <View style={styles.container} onTouchStart={resetInactivityTimer}>
+        <Text style={styles.title}>Productos</Text>
+        <Text style={styles.subtitle}>Lista de productos disponibles</Text>
 
-      <View style={styles.productList}>
-        <Text style={styles.product}>🌿 Producto Eco 1</Text>
-        <Text style={styles.product}>🌱 Producto Eco 2</Text>
-        <Text style={styles.product}>♻️ Producto Eco 3</Text>
+        <View style={styles.productList}>
+          <Text style={styles.product}>🌿 Producto Eco 1</Text>
+          <Text style={styles.product}>🌱 Producto Eco 2</Text>
+          <Text style={styles.product}>♻️ Producto Eco 3</Text>
+        </View>
+
+        <TouchableOpacity style={styles.button} onPress={handleGoBack}>
+          <Text style={styles.buttonText}>Volver a Home</Text>
+        </TouchableOpacity>
+
+        <Text style={styles.info}>
+          Toca la pantalla para resetear el timer de inactividad
+        </Text>
       </View>
-
-      <TouchableOpacity style={styles.button} onPress={handleGoBack}>
-        <Text style={styles.buttonText}>Volver a Home</Text>
-      </TouchableOpacity>
-
-      <Text style={styles.info}>
-        Toca la pantalla para resetear el timer de inactividad
-      </Text>
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: "#f5f5f5",
+  },
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#f5f5f5",
     alignItems: "center",
     justifyContent: "center",
     padding: 20,

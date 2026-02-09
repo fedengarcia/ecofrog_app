@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { useRef } from "react";
 import { useFonts } from "expo-font";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import { InactivityProvider, useInactivity } from "./context/InactivityContext";
 import AppNavigator from "./navigation/AppNavigator";
 import { NavigationContainerRef } from "@react-navigation/native";
@@ -45,8 +46,10 @@ export default function App() {
   }
 
   return (
-    <InactivityProvider>
-      <Navigation />
-    </InactivityProvider>
+    <SafeAreaProvider>
+      <InactivityProvider>
+        <Navigation />
+      </InactivityProvider>
+    </SafeAreaProvider>
   );
 }
