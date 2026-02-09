@@ -1,40 +1,52 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import { InactivityProvider } from "./context/InactivityContext";
+import { NavigationContainer } from "@react-navigation/native";
+import { useRef } from "react";
+import { useFonts } from "expo-font";
+import { InactivityProvider, useInactivity } from "./context/InactivityContext";
+import AppNavigator from "./navigation/AppNavigator";
+import { NavigationContainerRef } from "@react-navigation/native";
+import { RootStackParamList } from "./navigation/types";
 
-function MainScreen() {
+function Navigation() {
+  const { setNavigationRef } = useInactivity();
+  const navigationRef =
+    useRef<NavigationContainerRef<RootStackParamList>>(null);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <Text style={styles.infoText}>
-        La pantalla se pondrá en modo sleep después de 15 segundos de
-        inactividad
-      </Text>
+    <NavigationContainer<RootStackParamList>
+      ref={(ref) => {
+        navigationRef.current = ref;
+        setNavigationRef(ref);
+      }}
+    >
+      <AppNavigator />
       <StatusBar style="auto" />
-    </View>
+    </NavigationContainer>
   );
 }
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    "Exo-Regular": require("./assets/fonts/Exo-Regular.ttf"),
+    "Exo-Bold": require("./assets/fonts/Exo-Bold.ttf"),
+    "Exo-SemiBold": require("./assets/fonts/Exo-SemiBold.ttf"),
+    "Exo-Medium": require("./assets/fonts/Exo-Medium.ttf"),
+    "Exo-Light": require("./assets/fonts/Exo-Light.ttf"),
+    "Exo-ExtraBold": require("./assets/fonts/Exo-ExtraBold.ttf"),
+    "Exo-Black": require("./assets/fonts/Exo-Black.ttf"),
+    "Exo-Thin": require("./assets/fonts/Exo-Thin.ttf"),
+    "Exo-ExtraLight": require("./assets/fonts/Exo-ExtraLight.ttf"),
+    "Exo-Italic": require("./assets/fonts/Exo-Italic.ttf"),
+    "Exo-BoldItalic": require("./assets/fonts/Exo-BoldItalic.ttf"),
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
     <InactivityProvider>
-      <MainScreen />
+      <Navigation />
     </InactivityProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  infoText: {
-    marginTop: 20,
-    fontSize: 12,
-    color: "#666",
-    textAlign: "center",
-    paddingHorizontal: 20,
-  },
-});

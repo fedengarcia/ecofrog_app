@@ -5,17 +5,23 @@ import React, {
   useEffect,
   useState,
   ReactNode,
+  useCallback,
 } from "react";
 import { Video, ResizeMode } from "expo-av";
 import { StyleSheet, View, TouchableWithoutFeedback } from "react-native";
+import { NavigationContainerRef } from "@react-navigation/native";
+import { RootStackParamList } from "../navigation/types";
 
-const INACTIVITY_TIMEOUT = 15000; // 15 segundos
+const INACTIVITY_TIMEOUT = 30000; // 30 segundos
 
 interface InactivityContextType {
   isVideoPlaying: boolean;
   setIsVideoPlaying: (playing: boolean) => void;
   resetInactivityTimer: () => void;
   showSleepBackground: boolean;
+  setNavigationRef: (
+    ref: NavigationContainerRef<RootStackParamList> | null,
+  ) => void;
 }
 
 const InactivityContext = createContext<InactivityContextType | undefined>(
@@ -41,13 +47,40 @@ export const InactivityProvider: React.FC<InactivityProviderProps> = ({
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const inactivityTimer = useRef<NodeJS.Timeout | null>(null);
   const videoRef = useRef<Video>(null);
+  const navigationRef =
+    useRef<NavigationContainerRef<RootStackParamList> | null>(null);
+  const showSleepRef = useRef(false);
+  const isVideoPlayingRef = useRef(false);
+
+  // Mantener refs sincronizados con el estado
+  useEffect(() => {
+    showSleepRef.current = showSleepBackground;
+  }, [showSleepBackground]);
+
+  useEffect(() => {
+    isVideoPlayingRef.current = isVideoPlaying;
+  }, [isVideoPlaying]);
+
+  const setNavigationRef = (
+    ref: NavigationContainerRef<RootStackParamList> | null,
+  ) => {
+    navigationRef.current = ref;
+  };
 
   // Resetear el timer de inactividad
-  const resetInactivityTimer = () => {
-    // Si estamos en modo sleep, salir de él
-    if (showSleepBackground) {
+  const resetInactivityTimer = useCallback(() => {
+    // Si estamos en modo sleep, salir de él y volver a Home
+    if (showSleepRef.current) {
       setShowSleepBackground(false);
       videoRef.current?.pauseAsync();
+
+      // Navegar a Home después de salir del sleep
+      if (navigationRef.current?.isReady()) {
+        navigationRef.current.reset({
+          index: 0,
+          routes: [{ name: "Home" }],
+        });
+      }
     }
 
     // Limpiar el timer anterior
@@ -56,12 +89,12 @@ export const InactivityProvider: React.FC<InactivityProviderProps> = ({
     }
 
     // Solo iniciar el timer si no hay video reproduciéndose
-    if (!isVideoPlaying) {
+    if (!isVideoPlayingRef.current) {
       inactivityTimer.current = setTimeout(() => {
         setShowSleepBackground(true);
       }, INACTIVITY_TIMEOUT);
     }
-  };
+  }, []);
 
   useEffect(() => {
     // Iniciar el timer al montar el componente
@@ -73,7 +106,7 @@ export const InactivityProvider: React.FC<InactivityProviderProps> = ({
         clearTimeout(inactivityTimer.current);
       }
     };
-  }, [isVideoPlaying]);
+  }, [resetInactivityTimer]);
 
   // Reproducir el video cuando se muestre el sleep background
   useEffect(() => {
@@ -87,6 +120,7 @@ export const InactivityProvider: React.FC<InactivityProviderProps> = ({
     setIsVideoPlaying,
     resetInactivityTimer,
     showSleepBackground,
+    setNavigationRef,
   };
 
   return (
