@@ -16,7 +16,7 @@ export default function HomeScreen() {
 
   const handleStartTour = () => {
     resetInactivityTimer();
-    navigation.navigate("Productos");
+    navigation.navigate("Videos");
   };
 
   return (
