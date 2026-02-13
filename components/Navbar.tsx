@@ -10,6 +10,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../navigation/types";
+import ContactModal from "./contactModal/ContactModal";
 
 // Importar imágenes
 const arrowBackIcon = require("../assets/navbar/arrowBack.png");
@@ -40,8 +41,8 @@ export default function Navbar() {
     },
     {
       label: "Products",
-      screen: "Products",
-      onClick: () => console.log("Products button clicked"),
+      screen: "Productos",
+      onClick: () => navigation.navigate("Productos"),
       icon: productsIcon,
     },
     {
@@ -59,39 +60,49 @@ export default function Navbar() {
   ];
 
   return (
-    <View style={styles.container}>
-      <Image source={require("../assets/logo.png")} style={styles.logo} />
-      <View style={styles.menuContainer}>
-        {NAVBAR_OPTIONS.map((option) => (
-          <Pressable
-            key={option.label}
-            onPress={option.onClick}
-            style={{
-              ...styles.navbarOption,
-              ...(option.label === "Contact" ? styles.navbarOptionButton : {}),
-            }}
-          >
-            <Image source={option.icon} style={styles.icon} />
-            <Text
+    <>
+      <ContactModal
+        visible={openModalContact}
+        onClose={() => setOpenModalContact(false)}
+      />
+      <View style={styles.container}>
+        <Pressable onPress={() => navigation.navigate("Home")}>
+          <Image source={require("../assets/logo.png")} style={styles.logo} />
+        </Pressable>
+        <View style={styles.menuContainer}>
+          {NAVBAR_OPTIONS.map((option) => (
+            <Pressable
+              key={option.label}
+              onPress={option.onClick}
               style={{
-                ...styles.navbarOptionText,
+                ...styles.navbarOption,
                 ...(option.label === "Contact"
-                  ? styles.navbarOptionTextButton
-                  : {}),
-                ...(option.label === "EcoFrog"
-                  ? {
-                      textTransform: "uppercase",
-                    }
+                  ? styles.navbarOptionButton
                   : {}),
               }}
-              onPress={option.onClick}
             >
-              {option.label}
-            </Text>
-          </Pressable>
-        ))}
+              <Image source={option.icon} style={styles.icon} />
+              <Text
+                style={{
+                  ...styles.navbarOptionText,
+                  ...(option.label === "Contact"
+                    ? styles.navbarOptionTextButton
+                    : {}),
+                  ...(option.label === "EcoFrog"
+                    ? {
+                        textTransform: "uppercase",
+                      }
+                    : {}),
+                }}
+                onPress={option.onClick}
+              >
+                {option.label}
+              </Text>
+            </Pressable>
+          ))}
+        </View>
       </View>
-    </View>
+    </>
   );
 }
 
