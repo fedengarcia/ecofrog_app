@@ -1,47 +1,119 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Image,
+  Dimensions,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../navigation/types";
 import { useInactivity } from "../context/InactivityContext";
 import Navbar from "../components/Navbar";
+import ProductCard from "../components/productosScreen/ProductCard";
+import { Product, ProductId } from "../components/productosScreen/types";
 
-type ProductosScreenNavigationProp = NativeStackNavigationProp<
-  RootStackParamList,
-  "Productos"
->;
+const { width } = Dimensions.get("window");
+const isTablet = width >= 768;
+
+// Datos de los productos con enum
+const PRODUCTS: Product[] = [
+  {
+    id: ProductId.AVATAR,
+    logo: require("../assets/products/avatar/avatarLogo.png"),
+    image: require("../assets/products/avatar/avatarImage.png"),
+    textParts: [
+      { text: "Commit to " },
+      { text: "OZONE", highlight: true },
+      { text: " in your " },
+      { text: "business", bold: true },
+    ],
+  },
+  {
+    id: ProductId.WASH,
+    logo: require("../assets/products/wash/washLogo.png"),
+    image: require("../assets/products/wash/washImage.png"),
+    textParts: [
+      { text: "Reduce ", bold: true },
+      { text: "detergent and rinse aid in your " },
+      { text: "commercial dishwasher", highlight: true },
+    ],
+  },
+  {
+    id: ProductId.TROLLEY,
+    logo: require("../assets/products/trolley/trolleyLogo.png"),
+    image: require("../assets/products/trolley/trolleyImage.png"),
+    textParts: [
+      { text: "Smart " },
+      { text: "portable cleaning", bold: true },
+      { text: " with " },
+      { text: "ozonated water", highlight: true },
+    ],
+  },
+  {
+    id: ProductId.CP,
+    logo: require("../assets/products/cp/cpLogo.png"),
+    image: require("../assets/products/cp/cpImage.png"),
+    textParts: [
+      { text: "For " },
+      { text: "large volumes", bold: true },
+      { text: " of water" },
+    ],
+  },
+  {
+    id: ProductId.ELEKTRA,
+    logo: require("../assets/products/elektra/elektraLogo.png"),
+    image: require("../assets/products/elektra/elektraImage.png"),
+    textParts: [
+      { text: "Ozonated water", highlight: true, otherColor: "#8D418F" },
+      { text: " also at " },
+      { text: "home" },
+      { text: "for " },
+      { text: "household cleaning", bold: true },
+      { text: " and " },
+      { text: "laundry", bold: true },
+    ],
+  },
+];
 
 export default function ProductosScreen() {
-  const navigation = useNavigation<ProductosScreenNavigationProp>();
   const { resetInactivityTimer } = useInactivity();
-
-  const handleGoBack = () => {
-    resetInactivityTimer();
-    navigation.goBack();
-  };
 
   return (
     <SafeAreaView style={styles.safeArea} edges={["top"]}>
       <Navbar />
-      <View style={styles.container} onTouchStart={resetInactivityTimer}>
-        <Text style={styles.title}>Productos</Text>
-        <Text style={styles.subtitle}>Lista de productos disponibles</Text>
-
-        <View style={styles.productList}>
-          <Text style={styles.product}>🌿 Producto Eco 1</Text>
-          <Text style={styles.product}>🌱 Producto Eco 2</Text>
-          <Text style={styles.product}>♻️ Producto Eco 3</Text>
+      <ScrollView
+        contentContainerStyle={styles.scrollContent}
+        onTouchStart={resetInactivityTimer}
+      >
+        {/* Header con icono y títulos */}
+        <View style={styles.header}>
+          <Image
+            source={require("../assets/products/ourDevicesIcon.png")}
+            style={styles.headerIcon}
+            resizeMode="contain"
+          />
+          <View style={styles.headerTextContainer}>
+            <Text style={styles.mainTitle}>
+              <Text style={styles.titleBlack}>OUR </Text>
+              <Text style={styles.titleBlue}>DEVICES</Text>
+            </Text>
+            <Text style={styles.subtitle}>
+              Smart solutions for efficient cleaning and disinfection
+            </Text>
+            <Text style={styles.thirdTitle}>
+              Less chemicals products, same professional results
+            </Text>
+          </View>
         </View>
 
-        <TouchableOpacity style={styles.button} onPress={handleGoBack}>
-          <Text style={styles.buttonText}>Volver a Home</Text>
-        </TouchableOpacity>
-
-        <Text style={styles.info}>
-          Toca la pantalla para resetear el timer de inactividad
-        </Text>
-      </View>
+        {/* Grid de productos */}
+        <View style={styles.grid}>
+          {PRODUCTS.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -51,52 +123,61 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#f5f5f5",
   },
-  container: {
-    flex: 1,
-    backgroundColor: "#f5f5f5",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 20,
+  scrollContent: {
+    flexGrow: 1,
+    paddingTop: 40,
+    paddingHorizontal: 20,
   },
-  title: {
-    fontSize: 32,
-    fontWeight: "bold",
-    marginBottom: 10,
-    color: "#27ae60",
+  header: {
+    flexDirection: "row",
+    alignItems: "flex-start",
+    marginBottom: 15,
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+  },
+  headerIcon: {
+    width: 47,
+    height: 47,
+    marginRight: 16,
+  },
+  headerTextContainer: {
+    flex: 1,
+    marginBottom: 140,
+  },
+  mainTitle: {
+    fontSize: 36,
+    fontFamily: "Exo-Bold",
+    fontWeight: "700",
+    lineHeight: 36,
+  },
+  titleBlack: {
+    color: "#000",
+  },
+  titleBlue: {
+    color: "#00B4D8",
   },
   subtitle: {
-    fontSize: 18,
-    color: "#7f8c8d",
-    marginBottom: 30,
+    fontSize: 22,
+    fontFamily: "Exo-Light",
+    fontWeight: "300",
+    color: "#666",
+    marginBottom: 6,
   },
-  productList: {
-    marginBottom: 40,
-  },
-  product: {
-    fontSize: 20,
-    padding: 15,
-    marginVertical: 5,
-    backgroundColor: "#ecf0f1",
-    borderRadius: 8,
-    minWidth: 250,
-    textAlign: "center",
-  },
-  button: {
-    backgroundColor: "#3498db",
-    paddingHorizontal: 30,
-    paddingVertical: 15,
-    borderRadius: 8,
-    marginBottom: 20,
-  },
-  buttonText: {
-    color: "#fff",
-    fontSize: 16,
+  thirdTitle: {
+    fontSize: 24,
+    fontFamily: "Exo-SemiBold",
     fontWeight: "600",
+    color: "#00B4D8",
+    lineHeight: 24,
+    textTransform: "uppercase",
   },
-  info: {
-    fontSize: 12,
-    color: "#95a5a6",
-    textAlign: "center",
-    marginTop: 20,
+  grid: {
+    flex: 1,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    alignContent: "flex-start",
+    columnGap: 20,
+    rowGap: 120,
   },
 });
