@@ -12,7 +12,7 @@ import { StyleSheet, View, TouchableWithoutFeedback } from "react-native";
 import { NavigationContainerRef } from "@react-navigation/native";
 import { RootStackParamList } from "../navigation/types";
 
-const INACTIVITY_TIMEOUT = 30000; // 30 segundos
+const INACTIVITY_TIMEOUT = 99999999999; // 30 segundos
 
 interface InactivityContextType {
   isVideoPlaying: boolean;
