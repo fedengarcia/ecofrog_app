@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import { Video, ResizeMode } from "expo-av";
 import { Product, TextPart } from "./types";
+import { useModal } from "../../context/ModalContext";
 
 const { width, height } = Dimensions.get("window");
 
@@ -28,6 +29,7 @@ export default function ProductModal({
 }: ProductModalProps) {
   const videoRef = useRef<Video>(null);
   const [isPlaying, setIsPlaying] = useState(true);
+  const { openContactModal } = useModal();
 
   const handleVideoPress = async () => {
     if (videoRef.current) {
@@ -170,7 +172,7 @@ export default function ProductModal({
                     </TouchableWithoutFeedback>
                     <TouchableOpacity
                       style={styles.moreInfoButton}
-                      onPress={() => console.log("More info")}
+                      onPress={openContactModal}
                     >
                       <Image
                         source={require("../../assets/navbar/mail.png")}

@@ -10,7 +10,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../navigation/types";
-import ContactModal from "./contactModal/ContactModal";
+import { useModal } from "../context/ModalContext";
 
 // Importar imágenes
 const arrowBackIcon = require("../assets/navbar/arrowBack.png");
@@ -29,8 +29,7 @@ interface NavbarOption {
 
 export default function Navbar() {
   const navigation = useNavigation<NavbarNavigationProp>();
-  const [openModalEcoFrog, setOpenModalEcoFrog] = React.useState(false);
-  const [openModalContact, setOpenModalContact] = React.useState(false);
+  const { openContactModal, openEcofrogModal } = useModal();
 
   const NAVBAR_OPTIONS: NavbarOption[] = [
     {
@@ -48,23 +47,19 @@ export default function Navbar() {
     {
       label: "EcoFrog",
       screen: null,
-      onClick: () => setOpenModalEcoFrog(true),
+      onClick: openEcofrogModal,
       icon: informationIcon,
     },
     {
       label: "Contact",
       screen: null,
-      onClick: () => setOpenModalContact(true),
+      onClick: openContactModal,
       icon: contactIcon,
     },
   ];
 
   return (
     <>
-      <ContactModal
-        visible={openModalContact}
-        onClose={() => setOpenModalContact(false)}
-      />
       <View style={styles.container}>
         <Pressable onPress={() => navigation.navigate("Home")}>
           <Image source={require("../assets/logo.png")} style={styles.logo} />

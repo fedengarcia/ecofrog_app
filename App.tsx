@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useFonts } from "expo-font";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { InactivityProvider, useInactivity } from "./context/InactivityContext";
+import { ModalProvider } from "./context/ModalContext";
 import AppNavigator from "./navigation/AppNavigator";
 import { NavigationContainerRef } from "@react-navigation/native";
 import { RootStackParamList } from "./navigation/types";
@@ -48,7 +49,9 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <InactivityProvider>
-        <Navigation />
+        <ModalProvider>
+          <Navigation />
+        </ModalProvider>
       </InactivityProvider>
     </SafeAreaProvider>
   );
