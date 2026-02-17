@@ -1,5 +1,12 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, Dimensions } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Dimensions,
+  TouchableOpacity,
+} from "react-native";
 import { Product, ProductId, TextPart } from "./types";
 
 const { width } = Dimensions.get("window");
@@ -10,9 +17,10 @@ const CARD_WIDTH = isTablet ? (width - 80) / 3 : width - 40;
 
 interface ProductCardProps {
   product: Product;
+  onPress?: () => void;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product, onPress }: ProductCardProps) {
   const renderTextParts = (parts: TextPart[]) => {
     return (
       <Text style={styles.description}>
@@ -33,7 +41,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <View style={styles.card}>
+    <TouchableOpacity style={styles.card} onPress={onPress} activeOpacity={0.7}>
       <View
         style={{
           ...styles.image,
@@ -60,7 +68,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       </View>
       <Image source={product.logo} style={styles.logo} resizeMode="contain" />
       {renderTextParts(product.textParts)}
-    </View>
+    </TouchableOpacity>
   );
 }
 

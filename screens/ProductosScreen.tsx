@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -12,6 +12,7 @@ import { useInactivity } from "../context/InactivityContext";
 import Navbar from "../components/Navbar";
 import ProductCard from "../components/productosScreen/ProductCard";
 import { Product, ProductId } from "../components/productosScreen/types";
+import ProductModal from "../components/productosScreen/ProductModal";
 
 const { width } = Dimensions.get("window");
 const isTablet = width >= 768;
@@ -73,11 +74,133 @@ const PRODUCTS: Product[] = [
       { text: " and " },
       { text: "laundry", bold: true },
     ],
+    modalData: {
+      title: [
+        {
+          text: "Ozonated water",
+          highlight: true,
+          otherColor: "#8D418F",
+          bold: true,
+        },
+        { text: " also at " },
+        { text: "home" },
+        { text: "for " },
+        { text: "household cleaning", bold: true },
+        { text: " and " },
+        { text: "laundry", bold: true },
+      ],
+      subtitle: [
+        { text: "ELEKTRA", highlight: true, otherColor: "#8D418F", bold: true },
+        { text: " allows you to clean and disinfect" },
+        {
+          text: " any room in the house and wash clothes",
+          bold: true,
+        },
+        {
+          text: " with ozonated water without the need for chemical products.",
+        },
+      ],
+      icons: [
+        {
+          legend: "Minimal detergent usage",
+          url: require("../assets/products/elektra/minimalDetergentUsage.png"),
+        },
+        {
+          legend: "No plastic waste generated",
+          url: require("../assets/products/elektra/noPlasticWaste.png"),
+        },
+        {
+          legend: "Preserves colours in cold water",
+          url: require("../assets/products/elektra/preservesColours.png"),
+        },
+        {
+          legend: "Investment and savings at home",
+          url: require("../assets/products/elektra/investmentAndSavings.png"),
+        },
+        {
+          legend: "Simple and easy operation",
+          url: require("../assets/products/elektra/simpleAndEasyOperation.png"),
+        },
+        {
+          legend: "All types of spaces and surfaces",
+          url: require("../assets/products/elektra/allTypesOfSpacesAndSurfaces.png"),
+        },
+      ],
+      description_1: [
+        { text: "ELEKTRA", highlight: true, otherColor: "#8D418F", bold: true },
+        {
+          text: " reduces cleaning product and energy consumption costs ",
+          bold: true,
+        },
+        { text: "as it is effective in cold water. Its system " },
+        {
+          text: "ozonises",
+          highlight: true,
+          otherColor: "#8D418F",
+          bold: true,
+        },
+        {
+          text: " the water instantly, avoiding storage and contamination risks.",
+          break: true,
+        },
+        {
+          text: "It is 100% environmentally friendly, ",
+        },
+        { text: "eliminates fungus and bacteria", bold: true },
+        {
+          text: " and protects colours and neutralises odours in domestic washing.",
+        },
+      ],
+      bubbleText: {
+        title: "Multiple uses",
+        items: [
+          [
+            { text: "Laundry connecting " },
+            {
+              text: "ELEKTRA ",
+              otherColor: "#8D418F",
+              highlight: true,
+              bold: true,
+            },
+            { text: "to domestic wash machine" },
+          ],
+          [
+            {
+              text: "Floors, walls, sinks, windows, furniture, tiles, joints, screens... ",
+            },
+          ],
+          [
+            {
+              text: "Extractor hoods, ovens, refrigerators, countertops, stoves, fryers, appliances... ",
+            },
+          ],
+          [
+            {
+              text: "Rooms or surfaces previously cleaned with chemical products.",
+            },
+          ],
+        ],
+      },
+      video:
+        "https://www.ecofrog.es/wp-content/uploads/2026/02/Gina-ELEKTRA.mp4",
+      showBubbleMedium: true,
+    },
   },
 ];
 
 export default function ProductosScreen() {
   const { resetInactivityTimer } = useInactivity();
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const handleProductPress = (product: Product) => {
+    setSelectedProduct(product);
+    setModalVisible(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalVisible(false);
+  };
 
   return (
     <SafeAreaView style={styles.safeArea} edges={["top"]}>
@@ -110,10 +233,21 @@ export default function ProductosScreen() {
         {/* Grid de productos */}
         <View style={styles.grid}>
           {PRODUCTS.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard
+              key={product.id}
+              product={product}
+              onPress={() => handleProductPress(product)}
+            />
           ))}
         </View>
       </ScrollView>
+      {selectedProduct && (
+        <ProductModal
+          visible={modalVisible}
+          product={selectedProduct}
+          onClose={handleCloseModal}
+        />
+      )}
     </SafeAreaView>
   );
 }

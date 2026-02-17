@@ -13,6 +13,7 @@ export interface TextPart {
   bold?: boolean;
   highlight?: boolean;
   otherColor?: string;
+  break?: boolean;
 }
 
 export interface Product {
@@ -20,4 +21,24 @@ export interface Product {
   logo: ImageSourcePropType;
   image: ImageSourcePropType;
   textParts: TextPart[];
+  modalData?: {
+    title: TextPart[];
+    subtitle: TextPart[];
+    icons: IconData[];
+    description_1: TextPart[];
+    description_2?: TextPart[];
+    items?: string[];
+    bubbleText?: {
+      title?: string;
+      items: TextPart[][];
+    };
+    video: string;
+    showBubbleLeft?: boolean;
+    showBubbleMedium?: boolean;
+  };
+}
+
+export interface IconData {
+  legend: string;
+  url: ImageSourcePropType;
 }
