@@ -23,6 +23,7 @@ export interface Product {
   textParts: TextPart[];
   modalData?: {
     title: TextPart[];
+    imageModal?: ImageSourcePropType;
     subtitle: TextPart[];
     icons: IconData[];
     description_1: TextPart[];
@@ -31,6 +32,7 @@ export interface Product {
     bubbleText?: {
       title?: string;
       items: TextPart[][];
+      withoutDots?: boolean;
     };
     video: string;
     showBubbleLeft?: boolean;

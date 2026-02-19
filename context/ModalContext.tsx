@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
 import ContactModal from "../components/contactModal/ContactModal";
+import EcofrogModal from "../components/ecofrogModal/EcofrogModal";
 
 interface ModalContextType {
   openContactModal: () => void;
@@ -49,13 +50,10 @@ export const ModalProvider = ({ children }: ModalProviderProps) => {
         onClose={closeContactModal}
       />
 
-      {/* TODO: Agregar EcofrogModal cuando esté disponible */}
-      {/* {isEcofrogModalVisible && (
-        <EcofrogModal
-          visible={isEcofrogModalVisible}
-          onClose={closeEcofrogModal}
-        />
-      )} */}
+      <EcofrogModal
+        visible={isEcofrogModalVisible}
+        onClose={closeEcofrogModal}
+      />
     </ModalContext.Provider>
   );
 };

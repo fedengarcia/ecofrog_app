@@ -67,8 +67,15 @@ export default function ProductModal({
     return null;
   }
 
-  const { title, subtitle, icons, description_1, bubbleText, video } =
-    product.modalData;
+  const {
+    title,
+    subtitle,
+    icons,
+    description_1,
+    description_2,
+    bubbleText,
+    video,
+  } = product.modalData;
 
   return (
     <Modal
@@ -89,8 +96,12 @@ export default function ProductModal({
               <View style={styles.headerContainer}>
                 <View style={styles.productImageOverlay} />
                 <Image
-                  source={product.image}
-                  style={styles.productImage}
+                  source={product.modalData?.imageModal ?? product.image}
+                  style={{
+                    ...styles.productImage,
+                    top: product.id === "cp" ? -80 : -200,
+                    left: product.id === "cp" ? -100 : -130,
+                  }}
                   resizeMode="contain"
                 />
                 <View>
@@ -105,10 +116,16 @@ export default function ProductModal({
                   {renderTextParts(title, styles.title)}
 
                   {/* Subtítulo */}
-                  {renderTextParts(subtitle, styles.subtitle)}
+                  {product.id !== "cp" &&
+                    renderTextParts(subtitle, styles.subtitle)}
                 </View>
               </View>
-
+              {/* Subtítulo */}
+              {product.id === "cp" &&
+                renderTextParts(subtitle, {
+                  ...styles.subtitle,
+                  width: "100%",
+                })}
               {/* Iconos con leyendas */}
               <View style={styles.iconsContainer}>
                 {icons.map((icon, index) => (
@@ -118,28 +135,36 @@ export default function ProductModal({
                       style={styles.icon}
                       resizeMode="contain"
                     />
-                    <Text style={styles.iconLegend}>{icon.legend}</Text>
+                    <Text
+                      style={{
+                        ...styles.iconLegend,
+                        color: product.id === "elektra" ? "#8D418F" : "#00B4D8",
+                      }}
+                    >
+                      {icon.legend}
+                    </Text>
                   </View>
                 ))}
               </View>
 
-              {/* Contenedor de 2 columnas: descripción/bubble a la izquierda, video a la derecha */}
-              <View style={styles.bottomContainer}>
-                {/* Columna izquierda: Descripción y BubbleText */}
-                <View style={styles.leftColumn}>
-                  {/* Descripción 1 */}
-                  {renderTextParts(description_1, styles.description)}
+              {/* Layout para CP */}
+              {product.id === "cp" ? (
+                <View style={styles.cpContainer}>
+                  {/* Descripción 1 y 2 */}
+                  <View style={styles.cpDescriptionContainer}>
+                    {renderTextParts(description_1, styles.cpDescription)}
+                    {description_2 &&
+                      renderTextParts(description_2, styles.cpDescription)}
+                  </View>
 
-                  {/* BubbleText si existe */}
+                  {/* Bubble images a la izquierda, bubble text a la derecha */}
                   {bubbleText && bubbleText.items && (
-                    <View style={styles.bubbleContainer}>
+                    <View style={styles.cpBubbleTextContainer}>
+                      {/* Bubble text a la derecha */}
                       <Text
                         style={{
                           ...styles.bubbleTitle,
-                          color:
-                            bubbleText.title === "Multiple uses"
-                              ? "#8D418F"
-                              : "#00B4D8",
+                          color: "#00B4D8",
                         }}
                       >
                         {bubbleText.title}
@@ -152,45 +177,133 @@ export default function ProductModal({
                       ))}
                     </View>
                   )}
-                </View>
 
-                {/* Columna derecha: Video con botón */}
-                {video && (
-                  <View style={styles.rightColumn}>
-                    <TouchableWithoutFeedback onPress={handleVideoPress}>
-                      <View style={styles.videoContainer}>
-                        <Video
-                          ref={videoRef}
-                          source={{ uri: video }}
-                          style={styles.video}
-                          resizeMode={ResizeMode.CONTAIN}
-                          shouldPlay={true}
-                          isLooping={true}
-                          rate={1.0}
+                  {/* Video y botón More Info */}
+                  {video && (
+                    <View style={styles.cpVideoSection}>
+                      <TouchableWithoutFeedback onPress={handleVideoPress}>
+                        <View style={styles.cpVideoContainer}>
+                          <Video
+                            ref={videoRef}
+                            source={{ uri: video }}
+                            style={styles.video}
+                            resizeMode={ResizeMode.COVER}
+                            shouldPlay={true}
+                            isLooping={true}
+                            rate={1.0}
+                          />
+                        </View>
+                      </TouchableWithoutFeedback>
+                      <TouchableOpacity
+                        style={styles.cpMoreInfoButton}
+                        onPress={openContactModal}
+                      >
+                        <Image
+                          source={require("../../assets/navbar/mail.png")}
+                          style={{ width: 24, height: 24, marginRight: 10 }}
+                          resizeMode="contain"
                         />
-                      </View>
-                    </TouchableWithoutFeedback>
-                    <TouchableOpacity
-                      style={styles.moreInfoButton}
-                      onPress={openContactModal}
-                    >
-                      <Image
-                        source={require("../../assets/navbar/mail.png")}
-                        style={{ width: 24, height: 24, marginRight: 10 }}
-                        resizeMode="contain"
-                      />
-                      <Text style={styles.moreInfoButtonText}>MORE INFO</Text>
-                    </TouchableOpacity>
-                  </View>
-                )}
+                        <Text style={styles.moreInfoButtonText}>MORE INFO</Text>
+                      </TouchableOpacity>
+                    </View>
+                  )}
+                </View>
+              ) : (
+                /* Layout para otros productos */
+                <View
+                  style={{
+                    ...styles.bottomContainer,
+                    flexDirection: "row",
+                  }}
+                >
+                  {/* Columna izquierda: Descripción y BubbleText */}
+                  <View style={styles.leftColumn}>
+                    {/* Descripción 1 */}
+                    {renderTextParts(description_1, {
+                      ...styles.description,
+                      width: 500,
+                    })}
 
-                {product.modalData.showBubbleMedium && (
-                  <Image
-                    style={styles.bubbleMedium}
-                    source={require("../../assets/products/bubbleMedium.png")}
-                  />
-                )}
-              </View>
+                    {/* Descripción 2 */}
+                    {description_2 &&
+                      renderTextParts(description_2, {
+                        ...styles.description,
+                        width: 500,
+                      })}
+
+                    {/* BubbleText si existe */}
+                    {bubbleText && bubbleText.items && (
+                      <View style={styles.bubbleContainer}>
+                        <Text
+                          style={{
+                            ...styles.bubbleTitle,
+                            color:
+                              bubbleText.title === "Multiple uses"
+                                ? "#8D418F"
+                                : "#00B4D8",
+                          }}
+                        >
+                          {bubbleText.title}
+                        </Text>
+                        {bubbleText.items.map((item, index) => (
+                          <View key={index} style={styles.bubbleItem}>
+                            {!bubbleText.withoutDots && (
+                              <Text style={styles.bubbleBullet}>»</Text>
+                            )}
+                            {renderTextParts(item, styles.bubbleText)}
+                          </View>
+                        ))}
+                      </View>
+                    )}
+                  </View>
+
+                  {/* Columna derecha: Video con botón */}
+                  {video && (
+                    <View style={styles.rightColumn}>
+                      <TouchableWithoutFeedback onPress={handleVideoPress}>
+                        <View style={styles.videoContainer}>
+                          <Video
+                            ref={videoRef}
+                            source={{ uri: video }}
+                            style={styles.video}
+                            resizeMode={ResizeMode.CONTAIN}
+                            shouldPlay={true}
+                            isLooping={true}
+                            rate={1.0}
+                          />
+                        </View>
+                      </TouchableWithoutFeedback>
+                      <TouchableOpacity
+                        style={{
+                          ...styles.moreInfoButton,
+                          backgroundColor:
+                            product.id === "elektra" ? "#8D418F" : "#00B4D8",
+                        }}
+                        onPress={openContactModal}
+                      >
+                        <Image
+                          source={require("../../assets/navbar/mail.png")}
+                          style={{ width: 24, height: 24, marginRight: 10 }}
+                          resizeMode="contain"
+                        />
+                        <Text style={styles.moreInfoButtonText}>MORE INFO</Text>
+                      </TouchableOpacity>
+                    </View>
+                  )}
+                </View>
+              )}
+              {product.modalData.showBubbleMedium && (
+                <Image
+                  style={styles.bubbleMedium}
+                  source={require("../../assets/products/bubbleMedium.png")}
+                />
+              )}
+              {product.modalData.showBubbleLeft && (
+                <Image
+                  style={styles.bubbleLeft}
+                  source={require("../../assets/products/bubbleMedium.png")}
+                />
+              )}
             </View>
           </TouchableWithoutFeedback>
         </View>
@@ -212,6 +325,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 20,
     padding: 50,
+    paddingTop: 30,
     position: "relative",
   },
   productImage: {
@@ -279,23 +393,23 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
-    gap: 40,
+    gap: 25,
     marginBottom: 25,
     width: "100%",
   },
   iconItem: {
-    width: 70,
+    width: 80,
     height: 105,
+    gap: 8,
     alignItems: "center",
-    marginBottom: 15,
+    marginBottom: 24,
   },
   icon: {
-    width: 60,
-    height: 60,
-    marginBottom: 10,
+    width: 80,
+    height: 80,
   },
   iconLegend: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: "bold",
     textAlign: "center",
     color: "#8D418F",
@@ -405,5 +519,63 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 140,
     zIndex: 0,
+  },
+  bubbleLeft: {
+    width: 400,
+    height: 400,
+    position: "absolute",
+    bottom: 80,
+    left: -100,
+    zIndex: 0,
+  },
+  // Estilos para CP
+  cpContainer: {
+    width: "100%",
+    gap: 20,
+  },
+  cpDescriptionContainer: {
+    width: "100%",
+    gap: 15,
+  },
+  cpDescription: {
+    fontSize: 18,
+    textAlign: "left",
+    color: "#333",
+    fontFamily: "Exo-Regular",
+    lineHeight: 16,
+  },
+  cpBubbleTextContainer: {
+    backgroundColor: "#E0E0E0",
+    padding: 10,
+    borderRadius: 10,
+    gap: 5,
+    alignSelf: "flex-end",
+    width: "70%",
+  },
+  cpVideoSection: {
+    width: "100%",
+    alignItems: "center",
+    position: "relative",
+    marginBottom: 20,
+  },
+  cpVideoContainer: {
+    width: "100%",
+    height: 220,
+    backgroundColor: "#000",
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    overflow: "hidden",
+  },
+  cpMoreInfoButton: {
+    width: "40%",
+    height: 50,
+    backgroundColor: "black",
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+    position: "absolute",
+    bottom: -25,
   },
 });
