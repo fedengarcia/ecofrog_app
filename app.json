@@ -17,7 +17,7 @@
         "expo-splash-screen",
         {
           "image": "./assets/ecofrogLogo.png",
-          "imageWidth": 250,
+          "imageWidth": 180,
           "backgroundColor": "#ffffff"
         }
       ]
@@ -31,10 +31,16 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.fedengarcia.ecofrog_app"
     },
     "web": {
       "favicon": "./assets/ecofrogLogo.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f401d803-294d-45ae-817a-f915148649ae"
+      }
     }
   }
 }
