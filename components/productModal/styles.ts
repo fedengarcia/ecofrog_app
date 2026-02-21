@@ -104,7 +104,7 @@ export const headerStyles = StyleSheet.create({
   subtitle: {
     fontSize: 20,
     textAlign: "left",
-    color: "#666",
+    color: "#000000",
     marginBottom: 25,
     width: 500,
     fontFamily: "Exo-Regular",
@@ -134,6 +134,7 @@ export const iconStyles = StyleSheet.create({
   iconLegend: {
     fontSize: 16,
     fontWeight: "bold",
+    textTransform: "uppercase",
     textAlign: "center",
     fontFamily: "Exo-Regular",
     lineHeight: 14,
@@ -159,7 +160,7 @@ export const columnStyles = StyleSheet.create({
   description: {
     fontSize: 18,
     textAlign: "left",
-    color: "#333",
+    color: "#000000",
     marginBottom: 20,
     fontFamily: "Exo-Regular",
     lineHeight: 18,
@@ -167,7 +168,7 @@ export const columnStyles = StyleSheet.create({
   videoContainer: {
     width: "100%",
     height: height * 0.4,
-    backgroundColor: "#000",
+    backgroundColor: "#000000",
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
@@ -287,12 +288,26 @@ export const getDynamicStyles = (productId: ProductId) => {
     bubbleTitleColor: color,
     // Posiciones específicas de imagen según producto
     productImagePosition: {
-      top: productId === ProductId.CP ? -80 : -200,
+      top:
+        productId === ProductId.CP
+          ? -80
+          : productId === ProductId.WASH
+            ? -70
+            : -200,
       left: productId === ProductId.CP ? -100 : -130,
     },
     // Gap de iconos según cantidad
-    getIconsGap: (iconsCount: number) => (iconsCount <= 5 ? 50 : 25),
+    getIconsGap: (iconsCount: number) =>
+      iconsCount <= 5
+        ? productId === ProductId.WASH || productId === ProductId.TROLLEY
+          ? 15
+          : 40
+        : 15,
     // Margin bottom según producto
     iconsMarginBottom: productId === ProductId.TROLLEY ? 10 : 25,
+    iconWidth:
+      productId === ProductId.WASH || productId === ProductId.TROLLEY
+        ? 110
+        : 90,
   };
 };

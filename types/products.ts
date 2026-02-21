@@ -88,6 +88,105 @@ export const PRODUCTS: Product[] = [
       { text: "detergent and rinse aid in your " },
       { text: "commercial dishwasher", highlight: true },
     ],
+    modalData: {
+      imageModal: require("../assets/products/wash/washModal.png"),
+      video:
+        "https://www.ecofrog.es/wp-content/uploads/2026/02/wash-ecofrog-app-video-modal.mp4",
+      showBubbleMedium: true,
+      title: [
+        { text: "Reduce ", bold: true },
+        { text: "detergent and rinse aid in your " },
+        { text: "commercial dishwasher", highlight: true },
+      ],
+      // WASH
+      // connects to industrial dishwashers, giving the
+      //  AVATAR
+      // system an
+      // additional use
+      //  in terms of cleaning and degreasing.
+      subtitle: [
+        { text: "WASH ", bold: true, highlight: true },
+        { text: "connects to industrial dishwashers, giving the " },
+        { text: "AVATAR ", bold: true, highlight: true },
+        { text: "system an " },
+        { text: "additional use", bold: true },
+        { text: " in terms of cleaning and degreasing." },
+      ],
+      icons: [
+        {
+          legend: "Profitable",
+          url: require("../assets/products/wash/profitable.png"),
+        },
+        {
+          legend: "Convenient",
+          url: require("../assets/products/wash/convenient.png"),
+        },
+        {
+          legend: "Healthy",
+          url: require("../assets/products/wash/healthy.png"),
+        },
+        {
+          legend: "Sustainable",
+          url: require("../assets/products/wash/sustainable.png"),
+        },
+        {
+          legend: "Ecofriendly",
+          url: require("../assets/products/wash/ecofriendly.png"),
+        },
+      ],
+
+      description_1: [
+        { text: "Thanks to the power of " },
+        { text: "ozonated water", highlight: true, bold: true },
+        { text: " provided by " },
+        { text: "AVATAR", bold: true, highlight: true },
+        { text: ", it cleans and degreases efficiently, " },
+        { text: "reducing the use of detergents and rinse aids", bold: true },
+        { text: ", thus becoming a more " },
+        {
+          text: "environmentally friendly and sustainable system.",
+          bold: true,
+        },
+      ],
+      description_2: [
+        {
+          text: "By reducing the handling of chemicals, occupational risks are reduced, management is facilitated, and storage space is saved. ",
+        },
+      ],
+      bubbleText: {
+        title: "Technological improvements to optimize processes ",
+        withoutDots: false,
+
+        // » Capacitive sensor for quick and accurate installations.
+        // » Watertight casing for durability and safety.
+        // » Optimisation of ozonated water distribution.
+        items: [
+          [
+            {
+              text: "Capacitive sensor",
+              bold: true,
+            },
+            { text: " for quick and accurate installations." },
+          ],
+          [
+            {
+              text: "Watertight casing",
+              bold: true,
+            },
+            { text: " for durability and safety." },
+          ],
+          [
+            {
+              text: "Optimisation ",
+              bold: true,
+            },
+            { text: "of " },
+            { text: "ozonated water", bold: true, highlight: true },
+            { text: " distribution." },
+          ],
+        ],
+      },
+    },
   },
   {
     id: ProductId.TROLLEY,

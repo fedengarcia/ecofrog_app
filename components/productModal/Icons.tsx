@@ -21,7 +21,10 @@ export default function Icons({ productId, icons }: IconsProps) {
       }}
     >
       {icons.map((icon, index) => (
-        <View key={index} style={iconStyles.iconItem}>
+        <View
+          key={index}
+          style={{ ...iconStyles.iconItem, width: dynamicStyles.iconWidth }}
+        >
           <Image
             source={icon.url}
             style={iconStyles.icon}
