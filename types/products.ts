@@ -78,6 +78,102 @@ export const PRODUCTS: Product[] = [
       { text: " in your " },
       { text: "business", bold: true },
     ],
+    modalData: {
+      imageModal: require("../assets/products/avatar/avatarModal.png"),
+      video:
+        "https://www.ecofrog.es/wp-content/uploads/2026/02/avatar-ecofrog-app-video-modal.mp4",
+      showBubbleMedium: true,
+      title: [
+        { text: "Commit to " },
+        { text: "OZONE", highlight: true },
+        { text: " in your " },
+        { text: "business", bold: true },
+      ],
+      subtitle: [
+        { text: "An in-situ " },
+        { text: "water ozone", highlight: true, bold: true },
+        {
+          text: " generation device, which allows the cleaning and disinfection of all types of surfaces in  business while",
+        },
+        { text: " minimizing the use of chemical products.", bold: true },
+      ],
+      icons: [
+        {
+          legend: "Disinfects, degreases, deodorizes",
+          url: require("../assets/products/avatar/disinfects.png"),
+        },
+        {
+          legend: "Help with daily cleaning",
+          url: require("../assets/products/avatar/help.png"),
+        },
+        {
+          legend: "Reduce your use of detergents",
+          url: require("../assets/products/avatar/reduce.png"),
+        },
+        {
+          legend: "Save on energy costs",
+          url: require("../assets/products/avatar/save.png"),
+        },
+        {
+          legend: "Consume smartly",
+          url: require("../assets/products/avatar/consume.png"),
+        },
+      ],
+
+      description_1: [
+        { text: "Specialising in the  " },
+        { text: "HORECA", highlight: true, bold: true },
+        { text: " channel, " },
+        { text: "AVATAR", highlight: true, bold: true },
+        {
+          text: " is a solution for the hospitality industry that adds value to businesses by",
+        },
+        {
+          text: "eliminating up to 90% of the use of chemical products ",
+          bold: true,
+        },
+        { text: "(and their plastic packaging)." },
+      ],
+      description_2: [
+        {
+          text: "It ",
+        },
+        {
+          text: "simplifies ",
+          bold: true,
+        },
+        {
+          text: "order management and cleaning product storage and reduces risks for users.",
+          break: true,
+        },
+        {
+          text: "All of this translates into ",
+        },
+        {
+          text: "cost savings at all levels.",
+          bold: true,
+        },
+      ],
+      bubbleText: {
+        title: "Intelligent maintenance control",
+        withoutDots: true,
+        items: [
+          [
+            {
+              text: "With accurate and clear",
+            },
+            { text: " advance warnings", bold: true },
+            { text: " and a renewed display." },
+          ],
+          [
+            {
+              text: "Everything is fully user-oriented to ensure ",
+            },
+            { text: "complete operational tranquility", bold: true },
+          ],
+        ],
+      },
+    },
   },
   {
     id: ProductId.WASH,
@@ -98,12 +194,6 @@ export const PRODUCTS: Product[] = [
         { text: "detergent and rinse aid in your " },
         { text: "commercial dishwasher", highlight: true },
       ],
-      // WASH
-      // connects to industrial dishwashers, giving the
-      //  AVATAR
-      // system an
-      // additional use
-      //  in terms of cleaning and degreasing.
       subtitle: [
         { text: "WASH ", bold: true, highlight: true },
         { text: "connects to industrial dishwashers, giving the " },
@@ -134,7 +224,6 @@ export const PRODUCTS: Product[] = [
           url: require("../assets/products/wash/ecofriendly.png"),
         },
       ],
-
       description_1: [
         { text: "Thanks to the power of " },
         { text: "ozonated water", highlight: true, bold: true },
@@ -156,10 +245,6 @@ export const PRODUCTS: Product[] = [
       bubbleText: {
         title: "Technological improvements to optimize processes ",
         withoutDots: false,
-
-        // » Capacitive sensor for quick and accurate installations.
-        // » Watertight casing for durability and safety.
-        // » Optimisation of ozonated water distribution.
         items: [
           [
             {

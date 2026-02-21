@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontFamily: "Exo-Light",
     fontWeight: "300",
-    color: "#666",
+    color: "#000000",
     marginBottom: 6,
   },
   thirdTitle: {
