@@ -18,7 +18,7 @@ const VIDEO_CATEGORIES: VideoCategory[] = [
     icon: require("../assets/videos/restaurantsIcon.png"),
     backgroundImage: require("../assets/videos/restaurantImage.png"),
     videoUrl:
-      "https://www.ecofrog.es/wp-content/uploads/2026/02/RESTAURANTES.mp4",
+      "https://www.ecofrog.es/wp-content/uploads/2026/02/restaurants-ecofrog-app-video-modal.mp4",
   },
   {
     id: VideoCategoryId.HOTELS,
@@ -27,7 +27,7 @@ const VIDEO_CATEGORIES: VideoCategory[] = [
     icon: require("../assets/videos/hotelsIcon.png"),
     backgroundImage: require("../assets/videos/hotelsImage.png"),
     videoUrl:
-      "https://www.ecofrog.es/wp-content/uploads/2026/02/RESTAURANTES.mp4",
+      "https://www.ecofrog.es/wp-content/uploads/2026/02/hoteles-ecofrog-app-video-modal.mp4",
   },
   {
     id: VideoCategoryId.EDUCATION_CENTER,
@@ -36,7 +36,7 @@ const VIDEO_CATEGORIES: VideoCategory[] = [
     icon: require("../assets/videos/educationIcon.png"),
     backgroundImage: require("../assets/videos/escolaImage.png"),
     videoUrl:
-      "https://www.ecofrog.es/wp-content/uploads/2026/02/RESTAURANTES.mp4",
+      "https://www.ecofrog.es/wp-content/uploads/2026/02/education-ecofrog-app-video-modal.mp4",
   },
   {
     id: VideoCategoryId.MEDICAL_CENTER,
@@ -45,7 +45,7 @@ const VIDEO_CATEGORIES: VideoCategory[] = [
     icon: require("../assets/videos/MedicalCenterIcon.png"),
     backgroundImage: require("../assets/videos/medicalCenterImage.png"),
     videoUrl:
-      "https://www.ecofrog.es/wp-content/uploads/2026/02/RESTAURANTES.mp4",
+      "https://www.ecofrog.es/wp-content/uploads/2026/02/medical-ecofrog-app-video-modal.mp4",
   },
   {
     id: VideoCategoryId.CATERING,
@@ -54,7 +54,7 @@ const VIDEO_CATEGORIES: VideoCategory[] = [
     icon: require("../assets/videos/cateringIcon.png"),
     backgroundImage: require("../assets/videos/cateringImage.png"),
     videoUrl:
-      "https://www.ecofrog.es/wp-content/uploads/2026/02/RESTAURANTES.mp4",
+      "https://www.ecofrog.es/wp-content/uploads/2026/02/catering-ecofrog-app-video-modal.mp4",
   },
   {
     id: VideoCategoryId.B2C,
@@ -63,7 +63,7 @@ const VIDEO_CATEGORIES: VideoCategory[] = [
     icon: require("../assets/videos/ozonatedWaterIcon.png"),
     backgroundImage: require("../assets/videos/ozonatedWaterImage.png"),
     videoUrl:
-      "https://www.ecofrog.es/wp-content/uploads/2026/02/RESTAURANTES.mp4",
+      "https://www.ecofrog.es/wp-content/uploads/2026/02/b2c-ecofrog-app-video-modal.mp4",
   },
 ];
 
