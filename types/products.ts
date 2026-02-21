@@ -377,11 +377,10 @@ export const PRODUCTS: Product[] = [
               bold: true,
             },
             {
-              text: " technology with the versatility of",
+              text: " technology with the versatility of ",
             },
             {
               text: "Alpha.",
-              highlight: true,
               bold: true,
             },
             {

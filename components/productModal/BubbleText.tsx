@@ -45,7 +45,9 @@ const styles = StyleSheet.create({
   bubbleContainer: {
     backgroundColor: "#E0E0E0",
     width: "100%",
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+
     borderRadius: 10,
     gap: 5,
     marginTop: 20,
@@ -60,7 +62,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   bubbleTitle: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: "bold",
   },
   bubbleBullet: {
