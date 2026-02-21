@@ -7,7 +7,11 @@ import {
   Image,
 } from "react-native";
 import { Video, ResizeMode } from "expo-av";
-import { ProductId, TextPart, BubbleText as BubbleTextType } from "../../types/products";
+import {
+  ProductId,
+  TextPart,
+  BubbleText as BubbleTextType,
+} from "../../types/products";
 import { columnStyles, cpStyles, baseStyles, getDynamicStyles } from "./styles";
 import { useModal } from "../../context/ModalContext";
 import TextParts from "./TextParts";
@@ -54,7 +58,10 @@ export default function Columns({
         <View style={cpStyles.cpDescriptionContainer}>
           <TextParts parts={description_1} baseStyle={cpStyles.cpDescription} />
           {description_2 && (
-            <TextParts parts={description_2} baseStyle={cpStyles.cpDescription} />
+            <TextParts
+              parts={description_2}
+              baseStyle={cpStyles.cpDescription}
+            />
           )}
         </View>
 
@@ -109,12 +116,18 @@ export default function Columns({
       <View style={columnStyles.leftColumn}>
         {/* Descripción 1 */}
         {description_1 && (
-          <TextParts parts={description_1} baseStyle={columnStyles.description} />
+          <TextParts
+            parts={description_1}
+            baseStyle={columnStyles.description}
+          />
         )}
 
         {/* Descripción 2 */}
         {description_2 && (
-          <TextParts parts={description_2} baseStyle={columnStyles.description} />
+          <TextParts
+            parts={description_2}
+            baseStyle={columnStyles.description}
+          />
         )}
 
         {/* Descripción con puntos */}

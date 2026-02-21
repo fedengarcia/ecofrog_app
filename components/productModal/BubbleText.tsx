@@ -16,8 +16,7 @@ export default function BubbleText({
   isInsideContainer = true,
 }: BubbleTextProps) {
   const color = getProductColor(productId);
-  const titleColor =
-    bubbleText.title === "Multiple uses" ? "#8D418F" : color;
+  const titleColor = bubbleText.title === "Multiple uses" ? "#8D418F" : color;
 
   const containerStyle = isInsideContainer
     ? styles.bubbleContainer
