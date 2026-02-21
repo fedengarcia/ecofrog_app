@@ -11,9 +11,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useInactivity } from "../context/InactivityContext";
 import Navbar from "../components/Navbar";
 import ProductCard from "../components/productosScreen/ProductCard";
-import { Product, ProductId } from "../components/productosScreen/types";
-import ProductModal from "../components/productosScreen/ProductModal";
-import { PRODUCTS } from "../types/products";
+import { Product, ProductId, PRODUCTS } from "../types/products";
+import ProductModal from "../components/productModal";
 
 const { width } = Dimensions.get("window");
 const isTablet = width >= 768;

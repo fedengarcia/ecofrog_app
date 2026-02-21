@@ -7,7 +7,7 @@ import {
   Dimensions,
   TouchableOpacity,
 } from "react-native";
-import { Product, ProductId, TextPart } from "./types";
+import { Product, ProductId, TextPart } from "../../types/products";
 
 const { width } = Dimensions.get("window");
 const isTablet = width >= 768;
