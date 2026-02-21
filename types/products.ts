@@ -33,6 +33,118 @@ export const PRODUCTS: Product[] = [
       { text: " with " },
       { text: "ozonated water", highlight: true },
     ],
+    modalData: {
+      imageModal: require("../assets/products/trolley/trolleyModal.png"),
+      title: [
+        { text: "Smart " },
+        { text: "portable cleaning", bold: true },
+        { text: " with " },
+        { text: "ozonated water", highlight: true },
+      ],
+      subtitle: [
+        { text: "A" },
+        {
+          text: " fully integrated, efficient and environmentally",
+          bold: true,
+        },
+        { text: " friendly system that incorporates the " },
+        { text: "AVATAR", bold: true, highlight: true },
+        { text: " device into a professional cleaning trolley." },
+      ],
+      icons: [
+        {
+          legend: "Useful",
+          url: require("../assets/products/trolley/useful.png"),
+        },
+        {
+          legend: "Durable",
+          url: require("../assets/products/trolley/durable.png"),
+        },
+        {
+          legend: "Efficient",
+          url: require("../assets/products/trolley/efficient.png"),
+        },
+        {
+          legend: "Versatile",
+          url: require("../assets/products/trolley/versatile.png"),
+        },
+        {
+          legend: "Ecofriendly",
+          url: require("../assets/products/trolley/ecofriendly.png"),
+        },
+      ],
+      description_1: [
+        { text: "TROLLEY", bold: true, highlight: true },
+        {
+          text: " 's customisable design, with a wide range of accessories, allows users to create ",
+        },
+        {
+          text: "different configurations that adapt to any space, sector or need.",
+          bold: true,
+        },
+      ],
+      description_2: [
+        { text: "With a 15-litre water tank, ", bold: true },
+        { text: "it provides optimum autonomy for large areas." },
+      ],
+      descrptionWithDots: [
+        [{ text: "Hotels, hostels, flats" }],
+        [{ text: "Residences for elderly or students" }],
+        [{ text: "Hospitals, health centres" }],
+        [{ text: "Educational centres" }],
+        [{ text: "Restaurants, bars, cafés, canteens" }],
+        [{ text: "Department stores, supermarkets" }],
+        [{ text: "Sports centres" }],
+        [{ text: "Offices, studios" }],
+      ],
+      bubbleText: {
+        title: "Two brands, one common vision",
+        withoutDots: true,
+        items: [
+          [
+            {
+              text: "The collaboration between ",
+            },
+            {
+              text: "ECOFROG ",
+              highlight: true,
+              bold: true,
+            },
+            {
+              text: "and ",
+            },
+            {
+              text: "FILMOP ",
+              highlight: true,
+              bold: true,
+            },
+            {
+              text: "combines",
+            },
+            {
+              text: "AVATAR",
+              highlight: true,
+              bold: true,
+            },
+            {
+              text: " technology with the versatility of",
+            },
+            {
+              text: "Alpha.",
+              highlight: true,
+              bold: true,
+            },
+            {
+              text: " A portable solution for large areas committed to effective and sustainable hygiene.",
+            },
+          ],
+        ],
+      },
+      showBubbleMedium: true,
+
+      video:
+        "https://www.ecofrog.es/wp-content/uploads/2026/02/trolley-ecofrogg-app-video-modal.mp4",
+    },
   },
   {
     id: ProductId.CP,
@@ -119,7 +231,6 @@ export const PRODUCTS: Product[] = [
       ],
       bubbleText: {
         title: "More safety",
-        // It has a water leak detector and removes limescale build-up from pipes and washing machines.
         items: [
           [
             { text: "It has a " },
@@ -134,7 +245,7 @@ export const PRODUCTS: Product[] = [
         ],
       },
       video:
-        "https://www.ecofrog.es/wp-content/uploads/2026/02/Video_Commercial-Purifier.mp4",
+        "https://www.ecofrog.es/wp-content/uploads/2026/02/cp-ecofrogg-app-video-modal.mp4",
       showBubbleLeft: true,
       showBubbleMedium: false,
     },
@@ -231,7 +342,7 @@ export const PRODUCTS: Product[] = [
       ],
       bubbleText: {
         title: "Multiple uses",
-        withoutDots: true,
+        withoutDots: false,
         items: [
           [
             { text: "Laundry connecting " },
@@ -261,7 +372,7 @@ export const PRODUCTS: Product[] = [
         ],
       },
       video:
-        "https://www.ecofrog.es/wp-content/uploads/2026/02/Gina-ELEKTRA.mp4",
+        "https://www.ecofrog.es/wp-content/uploads/2026/02/elektra-ecofrogg-app-video-modal.mp4",
       showBubbleMedium: true,
     },
   },

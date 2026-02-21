@@ -28,6 +28,7 @@ export interface Product {
     icons: IconData[];
     description_1: TextPart[];
     description_2?: TextPart[];
+    descrptionWithDots?: TextPart[][];
     items?: string[];
     bubbleText?: {
       title?: string;

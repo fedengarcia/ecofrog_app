@@ -73,6 +73,7 @@ export default function ProductModal({
     icons,
     description_1,
     description_2,
+    descrptionWithDots,
     bubbleText,
     video,
   } = product.modalData;
@@ -127,7 +128,13 @@ export default function ProductModal({
                   width: "100%",
                 })}
               {/* Iconos con leyendas */}
-              <View style={styles.iconsContainer}>
+              <View
+                style={{
+                  ...styles.iconsContainer,
+                  gap: icons.length <= 5 ? 50 : 25,
+                  marginBottom: product.id === "trolley" ? 10 : 25,
+                }}
+              >
                 {icons.map((icon, index) => (
                   <View key={index} style={styles.iconItem}>
                     <Image
@@ -171,7 +178,6 @@ export default function ProductModal({
                       </Text>
                       {bubbleText.items.map((item, index) => (
                         <View key={index} style={styles.bubbleItem}>
-                          <Text style={styles.bubbleBullet}>»</Text>
                           {renderTextParts(item, styles.bubbleText)}
                         </View>
                       ))}
@@ -210,26 +216,34 @@ export default function ProductModal({
                 </View>
               ) : (
                 /* Layout para otros productos */
-                <View
-                  style={{
-                    ...styles.bottomContainer,
-                    flexDirection: "row",
-                  }}
-                >
+                <View style={styles.bottomContainer}>
                   {/* Columna izquierda: Descripción y BubbleText */}
                   <View style={styles.leftColumn}>
                     {/* Descripción 1 */}
-                    {renderTextParts(description_1, {
-                      ...styles.description,
-                      width: 500,
-                    })}
+                    {description_1 &&
+                      renderTextParts(description_1, styles.description)}
 
                     {/* Descripción 2 */}
                     {description_2 &&
-                      renderTextParts(description_2, {
-                        ...styles.description,
-                        width: 500,
-                      })}
+                      renderTextParts(description_2, styles.description)}
+
+                    {descrptionWithDots &&
+                      descrptionWithDots.map((item, index) => (
+                        <View key={index} style={styles.bubbleItem}>
+                          <Text
+                            style={{
+                              ...styles.bubbleBullet,
+                              color:
+                                product.id === "elektra"
+                                  ? "#8D418F"
+                                  : "#00B4D8",
+                            }}
+                          >
+                            »
+                          </Text>
+                          {renderTextParts(item, styles.bubbleText)}
+                        </View>
+                      ))}
 
                     {/* BubbleText si existe */}
                     {bubbleText && bubbleText.items && (
@@ -248,7 +262,17 @@ export default function ProductModal({
                         {bubbleText.items.map((item, index) => (
                           <View key={index} style={styles.bubbleItem}>
                             {!bubbleText.withoutDots && (
-                              <Text style={styles.bubbleBullet}>»</Text>
+                              <Text
+                                style={{
+                                  ...styles.bubbleBullet,
+                                  color:
+                                    product.id === "elektra"
+                                      ? "#8D418F"
+                                      : "#00B4D8",
+                                }}
+                              >
+                                »
+                              </Text>
                             )}
                             {renderTextParts(item, styles.bubbleText)}
                           </View>
@@ -422,18 +446,19 @@ const styles = StyleSheet.create({
     color: "#333",
     marginBottom: 20,
     fontFamily: "Exo-Regular",
-    lineHeight: 20,
+    lineHeight: 18,
   },
   bottomContainer: {
     flexDirection: "row",
     gap: 30,
     width: "100%",
+    alignItems: "flex-start",
   },
   leftColumn: {
     flex: 1,
   },
   rightColumn: {
-    width: 280,
+    flex: 1,
     alignItems: "center",
     position: "relative",
   },
@@ -456,12 +481,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: "#8D418F",
     marginRight: 10,
+    lineHeight: 18,
   },
   bubbleText: {
     fontSize: 18,
     color: "black",
     fontFamily: "Exo-Regular",
-    lineHeight: 20,
+    lineHeight: 18,
     textAlign: "left",
   },
   videoContainer: {
