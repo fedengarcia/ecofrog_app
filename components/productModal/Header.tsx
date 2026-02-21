@@ -1,7 +1,8 @@
 import React from "react";
-import { View, Text, Image, ImageSourcePropType } from "react-native";
+import { View, Image, ImageSourcePropType } from "react-native";
 import { ProductId, TextPart } from "../../types/products";
-import { headerStyles, baseStyles, getDynamicStyles } from "./styles";
+import { headerStyles, getDynamicStyles } from "./styles";
+import TextParts from "./TextParts";
 
 interface HeaderProps {
   productId: ProductId;
@@ -21,27 +22,6 @@ export default function Header({
   subtitle,
 }: HeaderProps) {
   const dynamicStyles = getDynamicStyles(productId);
-
-  const renderTextParts = (parts: TextPart[], baseStyle: any) => {
-    return (
-      <Text style={baseStyle}>
-        {parts.map((part, index) => (
-          <React.Fragment key={index}>
-            <Text
-              style={[
-                part.bold && baseStyles.boldText,
-                part.highlight && !part.otherColor && baseStyles.highlightText,
-                part.otherColor && { color: part.otherColor },
-              ]}
-            >
-              {part.text}
-            </Text>
-            {part.break && "\n"}
-          </React.Fragment>
-        ))}
-      </Text>
-    );
-  };
 
   return (
     <>
@@ -65,20 +45,22 @@ export default function Header({
           />
 
           {/* Título */}
-          {renderTextParts(title, headerStyles.title)}
+          <TextParts parts={title} baseStyle={headerStyles.title} />
 
           {/* Subtítulo (excepto CP) */}
-          {productId !== ProductId.CP &&
-            renderTextParts(subtitle, headerStyles.subtitle)}
+          {productId !== ProductId.CP && (
+            <TextParts parts={subtitle} baseStyle={headerStyles.subtitle} />
+          )}
         </View>
       </View>
 
       {/* Subtítulo para CP (ancho completo) */}
-      {productId === ProductId.CP &&
-        renderTextParts(subtitle, {
-          ...headerStyles.subtitle,
-          width: "100%",
-        })}
+      {productId === ProductId.CP && (
+        <TextParts
+          parts={subtitle}
+          baseStyle={{ ...headerStyles.subtitle, width: "100%" }}
+        />
+      )}
     </>
   );
 }

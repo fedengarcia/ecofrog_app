@@ -7,16 +7,18 @@ import {
   Image,
 } from "react-native";
 import { Video, ResizeMode } from "expo-av";
-import { ProductId, TextPart, BubbleText } from "../../types/products";
+import { ProductId, TextPart, BubbleText as BubbleTextType } from "../../types/products";
 import { columnStyles, cpStyles, baseStyles, getDynamicStyles } from "./styles";
 import { useModal } from "../../context/ModalContext";
+import TextParts from "./TextParts";
+import BubbleText from "./BubbleText";
 
 interface ColumnsProps {
   productId: ProductId;
   description_1: TextPart[];
   description_2?: TextPart[];
   descrptionWithDots?: TextPart[][];
-  bubbleText?: BubbleText;
+  bubbleText?: BubbleTextType;
   video?: string;
 }
 
@@ -44,54 +46,26 @@ export default function Columns({
     }
   };
 
-  const renderTextParts = (parts: TextPart[], baseStyle: any) => {
-    return (
-      <Text style={baseStyle}>
-        {parts.map((part, index) => (
-          <React.Fragment key={index}>
-            <Text
-              style={[
-                part.bold && baseStyles.boldText,
-                part.highlight && !part.otherColor && baseStyles.highlightText,
-                part.otherColor && { color: part.otherColor },
-              ]}
-            >
-              {part.text}
-            </Text>
-            {part.break && "\n"}
-          </React.Fragment>
-        ))}
-      </Text>
-    );
-  };
-
   // Layout especial para CP
   if (productId === ProductId.CP) {
     return (
       <View style={cpStyles.cpContainer}>
         {/* Descripción 1 y 2 */}
         <View style={cpStyles.cpDescriptionContainer}>
-          {renderTextParts(description_1, cpStyles.cpDescription)}
-          {description_2 &&
-            renderTextParts(description_2, cpStyles.cpDescription)}
+          <TextParts parts={description_1} baseStyle={cpStyles.cpDescription} />
+          {description_2 && (
+            <TextParts parts={description_2} baseStyle={cpStyles.cpDescription} />
+          )}
         </View>
 
         {/* Bubble text */}
         {bubbleText && bubbleText.items && (
           <View style={cpStyles.cpBubbleTextContainer}>
-            <Text
-              style={{
-                ...baseStyles.bubbleTitle,
-                color: dynamicStyles.bubbleTitleColor,
-              }}
-            >
-              {bubbleText.title}
-            </Text>
-            {bubbleText.items.map((item, index) => (
-              <View key={index} style={baseStyles.bubbleItem}>
-                {renderTextParts(item, baseStyles.bubbleText)}
-              </View>
-            ))}
+            <BubbleText
+              bubbleText={bubbleText}
+              productId={productId}
+              isInsideContainer={false}
+            />
           </View>
         )}
 
@@ -134,12 +108,14 @@ export default function Columns({
       {/* Columna izquierda: Descripción y BubbleText */}
       <View style={columnStyles.leftColumn}>
         {/* Descripción 1 */}
-        {description_1 &&
-          renderTextParts(description_1, columnStyles.description)}
+        {description_1 && (
+          <TextParts parts={description_1} baseStyle={columnStyles.description} />
+        )}
 
         {/* Descripción 2 */}
-        {description_2 &&
-          renderTextParts(description_2, columnStyles.description)}
+        {description_2 && (
+          <TextParts parts={description_2} baseStyle={columnStyles.description} />
+        )}
 
         {/* Descripción con puntos */}
         {descrptionWithDots &&
@@ -153,40 +129,13 @@ export default function Columns({
               >
                 »
               </Text>
-              {renderTextParts(item, baseStyles.bubbleText)}
+              <TextParts parts={item} baseStyle={baseStyles.bubbleText} />
             </View>
           ))}
 
         {/* BubbleText si existe */}
         {bubbleText && bubbleText.items && (
-          <View style={baseStyles.bubbleContainer}>
-            <Text
-              style={{
-                ...baseStyles.bubbleTitle,
-                color:
-                  bubbleText.title === "Multiple uses"
-                    ? "#8D418F"
-                    : dynamicStyles.bubbleTitleColor,
-              }}
-            >
-              {bubbleText.title}
-            </Text>
-            {bubbleText.items.map((item, index) => (
-              <View key={index} style={baseStyles.bubbleItem}>
-                {!bubbleText.withoutDots && (
-                  <Text
-                    style={{
-                      ...baseStyles.bubbleBullet,
-                      color: dynamicStyles.bulletColor,
-                    }}
-                  >
-                    »
-                  </Text>
-                )}
-                {renderTextParts(item, baseStyles.bubbleText)}
-              </View>
-            ))}
-          </View>
+          <BubbleText bubbleText={bubbleText} productId={productId} />
         )}
       </View>
 
