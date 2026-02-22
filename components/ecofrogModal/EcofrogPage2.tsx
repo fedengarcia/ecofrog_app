@@ -216,7 +216,8 @@ export default function EcofrogPage2() {
 const styles = StyleSheet.create({
   content: {
     width: "100%",
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingBottom: 20,
     alignItems: "center",
     position: "relative",
     overflow: "visible",
