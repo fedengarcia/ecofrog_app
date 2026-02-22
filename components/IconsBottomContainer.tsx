@@ -18,17 +18,17 @@ export default function IconsBottomContainer({
       )}
       <View style={styles.iconsContainer}>
         <Image
+          source={require("../assets/home/iconStats.png")}
+          style={[{ width: size, height: size }]}
+          resizeMode="contain"
+        />
+        <Image
           source={require("../assets/home/iconEco.png")}
           style={[{ width: size, height: size }]}
           resizeMode="contain"
         />
         <Image
           source={require("../assets/home/iconRecicle.png")}
-          style={[{ width: size, height: size }]}
-          resizeMode="contain"
-        />
-        <Image
-          source={require("../assets/home/iconStats.png")}
           style={[{ width: size, height: size }]}
           resizeMode="contain"
         />

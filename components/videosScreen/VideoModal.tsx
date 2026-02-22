@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
   Modal,
   View,
@@ -7,6 +7,7 @@ import {
   TouchableWithoutFeedback,
   Dimensions,
   Text,
+  ActivityIndicator,
 } from "react-native";
 import { Video, ResizeMode } from "expo-av";
 import { X } from "lucide-react-native";
@@ -28,6 +29,14 @@ export default function VideoModal({
   onClose,
 }: VideoModalProps) {
   const videoRef = useRef<Video>(null);
+  const [isVideoLoading, setIsVideoLoading] = useState(true);
+
+  // Resetear estado de carga cuando cambia el video o cuando el modal se abre
+  useEffect(() => {
+    if (visible && videoUrl) {
+      setIsVideoLoading(true);
+    }
+  }, [visible, videoUrl]);
 
   const handleClose = async () => {
     if (videoRef.current) {
@@ -58,16 +67,27 @@ export default function VideoModal({
               </View>
 
               {videoUrl ? (
-                <Video
-                  ref={videoRef}
-                  source={{ uri: videoUrl }}
-                  style={styles.video}
-                  useNativeControls
-                  resizeMode={ResizeMode.COVER}
-                  shouldPlay
-                />
+                <View style={styles.videoWrapper}>
+                  {isVideoLoading && (
+                    <View style={styles.loadingOverlay}>
+                      <ActivityIndicator size="large" color="#2e7d32" />
+                      <Text style={styles.loadingText}>Cargando video...</Text>
+                    </View>
+                  )}
+                  <Video
+                    ref={videoRef}
+                    source={{ uri: videoUrl }}
+                    style={[styles.video, isVideoLoading && { opacity: 0 }]}
+                    useNativeControls
+                    resizeMode={ResizeMode.COVER}
+                    shouldPlay
+                    onReadyForDisplay={() => setIsVideoLoading(false)}
+                    onLoadStart={() => setIsVideoLoading(true)}
+                  />
+                </View>
               ) : (
                 <View style={styles.loadingContainer}>
+                  <ActivityIndicator size="large" color="#2e7d32" />
                   <Text style={styles.loadingText}>Cargando video...</Text>
                 </View>
               )}
@@ -109,18 +129,32 @@ const styles = StyleSheet.create({
   closeButton: {
     padding: 8,
   },
+  videoWrapper: {
+    flex: 1,
+    width: "100%",
+    height: "100%",
+  },
   video: {
     flex: 1,
     width: "100%",
     height: "100%",
   },
+  loadingOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#f5f5f5",
+    zIndex: 1,
+  },
   loadingContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#f5f5f5",
   },
   loadingText: {
     fontSize: 16,
     color: "#666",
+    marginTop: 12,
   },
 });

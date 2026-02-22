@@ -28,7 +28,8 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/ecofrogLogo.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#ffffff",
+        "width": 180
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,

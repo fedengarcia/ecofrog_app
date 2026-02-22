@@ -1,10 +1,12 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
   View,
   Text,
   TouchableOpacity,
   TouchableWithoutFeedback,
   Image,
+  ActivityIndicator,
+  StyleSheet,
 } from "react-native";
 import { Video, ResizeMode } from "expo-av";
 import {
@@ -36,8 +38,16 @@ export default function Columns({
 }: ColumnsProps) {
   const videoRef = useRef<Video>(null);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [isVideoLoading, setIsVideoLoading] = useState(true);
   const { openContactModal } = useModal();
   const dynamicStyles = getDynamicStyles(productId);
+
+  // Resetear estado de carga cuando cambia el video
+  useEffect(() => {
+    if (video) {
+      setIsVideoLoading(true);
+    }
+  }, [video]);
 
   const handleVideoPress = async () => {
     if (videoRef.current) {
@@ -81,14 +91,21 @@ export default function Columns({
           <View style={cpStyles.cpVideoSection}>
             <TouchableWithoutFeedback onPress={handleVideoPress}>
               <View style={cpStyles.cpVideoContainer}>
+                {isVideoLoading && (
+                  <View style={videoLoadingStyles.loadingOverlay}>
+                    <ActivityIndicator size="large" color="#2e7d32" />
+                  </View>
+                )}
                 <Video
                   ref={videoRef}
                   source={{ uri: video }}
-                  style={baseStyles.video}
+                  style={[baseStyles.video, isVideoLoading && { opacity: 0 }]}
                   resizeMode={ResizeMode.COVER}
                   shouldPlay={true}
                   isLooping={true}
                   rate={1.0}
+                  onReadyForDisplay={() => setIsVideoLoading(false)}
+                  onLoadStart={() => setIsVideoLoading(true)}
                 />
               </View>
             </TouchableWithoutFeedback>
@@ -157,14 +174,21 @@ export default function Columns({
         <View style={columnStyles.rightColumn}>
           <TouchableWithoutFeedback onPress={handleVideoPress}>
             <View style={columnStyles.videoContainer}>
+              {isVideoLoading && (
+                <View style={videoLoadingStyles.loadingOverlay}>
+                  <ActivityIndicator size="large" color="#2e7d32" />
+                </View>
+              )}
               <Video
                 ref={videoRef}
                 source={{ uri: video }}
-                style={baseStyles.video}
+                style={[baseStyles.video, isVideoLoading && { opacity: 0 }]}
                 resizeMode={ResizeMode.CONTAIN}
                 shouldPlay={true}
                 isLooping={true}
                 rate={1.0}
+                onReadyForDisplay={() => setIsVideoLoading(false)}
+                onLoadStart={() => setIsVideoLoading(true)}
               />
             </View>
           </TouchableWithoutFeedback>
@@ -187,3 +211,14 @@ export default function Columns({
     </View>
   );
 }
+
+const videoLoadingStyles = StyleSheet.create({
+  loadingOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#f5f5f5",
+    borderRadius: 15,
+    zIndex: 1,
+  },
+});
