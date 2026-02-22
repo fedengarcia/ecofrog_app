@@ -120,6 +120,13 @@ export default function EcofrogPage2() {
 
   return (
     <View style={styles.content}>
+      <View style={styles.backgroundImageWrapper}>
+        <Image
+          source={require("../../assets/products/modalEcofrog/background.png")}
+          style={styles.backgroundImage}
+          resizeMode="contain"
+        />
+      </View>
       {/* Logo */}
       <Image
         source={require("../../assets/products/modalEcofrog/ecofrogLogoModal.png")}
@@ -212,6 +219,25 @@ const styles = StyleSheet.create({
     padding: 20,
     alignItems: "center",
     position: "relative",
+    overflow: "visible",
+  },
+  backgroundImageWrapper: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: 500,
+    overflow: "hidden",
+
+    zIndex: 0,
+  },
+  backgroundImage: {
+    position: "absolute",
+    top: -320,
+    right: -40,
+    width: 900,
+    height: 900,
+    opacity: 0.1,
   },
   logo: {
     width: 350,
@@ -220,16 +246,16 @@ const styles = StyleSheet.create({
   },
   title: {
     width: "100%",
-    fontSize: 32,
+    fontSize: 22,
     fontWeight: "bold",
     color: "#000",
-    marginBottom: 25,
+    marginBottom: 15,
     fontFamily: "Exo-Bold",
     textAlign: "left",
   },
   description: {
     width: "100%",
-    fontSize: 18,
+    fontSize: 20,
     textAlign: "left",
     color: "#000",
     marginBottom: 20,

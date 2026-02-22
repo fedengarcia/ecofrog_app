@@ -70,7 +70,7 @@ export default function VideoModal({
                 <View style={styles.videoWrapper}>
                   {isVideoLoading && (
                     <View style={styles.loadingOverlay}>
-                      <ActivityIndicator size="large" color="#2e7d32" />
+                      <ActivityIndicator size="large" color="#00B4D8" />
                       <Text style={styles.loadingText}>Cargando video...</Text>
                     </View>
                   )}
@@ -87,7 +87,7 @@ export default function VideoModal({
                 </View>
               ) : (
                 <View style={styles.loadingContainer}>
-                  <ActivityIndicator size="large" color="#2e7d32" />
+                  <ActivityIndicator size="large" color="#00B4D8" />
                   <Text style={styles.loadingText}>Cargando video...</Text>
                 </View>
               )}
@@ -143,14 +143,14 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#000",
     zIndex: 1,
   },
   loadingContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#000",
   },
   loadingText: {
     fontSize: 16,

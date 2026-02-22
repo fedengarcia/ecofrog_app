@@ -93,7 +93,7 @@ export default function Columns({
               <View style={cpStyles.cpVideoContainer}>
                 {isVideoLoading && (
                   <View style={videoLoadingStyles.loadingOverlay}>
-                    <ActivityIndicator size="large" color="#2e7d32" />
+                    <ActivityIndicator size="large" color="#00B4D8" />
                   </View>
                 )}
                 <Video
@@ -176,7 +176,7 @@ export default function Columns({
             <View style={columnStyles.videoContainer}>
               {isVideoLoading && (
                 <View style={videoLoadingStyles.loadingOverlay}>
-                  <ActivityIndicator size="large" color="#2e7d32" />
+                  <ActivityIndicator size="large" color="#00B4D8" />
                 </View>
               )}
               <Video
@@ -217,7 +217,7 @@ const videoLoadingStyles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#000",
     borderRadius: 15,
     zIndex: 1,
   },
