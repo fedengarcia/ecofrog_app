@@ -5,15 +5,13 @@ import {
   StyleSheet,
   TouchableOpacity,
   TouchableWithoutFeedback,
-  Dimensions,
   Text,
   ActivityIndicator,
+  useWindowDimensions,
 } from "react-native";
 import { Video, ResizeMode } from "expo-av";
 import { X } from "lucide-react-native";
 import { VideoCategory } from "./types";
-
-const { width, height } = Dimensions.get("window");
 
 interface VideoModalProps {
   visible: boolean;
@@ -29,8 +27,7 @@ export default function VideoModal({
   onClose,
 }: VideoModalProps) {
   const videoRef = useRef<Video>(null);
-  const [isVideoLoading, setIsVideoLoading] = useState(true);
-
+  const [isVideoLoading, setIsVideoLoading] = useState(true);  const { width, height } = useWindowDimensions();
   // Resetear estado de carga cuando cambia el video o cuando el modal se abre
   useEffect(() => {
     if (visible && videoUrl) {
@@ -55,7 +52,7 @@ export default function VideoModal({
       <TouchableWithoutFeedback onPress={handleClose}>
         <View style={styles.overlay}>
           <TouchableWithoutFeedback onPress={() => {}}>
-            <View style={styles.modalContainer}>
+              <View style={[styles.modalContainer, { width: width * 0.9, height: height * 0.7 }]}>
               <View style={styles.header}>
                 <Text style={styles.title}>{category?.title}</Text>
                 <TouchableOpacity
@@ -107,8 +104,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   modalContainer: {
-    width: width * 0.9,
-    height: height * 0.7,
     backgroundColor: "#fff",
     borderRadius: 16,
     overflow: "hidden",

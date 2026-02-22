@@ -5,7 +5,7 @@ import {
   StyleSheet,
   ScrollView,
   Image,
-  Dimensions,
+  useWindowDimensions,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useInactivity } from "../context/InactivityContext";
@@ -14,11 +14,9 @@ import ProductCard from "../components/productosScreen/ProductCard";
 import { Product, ProductId, PRODUCTS } from "../types/products";
 import ProductModal from "../components/productModal";
 
-const { width } = Dimensions.get("window");
-const isTablet = width >= 768;
-
 export default function ProductosScreen() {
   const { resetInactivityTimer } = useInactivity();
+  const { width } = useWindowDimensions();
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [modalVisible, setModalVisible] = useState(false);
 

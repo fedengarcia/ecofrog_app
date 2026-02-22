@@ -3,7 +3,7 @@
     "name": "EcoFrog App",
     "slug": "ecofrog_app",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/ecofrogLogo.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,

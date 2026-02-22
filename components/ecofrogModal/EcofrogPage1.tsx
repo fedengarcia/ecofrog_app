@@ -7,6 +7,7 @@ import {
   Dimensions,
   Animated,
   Easing,
+  useWindowDimensions,
 } from "react-native";
 import TextParts from "../productModal/TextParts";
 import { TextPart } from "../../types/products";
@@ -117,6 +118,7 @@ const pageData = {
 export default function EcofrogPage1() {
   const scrollX = useRef(new Animated.Value(0)).current;
   const isMounted = useRef(true);
+  const { width: screenWidth, height: screenHeight } = useWindowDimensions();
 
   useEffect(() => {
     isMounted.current = true;
@@ -213,10 +215,17 @@ export default function EcofrogPage1() {
         <IconsBottomContainer showmessage={false} size={50} />
       </View>
 
-      <View style={styles.sprayContainer}>
+      <View style={[
+        styles.sprayContainer,
+        {
+          bottom: screenHeight * 0.16,
+          left: -screenWidth * 0.36,
+          height: screenHeight * 0.2,
+        },
+      ]}>
         <Image
           source={require("../../assets/products/modalEcofrog/spray.png")}
-          style={styles.sprayImage}
+          style={[styles.sprayImage, { width: screenWidth * 0.65, height: screenWidth * 0.65 }]}
         />
       </View>
     </View>
@@ -329,16 +338,11 @@ const styles = StyleSheet.create({
   sprayContainer: {
     position: "absolute",
     zIndex: 2,
-    bottom: Dimensions.get("window").height * 0.16,
-    left: -Dimensions.get("window").width * 0.36,
     width: "100%",
-    height: Dimensions.get("window").height * 0.2,
     overflow: "visible",
     alignItems: "center",
   },
   sprayImage: {
-    width: Dimensions.get("window").width * 0.65,
-    height: Dimensions.get("window").width * 0.65,
     objectFit: "contain",
   },
 });

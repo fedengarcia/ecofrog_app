@@ -8,11 +8,10 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   Image,
-  Dimensions,
   ScrollView,
+  useWindowDimensions,
 } from "react-native";
 
-const { width, height } = Dimensions.get("window");
 
 interface ContactModalProps {
   visible: boolean;
@@ -29,6 +28,7 @@ interface FormData {
 }
 
 export default function ContactModal({ visible, onClose }: ContactModalProps) {
+  const { width, height } = useWindowDimensions();
   const [formData, setFormData] = useState<FormData>({
     nameAndSurname: "",
     company: "",
@@ -76,7 +76,7 @@ export default function ContactModal({ visible, onClose }: ContactModalProps) {
       <TouchableWithoutFeedback onPress={onClose}>
         <View style={styles.overlay}>
           <TouchableWithoutFeedback onPress={() => {}}>
-            <View style={styles.modalContainer}>
+            <View style={[styles.modalContainer, { width: width * 0.7, maxHeight: height * 0.9 }]}>
               <ScrollView
                 contentContainerStyle={styles.scrollContent}
                 showsVerticalScrollIndicator={false}
@@ -203,8 +203,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   modalContainer: {
-    width: width * 0.7,
-    maxHeight: height * 0.9,
     backgroundColor: "#fff",
     borderRadius: 20,
     overflow: "hidden",

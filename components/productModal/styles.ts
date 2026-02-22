@@ -1,7 +1,5 @@
-import { StyleSheet, Dimensions } from "react-native";
+import { StyleSheet } from "react-native";
 import { ProductId, getProductColor } from "../../types/products";
-
-const { width, height } = Dimensions.get("window");
 
 // Estilos base compartidos
 export const baseStyles = StyleSheet.create({
@@ -167,7 +165,7 @@ export const columnStyles = StyleSheet.create({
   },
   videoContainer: {
     width: "100%",
-    height: height * 0.4,
+    // height is set inline via useWindowDimensions
     backgroundColor: "#000000",
     borderRadius: 10,
     justifyContent: "center",
@@ -250,8 +248,7 @@ export const modalStyles = StyleSheet.create({
     alignItems: "center",
   },
   modalContainer: {
-    width: width * 0.8,
-    maxHeight: height * 0.8,
+    // width and maxHeight are set inline in the component via useWindowDimensions
     backgroundColor: "#fff",
     borderRadius: 20,
     padding: 50,

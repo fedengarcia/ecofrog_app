@@ -6,13 +6,10 @@ import {
   TouchableOpacity,
   Image,
   ImageBackground,
-  Dimensions,
+  useWindowDimensions,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { VideoCategory } from "./types";
-
-const { width } = Dimensions.get("window");
-const isTablet = width >= 768;
 
 interface VideoCardProps {
   category: VideoCategory;

@@ -7,6 +7,7 @@ import {
   Image,
   ActivityIndicator,
   StyleSheet,
+  useWindowDimensions,
 } from "react-native";
 import { Video, ResizeMode } from "expo-av";
 import {
@@ -41,6 +42,7 @@ export default function Columns({
   const [isVideoLoading, setIsVideoLoading] = useState(true);
   const { openContactModal } = useModal();
   const dynamicStyles = getDynamicStyles(productId);
+  const { height } = useWindowDimensions();
 
   // Resetear estado de carga cuando cambia el video
   useEffect(() => {
@@ -173,7 +175,7 @@ export default function Columns({
       {video && (
         <View style={columnStyles.rightColumn}>
           <TouchableWithoutFeedback onPress={handleVideoPress}>
-            <View style={columnStyles.videoContainer}>
+            <View style={[columnStyles.videoContainer, { height: height * 0.4 }]}>
               {isVideoLoading && (
                 <View style={videoLoadingStyles.loadingOverlay}>
                   <ActivityIndicator size="large" color="#00B4D8" />

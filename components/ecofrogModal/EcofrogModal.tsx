@@ -6,13 +6,11 @@ import {
   StyleSheet,
   TouchableOpacity,
   TouchableWithoutFeedback,
-  Dimensions,
+  useWindowDimensions,
 } from "react-native";
 import EcofrogPage1 from "./EcofrogPage1";
 import EcofrogPage2 from "./EcofrogPage2";
 import { ArrowLeft, ArrowRight } from "lucide-react-native";
-
-const { width, height } = Dimensions.get("window");
 
 interface EcofrogModalProps {
   visible: boolean;
@@ -23,6 +21,7 @@ const TOTAL_PAGES = 2;
 
 export default function EcofrogModal({ visible, onClose }: EcofrogModalProps) {
   const [currentPage, setCurrentPage] = useState(0);
+  const { width, height } = useWindowDimensions();
 
   const goToNextPage = () => {
     if (currentPage < TOTAL_PAGES - 1) {
@@ -51,7 +50,7 @@ export default function EcofrogModal({ visible, onClose }: EcofrogModalProps) {
       <TouchableWithoutFeedback onPress={handleClose}>
         <View style={styles.overlay}>
           <TouchableWithoutFeedback onPress={() => {}}>
-            <View style={styles.modalContainer}>
+            <View style={[styles.modalContainer, { width: width * 0.8, maxHeight: height * 0.8 }]}>
               {/* Botón de cerrar */}
               <TouchableOpacity
                 style={styles.closeButton}
@@ -98,8 +97,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   modalContainer: {
-    width: width * 0.8,
-    maxHeight: height * 0.8,
     backgroundColor: "#fff",
     borderRadius: 20,
     padding: 50,

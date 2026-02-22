@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   Image,
+  useWindowDimensions,
 } from "react-native";
 import { Product } from "../../types/products";
 import { modalStyles, baseStyles } from "./styles";
@@ -28,6 +29,7 @@ export default function ProductModal({
     return null;
   }
 
+  const { width, height } = useWindowDimensions();
   const {
     title,
     subtitle,
@@ -52,7 +54,7 @@ export default function ProductModal({
       <TouchableWithoutFeedback onPress={onClose}>
         <View style={modalStyles.overlay}>
           <TouchableWithoutFeedback onPress={() => {}}>
-            <View style={modalStyles.modalContainer}>
+            <View style={[modalStyles.modalContainer, { width: width * 0.8, maxHeight: height * 0.85 }]}>
               {/* Botón de cerrar */}
               <TouchableOpacity
                 style={modalStyles.closeButton}

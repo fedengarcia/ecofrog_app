@@ -4,16 +4,10 @@ import {
   Text,
   StyleSheet,
   Image,
-  Dimensions,
   TouchableOpacity,
+  useWindowDimensions,
 } from "react-native";
 import { Product, ProductId, TextPart } from "../../types/products";
-
-const { width } = Dimensions.get("window");
-const isTablet = width >= 768;
-
-// 3 columnas en tablet, 1 en móvil
-const CARD_WIDTH = isTablet ? (width - 80) / 3 : width - 40;
 
 interface ProductCardProps {
   product: Product;
@@ -21,6 +15,9 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product, onPress }: ProductCardProps) {
+  const { width } = useWindowDimensions();
+  const isTablet = width >= 768;
+  const CARD_WIDTH = isTablet ? (width - 80) / 3 : width - 40;
   const renderTextParts = (parts: TextPart[]) => {
     return (
       <Text style={styles.description}>
@@ -41,7 +38,7 @@ export default function ProductCard({ product, onPress }: ProductCardProps) {
   };
 
   return (
-    <TouchableOpacity style={styles.card} onPress={onPress} activeOpacity={0.7}>
+    <TouchableOpacity style={[styles.card, { width: CARD_WIDTH }]} onPress={onPress} activeOpacity={0.7}>
       <View
         style={{
           ...styles.image,
@@ -74,7 +71,6 @@ export default function ProductCard({ product, onPress }: ProductCardProps) {
 
 const styles = StyleSheet.create({
   card: {
-    width: CARD_WIDTH,
     borderRadius: 16,
     padding: 10,
     alignItems: "center",

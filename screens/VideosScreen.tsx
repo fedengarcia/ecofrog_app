@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
+import { View, StyleSheet, ScrollView, useWindowDimensions } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Navbar from "../components/Navbar";
 import VideoCard from "../components/videosScreen/VideoCard";
@@ -71,6 +71,7 @@ export default function VideosScreen() {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedCategory, setSelectedCategory] =
     useState<VideoCategory | null>(null);
+  const { width } = useWindowDimensions();
 
   const handleCategoryPress = (category: VideoCategory) => {
     setSelectedCategory(category);
