@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Modal,
   View,
@@ -6,10 +6,11 @@ import {
   StyleSheet,
   TouchableOpacity,
   TouchableWithoutFeedback,
-  Image,
   Dimensions,
-  ScrollView,
 } from "react-native";
+import EcofrogPage1 from "./EcofrogPage1";
+import EcofrogPage2 from "./EcofrogPage2";
+import { ArrowLeft, ArrowRight } from "lucide-react-native";
 
 const { width, height } = Dimensions.get("window");
 
@@ -18,64 +19,69 @@ interface EcofrogModalProps {
   onClose: () => void;
 }
 
+const TOTAL_PAGES = 2;
+
 export default function EcofrogModal({ visible, onClose }: EcofrogModalProps) {
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const goToNextPage = () => {
+    if (currentPage < TOTAL_PAGES - 1) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const goToPrevPage = () => {
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleClose = () => {
+    setCurrentPage(0);
+    onClose();
+  };
+
   return (
     <Modal
       visible={visible}
       animationType="fade"
       transparent={true}
-      onRequestClose={onClose}
+      onRequestClose={handleClose}
     >
-      <TouchableWithoutFeedback onPress={onClose}>
+      <TouchableWithoutFeedback onPress={handleClose}>
         <View style={styles.overlay}>
           <TouchableWithoutFeedback onPress={() => {}}>
             <View style={styles.modalContainer}>
               {/* Botón de cerrar */}
-              <TouchableOpacity style={styles.closeButton} onPress={onClose}>
+              <TouchableOpacity
+                style={styles.closeButton}
+                onPress={handleClose}
+              >
                 <Text style={styles.closeButtonText}>✕</Text>
               </TouchableOpacity>
 
-              <ScrollView
-                contentContainerStyle={styles.scrollContent}
-                showsVerticalScrollIndicator={false}
-              >
-                {/* Logo */}
-                <Image
-                  source={require("../../assets/ecofrogLogo.png")}
-                  style={styles.logo}
-                  resizeMode="contain"
-                />
-
-                {/* Título */}
-                <Text style={styles.title}>About EcoFrog</Text>
-
-                {/* Descripción */}
-                <Text style={styles.description}>
-                  <Text style={styles.boldTextColor}>ECOFROG</Text> is an
-                  innovative cleaning solution that provides effective, safe,
-                  and <Text style={styles.boldText}>chemical-free</Text>{" "}
-                  cleaning for various applications.
-                </Text>
-
-                <Text style={styles.description}>
-                  Our products use advanced technology to deliver superior
-                  cleaning results while being environmentally friendly and safe
-                  for users.
-                </Text>
-
-                <Text style={styles.description}>
-                  Discover our range of products designed to meet your cleaning
-                  needs in industrial, commercial, and residential settings.
-                </Text>
-
-                {/* Botón de cerrar */}
+              {/* Flecha izquierda */}
+              {currentPage > 0 && (
                 <TouchableOpacity
-                  style={styles.closeButtonBottom}
-                  onPress={onClose}
+                  style={styles.arrowLeft}
+                  onPress={goToPrevPage}
                 >
-                  <Text style={styles.closeButtonBottomText}>Close</Text>
+                  <ArrowLeft size={30} color="#49454F" />
                 </TouchableOpacity>
-              </ScrollView>
+              )}
+
+              {/* Flecha derecha */}
+              {currentPage < TOTAL_PAGES - 1 && (
+                <TouchableOpacity
+                  style={styles.arrowRight}
+                  onPress={goToNextPage}
+                >
+                  <ArrowRight size={30} color="#49454F" />
+                </TouchableOpacity>
+              )}
+
+              {/* Contenido de la página */}
+              {currentPage === 0 ? <EcofrogPage1 /> : <EcofrogPage2 />}
             </View>
           </TouchableWithoutFeedback>
         </View>
@@ -92,11 +98,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   modalContainer: {
-    width: width * 0.6,
+    width: width * 0.8,
     maxHeight: height * 0.8,
     backgroundColor: "#fff",
     borderRadius: 20,
-    padding: 40,
+    padding: 50,
+    paddingTop: 30,
     position: "relative",
   },
   closeButton: {
@@ -116,52 +123,30 @@ const styles = StyleSheet.create({
     color: "#333",
     fontWeight: "bold",
   },
-  scrollContent: {
-    paddingTop: 20,
+  arrowLeft: {
+    position: "absolute",
+    left: 15,
+    top: "50%",
+    zIndex: 10,
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    borderColor: "#49454F",
+    borderWidth: 2,
+    justifyContent: "center",
     alignItems: "center",
   },
-  logo: {
-    width: 300,
-    height: 100,
-    marginBottom: 30,
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: "bold",
-    color: "#8D418F",
-    marginBottom: 20,
-    fontFamily: "Exo-Bold",
-    textAlign: "center",
-  },
-  description: {
-    fontSize: 18,
-    textAlign: "center",
-    color: "#333",
-    marginBottom: 20,
-    fontFamily: "Exo-Regular",
-    lineHeight: 26,
-    paddingHorizontal: 20,
-  },
-  boldText: {
-    fontFamily: "Exo-Bold",
-    fontWeight: "700",
-  },
-  boldTextColor: {
-    fontFamily: "Exo-Bold",
-    fontWeight: "700",
-    color: "#8D418F",
-  },
-  closeButtonBottom: {
-    backgroundColor: "#8D418F",
-    paddingVertical: 15,
-    paddingHorizontal: 60,
-    borderRadius: 10,
-    marginTop: 20,
-  },
-  closeButtonBottomText: {
-    color: "#fff",
-    fontSize: 18,
-    fontFamily: "Exo-Bold",
-    fontWeight: "700",
+  arrowRight: {
+    position: "absolute",
+    right: 15,
+    top: "50%",
+    zIndex: 10,
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    borderColor: "#49454F",
+    borderWidth: 2,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

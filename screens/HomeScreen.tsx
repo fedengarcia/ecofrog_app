@@ -4,6 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../navigation/types";
 import { useInactivity } from "../context/InactivityContext";
+import IconsBottomContainer from "../components/IconsBottomContainer";
 
 type HomeScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -51,26 +52,7 @@ export default function HomeScreen() {
 
       {/* Eco Message */}
       <View style={styles.ecoMessage}>
-        <Text style={styles.ecoTitle}>REDUCE | REUSE | RECYCLE</Text>
-        <Text style={styles.ecoSubtitle}>ECOFROG'S MIND IS A GREEN FUTURE</Text>
-        {/* Icons */}
-        <View style={styles.iconsContainer}>
-          <Image
-            source={require("../assets/home/iconEco.png")}
-            style={styles.icon}
-            resizeMode="contain"
-          />
-          <Image
-            source={require("../assets/home/iconRecicle.png")}
-            style={styles.icon}
-            resizeMode="contain"
-          />
-          <Image
-            source={require("../assets/home/iconStats.png")}
-            style={styles.icon}
-            resizeMode="contain"
-          />
-        </View>
+        <IconsBottomContainer />
       </View>
     </View>
   );
@@ -143,31 +125,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-end",
     marginBottom: 40,
-  },
-  ecoTitle: {
-    fontFamily: "Exo-Bold",
-    fontSize: 20,
-    lineHeight: 24,
-    textAlign: "center",
-    color: "#009FE3",
-    marginBottom: 5,
-  },
-  ecoSubtitle: {
-    fontFamily: "Exo-Bold",
-    fontSize: 20,
-    lineHeight: 24,
-    textAlign: "center",
-    color: "#000",
-    marginBottom: 20,
-  },
-  iconsContainer: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 30,
-  },
-  icon: {
-    width: 60,
-    height: 60,
   },
 });
