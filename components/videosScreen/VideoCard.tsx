@@ -6,13 +6,10 @@ import {
   TouchableOpacity,
   Image,
   ImageBackground,
-  Dimensions,
+  useWindowDimensions,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { VideoCategory } from "./types";
-
-const { width } = Dimensions.get("window");
-const isTablet = width >= 768;
 
 interface VideoCardProps {
   category: VideoCategory;
@@ -20,8 +17,24 @@ interface VideoCardProps {
 }
 
 export default function VideoCard({ category, onPress }: VideoCardProps) {
+  const { width } = useWindowDimensions();
+
+  // 2 columnas cuando width > 500px, 1 columna sino
+  const isTwoColumns = width > 500;
+  const horizontalPadding = 24; // padding del ScrollView (12) * 2
+  const gap = 60; // gap del grid
+  const cardMargin = 16; // margin de la card (8 * 2)
+
+  const cardWidth = isTwoColumns
+    ? (width - horizontalPadding - gap - cardMargin * 2) / 2
+    : width - horizontalPadding - cardMargin;
+
   return (
-    <TouchableOpacity style={styles.card} onPress={onPress} activeOpacity={0.8}>
+    <TouchableOpacity
+      style={[styles.card, { width: cardWidth }]}
+      onPress={onPress}
+      activeOpacity={0.8}
+    >
       <ImageBackground
         source={category.backgroundImage}
         style={styles.backgroundImage}
@@ -50,7 +63,6 @@ const styles = StyleSheet.create({
   card: {
     borderRadius: 20,
     margin: 8,
-    width: 360,
     height: 260,
     overflow: "hidden",
     shadowColor: "#000",
