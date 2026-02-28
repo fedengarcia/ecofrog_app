@@ -9,8 +9,15 @@
     "name": "Name and surname",
     "email": "E-mail",
     "telephone": "Telephone",
+    "telephonePlaceholder": "+39...",
     "location": "Location",
+    "advisor": "Advisor who attended you",
     "placeholder": "Enter.."
+  },
+  "checkboxes": {
+    "publicidad": "I agree to receive advertising from ECOFROG about its products and services.",
+    "privacidad": "I have read and accept the ",
+    "privacidadLink": "Privacy Policy"
   },
   "buttons": {
     "cancel": "Cancel",
@@ -19,6 +26,7 @@
   "alerts": {
     "errorTitle": "Error",
     "errorEmpty": "Please fill in all fields.",
+    "errorPrivacy": "You must accept the Privacy Policy to continue.",
     "successTitle": "Success",
     "successMessage": "Your information has been sent successfully.",
     "errorSend": "Could not send the form. Please try again."

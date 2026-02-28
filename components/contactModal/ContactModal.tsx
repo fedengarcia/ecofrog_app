@@ -12,6 +12,7 @@ import {
   ScrollView,
   Alert,
   ActivityIndicator,
+  Linking,
 } from "react-native";
 import { useTranslation } from "react-i18next";
 
@@ -27,6 +28,7 @@ interface FormData {
   email: string;
   telefono: string;
   localidad: string;
+  atendio_asesor: string;
 }
 
 export default function ContactModal({ visible, onClose }: ContactModalProps) {
@@ -35,7 +37,10 @@ export default function ContactModal({ visible, onClose }: ContactModalProps) {
     email: "",
     telefono: "",
     localidad: "",
+    atendio_asesor: "",
   });
+  const [publicidad, setPublicidad] = useState(false);
+  const [privacidad, setPrivacidad] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { t } = useTranslation("contact");
 
@@ -44,7 +49,15 @@ export default function ContactModal({ visible, onClose }: ContactModalProps) {
   };
 
   const resetForm = () => {
-    setFormData({ nombre: "", email: "", telefono: "", localidad: "" });
+    setFormData({
+      nombre: "",
+      email: "",
+      telefono: "",
+      localidad: "",
+      atendio_asesor: "",
+    });
+    setPublicidad(false);
+    setPrivacidad(false);
   };
 
   const handleCancel = () => {
@@ -53,31 +66,45 @@ export default function ContactModal({ visible, onClose }: ContactModalProps) {
   };
 
   const handleAccept = async () => {
-    if (!formData.nombre || !formData.email || !formData.telefono || !formData.localidad) {
+    if (
+      !formData.nombre ||
+      !formData.email ||
+      !formData.telefono ||
+      !formData.localidad
+    ) {
       Alert.alert(t("alerts.errorTitle"), t("alerts.errorEmpty"));
+      return;
+    }
+
+    if (!privacidad) {
+      Alert.alert(t("alerts.errorTitle"), t("alerts.errorPrivacy"));
       return;
     }
 
     setIsSubmitting(true);
     try {
-      const response = await fetch("https://servipro.odoo.com/contact-form-webhook", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer lCfPycGU7treH6K1F1SY",
-        },
-        body: JSON.stringify({
-          form_data: {
-            nombre: formData.nombre,
-            email: formData.email,
-            telefono: formData.telefono,
-            localidad: formData.localidad,
-            politicaprivacidad: true,
-            publicidad: true,
-            url: "https://www.ecofrog.es",
+      const response = await fetch(
+        "https://servipro.odoo.com/contact-form-webhook",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer lCfPycGU7treH6K1F1SY",
           },
-        }),
-      });
+          body: JSON.stringify({
+            form_data: {
+              nombre: formData.nombre,
+              email: formData.email,
+              telefono: formData.telefono,
+              localidad: formData.localidad,
+              atendio_asesor: formData.atendio_asesor || "ninguno",
+              politicaprivacidad: privacidad,
+              publicidad: publicidad,
+              url: "https://www.ecofrog.es",
+            },
+          }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);
@@ -129,7 +156,9 @@ export default function ContactModal({ visible, onClose }: ContactModalProps) {
                 {/* Descripción */}
                 <Text style={styles.description}>
                   {t("description")}
-                  <Text style={styles.boldTextColor}>{t("descriptionBrand")}</Text>
+                  <Text style={styles.boldTextColor}>
+                    {t("descriptionBrand")}
+                  </Text>
                   {t("descriptionMiddle")}
                   <Text style={styles.boldText}>{t("descriptionBold")}</Text>
                   {t("descriptionEnd")}
@@ -160,10 +189,12 @@ export default function ContactModal({ visible, onClose }: ContactModalProps) {
                     />
                   </View>
                   <View style={styles.inputGroup}>
-                    <Text style={styles.inputLabel}>{t("fields.telephone")}</Text>
+                    <Text style={styles.inputLabel}>
+                      {t("fields.telephone")}
+                    </Text>
                     <TextInput
                       style={styles.input}
-                      placeholder={t("fields.placeholder")}
+                      placeholder={t("fields.telephonePlaceholder")}
                       placeholderTextColor="#999"
                       keyboardType="phone-pad"
                       value={formData.telefono}
@@ -171,14 +202,87 @@ export default function ContactModal({ visible, onClose }: ContactModalProps) {
                     />
                   </View>
                   <View style={styles.inputGroup}>
-                    <Text style={styles.inputLabel}>{t("fields.location")}</Text>
+                    <Text style={styles.inputLabel}>
+                      {t("fields.location")}
+                    </Text>
                     <TextInput
                       style={styles.input}
                       placeholder={t("fields.placeholder")}
                       placeholderTextColor="#999"
                       value={formData.localidad}
-                      onChangeText={(value) => handleChange("localidad", value)}
+                      onChangeText={(value) =>
+                        handleChange("localidad", value)
+                      }
                     />
+                  </View>
+                  <View style={styles.inputGroup}>
+                    <Text style={styles.inputLabel}>
+                      {t("fields.advisor")}
+                    </Text>
+                    <TextInput
+                      style={styles.input}
+                      placeholder={t("fields.placeholder")}
+                      placeholderTextColor="#999"
+                      value={formData.atendio_asesor}
+                      onChangeText={(value) =>
+                        handleChange("atendio_asesor", value)
+                      }
+                    />
+                  </View>
+                </View>
+
+                {/* Checkboxes */}
+                <View style={styles.checkboxesContainer}>
+                  <TouchableOpacity
+                    style={styles.checkboxRow}
+                    onPress={() => setPublicidad(!publicidad)}
+                    activeOpacity={0.7}
+                  >
+                    <View
+                      style={[
+                        styles.checkbox,
+                        publicidad && styles.checkboxChecked,
+                      ]}
+                    >
+                      {publicidad && (
+                        <Text style={styles.checkmark}>&#10003;</Text>
+                      )}
+                    </View>
+                    <Text style={styles.checkboxLabel}>
+                      {t("checkboxes.publicidad")}
+                    </Text>
+                  </TouchableOpacity>
+
+                  <View style={styles.checkboxRow}>
+                    <TouchableOpacity
+                      onPress={() => setPrivacidad(!privacidad)}
+                      activeOpacity={0.7}
+                    >
+                      <View
+                        style={[
+                          styles.checkbox,
+                          privacidad && styles.checkboxChecked,
+                        ]}
+                      >
+                        {privacidad && (
+                          <Text style={styles.checkmark}>&#10003;</Text>
+                        )}
+                      </View>
+                    </TouchableOpacity>
+                    <Text style={styles.checkboxLabel}>
+                      {t("checkboxes.privacidad")}
+                      <Text
+                        style={styles.privacyLink}
+                        onPress={() =>
+                          Linking.openURL(
+                            "https://www.ecofrog.es/politica-privacidad/"
+                          )
+                        }
+                      >
+                        {t("checkboxes.privacidadLink")}
+                      </Text>
+                      .
+                    </Text>
                   </View>
                 </View>
 
@@ -188,17 +292,24 @@ export default function ContactModal({ visible, onClose }: ContactModalProps) {
                     style={styles.cancelButton}
                     onPress={handleCancel}
                   >
-                    <Text style={styles.cancelButtonText}>{t("buttons.cancel")}</Text>
+                    <Text style={styles.cancelButtonText}>
+                      {t("buttons.cancel")}
+                    </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
-                    style={[styles.acceptButton, isSubmitting && { opacity: 0.6 }]}
+                    style={[
+                      styles.acceptButton,
+                      isSubmitting && { opacity: 0.6 },
+                    ]}
                     onPress={handleAccept}
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
                       <ActivityIndicator color="#fff" />
                     ) : (
-                      <Text style={styles.acceptButtonText}>{t("buttons.accept")}</Text>
+                      <Text style={styles.acceptButtonText}>
+                        {t("buttons.accept")}
+                      </Text>
                     )}
                   </TouchableOpacity>
                 </View>
@@ -278,7 +389,7 @@ const styles = StyleSheet.create({
     width: "100%",
     maxWidth: 528,
     gap: 15,
-    marginBottom: 30,
+    marginBottom: 20,
     zIndex: 1,
   },
   inputGroup: {
@@ -303,6 +414,48 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: "Exo-Regular",
     backgroundColor: "#fff",
+  },
+  checkboxesContainer: {
+    width: "100%",
+    maxWidth: 528,
+    gap: 12,
+    marginBottom: 25,
+  },
+  checkboxRow: {
+    flexDirection: "row",
+    alignItems: "flex-start",
+    gap: 10,
+  },
+  checkbox: {
+    width: 22,
+    height: 22,
+    borderRadius: 4,
+    borderWidth: 2,
+    borderColor: "#999",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 2,
+  },
+  checkboxChecked: {
+    backgroundColor: "#3498db",
+    borderColor: "#3498db",
+  },
+  checkmark: {
+    color: "#fff",
+    fontSize: 14,
+    fontWeight: "bold",
+    lineHeight: 16,
+  },
+  checkboxLabel: {
+    flex: 1,
+    fontFamily: "Exo-Regular",
+    fontSize: 14,
+    color: "#333",
+    lineHeight: 20,
+  },
+  privacyLink: {
+    color: "#3498db",
+    textDecorationLine: "underline",
   },
   buttonContainer: {
     flexDirection: "row",

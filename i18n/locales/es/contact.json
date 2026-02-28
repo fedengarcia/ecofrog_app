@@ -9,8 +9,15 @@
     "name": "Nombre y apellido",
     "email": "Correo electrónico",
     "telephone": "Teléfono",
+    "telephonePlaceholder": "+39...",
     "location": "Localidad",
+    "advisor": "Asesor que lo atendió",
     "placeholder": "Ingrese.."
+  },
+  "checkboxes": {
+    "publicidad": "Acepto recibir publicidad de ECOFROG sobre sus productos y servicios.",
+    "privacidad": "He leído y acepto la ",
+    "privacidadLink": "Política de Privacidad"
   },
   "buttons": {
     "cancel": "Cancelar",
@@ -19,6 +26,7 @@
   "alerts": {
     "errorTitle": "Error",
     "errorEmpty": "Por favor, complete todos los campos.",
+    "errorPrivacy": "Debe aceptar la Política de Privacidad para continuar.",
     "successTitle": "Éxito",
     "successMessage": "Su información ha sido enviada correctamente.",
     "errorSend": "No se pudo enviar el formulario. Inténtelo de nuevo."
