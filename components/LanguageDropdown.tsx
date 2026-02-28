@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  Image,
-} from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { useLanguage } from "../i18n/LanguageContext";
 
 const flags: Record<string, any> = {
@@ -27,11 +21,12 @@ export default function LanguageDropdown() {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => setOpen(!open)}
-      >
-        <Image source={flags[language]} style={styles.flag} resizeMode="contain" />
+      <TouchableOpacity style={styles.button} onPress={() => setOpen(!open)}>
+        <Image
+          source={flags[language]}
+          style={styles.flag}
+          resizeMode="contain"
+        />
         <Text style={styles.buttonText}>{labels[language]}</Text>
         <Text style={styles.arrow}>{open ? "\u25B2" : "\u25BC"}</Text>
       </TouchableOpacity>
@@ -45,7 +40,11 @@ export default function LanguageDropdown() {
                 style={styles.option}
                 onPress={() => handleSelect(option)}
               >
-                <Image source={flags[option]} style={styles.flag} resizeMode="contain" />
+                <Image
+                  source={flags[option]}
+                  style={styles.flag}
+                  resizeMode="contain"
+                />
                 <Text style={styles.optionText}>{labels[option]}</Text>
               </TouchableOpacity>
             ))}
@@ -66,30 +65,30 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#fff",
-    borderRadius: 10,
-    paddingHorizontal: 14,
-    paddingVertical: 8,
+    borderRadius: 12,
+    paddingHorizontal: 18,
+    paddingVertical: 12,
     borderWidth: 1,
     borderColor: "#ddd",
-    gap: 8,
+    gap: 10,
   },
   buttonText: {
-    fontSize: 16,
+    fontSize: 20,
     fontFamily: "Exo-Medium",
     color: "#333",
   },
   arrow: {
-    fontSize: 10,
+    fontSize: 14,
     color: "#666",
   },
   flag: {
-    width: 24,
-    height: 16,
+    width: 32,
+    height: 22,
   },
   dropdown: {
     marginTop: 4,
     backgroundColor: "#fff",
-    borderRadius: 10,
+    borderRadius: 12,
     borderWidth: 1,
     borderColor: "#ddd",
     overflow: "hidden",
@@ -97,12 +96,12 @@ const styles = StyleSheet.create({
   option: {
     flexDirection: "row",
     alignItems: "center",
-    paddingHorizontal: 14,
-    paddingVertical: 10,
-    gap: 8,
+    paddingHorizontal: 18,
+    paddingVertical: 12,
+    gap: 10,
   },
   optionText: {
-    fontSize: 16,
+    fontSize: 20,
     fontFamily: "Exo-Medium",
     color: "#333",
   },

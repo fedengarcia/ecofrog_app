@@ -4,7 +4,7 @@
     "slug": "ecofrog_app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/ecofrogLogo.png",
+    "icon": "./assets/logo.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
@@ -27,7 +27,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/ecofrogLogo.png",
+        "foregroundImage": "./assets/logo.png",
         "backgroundColor": "#ffffff",
         "width": 180
       },
@@ -36,7 +36,7 @@
       "package": "com.fedengarcia.ecofrog_app"
     },
     "web": {
-      "favicon": "./assets/ecofrogLogo.png"
+      "favicon": "./assets/logo.png"
     },
     "extra": {
       "eas": {

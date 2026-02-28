@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   logo: {
     marginTop: 240,
     flex: 1,
-    width: 800,
+    width: 700,
     height: 280,
   },
   content: {
@@ -129,6 +129,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "flex-end",
-    marginBottom: 40,
+    marginBottom: 100,
   },
 });
