@@ -1,0 +1,36 @@
+{
+  "page1": {
+    "titlePrefix": "PIONEERS IN ",
+    "titleO": "O",
+    "titleSubscript": "3",
+    "titleSuffix": " TECHNOLOGY",
+    "subtitle": ["We market, design and manufacture eco-sustainable and healthy", " cleaning and disinfection systems."],
+    "description": ["ECOFROG", " is a ", "global leader", " in ", "ozonated water", " , thanks to its constant innovation, a solid international network of distributors, a latest-generation laboratory and a highly qualified professional and commercial team."],
+    "items": [
+      {
+        "title": "+11 years in the sector",
+        "description": ["ECOFROG", " has led the way in introducing  ", "ozone", " into water in businesses and homes for more than 11 years."]
+      },
+      {
+        "title": "+20 countries",
+        "description": ["Present in Europe, Latin America, United Kingdom, Africa, and the Middle East."]
+      },
+      {
+        "title": "+60,000 customers",
+        "description": ["A logical transition from homes to businesses that involve a community with cleaning and disinfection needs."]
+      }
+    ]
+  },
+  "page2": {
+    "title": ["Our ", "mission"],
+    "description": ["Lead a process of ", "ozone ", "development and innovation", " with the aim of globalising it and contributing to an acceleration in the trend towards", "more sustainable", " and ", "less aggressive processes and habits"],
+    "column1": {
+      "title": ["What is", "ozone", "?"],
+      "description": ["O₃ ", "is a molecule formed by three oxygen atoms. ", "ECOFROG", "'s technology  injected and stabilised it in tap water, turning it into a powerful cleaner and disinfectant. ", "ozone", "The ozone eliminates organic matter and decomposes into water and oxygen without leaving any residue."]
+    },
+    "column2": {
+      "description": ["Ozone", " is a biocide approved by Implementing Regulation by the European Commission on 2 June 2023 and evaluated by the Biocidal Products Committee of the ", "ECHA", " (BPC) on 26 September 2022, which approved the active substance of ozone generated from oxygen as a ", "biocide."]
+    },
+    "certifications": "Certifications | Membership"
+  }
+}

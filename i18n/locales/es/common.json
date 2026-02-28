@@ -1,0 +1,18 @@
+{
+  "navbar": {
+    "back": "Volver",
+    "products": "Productos",
+    "ecofrog": "EcoFrog",
+    "contact": "Contacto"
+  },
+  "ecoMessage": {
+    "title": "REDUCIR | REUTILIZAR | RECICLAR",
+    "subtitle": "ECOFROG PIENSA EN UN FUTURO VERDE"
+  },
+  "buttons": {
+    "moreInfo": "MÁS INFO"
+  },
+  "loading": {
+    "video": "Cargando video..."
+  }
+}

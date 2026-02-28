@@ -10,7 +10,10 @@ import {
   Image,
   Dimensions,
   ScrollView,
+  Alert,
+  ActivityIndicator,
 } from "react-native";
+import { useTranslation } from "react-i18next";
 
 const { width, height } = Dimensions.get("window");
 
@@ -20,44 +23,74 @@ interface ContactModalProps {
 }
 
 interface FormData {
-  nameAndSurname: string;
-  company: string;
-  sector: string;
-  country: string;
-  telephone: string;
+  nombre: string;
   email: string;
+  telefono: string;
+  localidad: string;
 }
 
 export default function ContactModal({ visible, onClose }: ContactModalProps) {
   const [formData, setFormData] = useState<FormData>({
-    nameAndSurname: "",
-    company: "",
-    sector: "",
-    country: "",
-    telephone: "",
+    nombre: "",
     email: "",
+    telefono: "",
+    localidad: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { t } = useTranslation("contact");
 
   const handleChange = (field: keyof FormData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
+  const resetForm = () => {
+    setFormData({ nombre: "", email: "", telefono: "", localidad: "" });
+  };
+
   const handleCancel = () => {
-    setFormData({
-      nameAndSurname: "",
-      company: "",
-      sector: "",
-      country: "",
-      telephone: "",
-      email: "",
-    });
+    resetForm();
     onClose();
   };
 
-  const handleAccept = () => {
-    console.log("Form submitted:", formData);
-    // TODO: Enviar datos del formulario
-    onClose();
+  const handleAccept = async () => {
+    if (!formData.nombre || !formData.email || !formData.telefono || !formData.localidad) {
+      Alert.alert(t("alerts.errorTitle"), t("alerts.errorEmpty"));
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("https://servipro.odoo.com/contact-form-webhook", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer lCfPycGU7treH6K1F1SY",
+        },
+        body: JSON.stringify({
+          form_data: {
+            nombre: formData.nombre,
+            email: formData.email,
+            telefono: formData.telefono,
+            localidad: formData.localidad,
+            politicaprivacidad: true,
+            publicidad: true,
+            url: "https://www.ecofrog.es",
+          },
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      Alert.alert(t("alerts.successTitle"), t("alerts.successMessage"));
+      resetForm();
+      onClose();
+    } catch (error) {
+      Alert.alert(t("alerts.errorTitle"), t("alerts.errorSend"));
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -91,82 +124,60 @@ export default function ContactModal({ visible, onClose }: ContactModalProps) {
                 </View>
 
                 {/* Título */}
-                <Text style={styles.title}>Let's talk</Text>
+                <Text style={styles.title}>{t("title")}</Text>
 
                 {/* Descripción */}
                 <Text style={styles.description}>
-                  Leave us your contact details and we'll send you personalized
-                  information about how{" "}
-                  <Text style={styles.boldTextColor}>ECOFROG</Text> can help you
-                  to clean effectively, safely and{" "}
-                  <Text style={styles.boldText}>without chemicals</Text>.
+                  {t("description")}
+                  <Text style={styles.boldTextColor}>{t("descriptionBrand")}</Text>
+                  {t("descriptionMiddle")}
+                  <Text style={styles.boldText}>{t("descriptionBold")}</Text>
+                  {t("descriptionEnd")}
                 </Text>
 
                 {/* Formulario */}
                 <View style={styles.form}>
                   <View style={styles.inputGroup}>
-                    <Text style={styles.inputLabel}>Name and surname</Text>
+                    <Text style={styles.inputLabel}>{t("fields.name")}</Text>
                     <TextInput
                       style={styles.input}
-                      placeholder="Enter.."
+                      placeholder={t("fields.placeholder")}
                       placeholderTextColor="#999"
-                      value={formData.nameAndSurname}
-                      onChangeText={(value) =>
-                        handleChange("nameAndSurname", value)
-                      }
+                      value={formData.nombre}
+                      onChangeText={(value) => handleChange("nombre", value)}
                     />
                   </View>
                   <View style={styles.inputGroup}>
-                    <Text style={styles.inputLabel}>Company</Text>
+                    <Text style={styles.inputLabel}>{t("fields.email")}</Text>
                     <TextInput
                       style={styles.input}
-                      placeholder="Enter.."
-                      placeholderTextColor="#999"
-                      value={formData.company}
-                      onChangeText={(value) => handleChange("company", value)}
-                    />
-                  </View>
-                  <View style={styles.inputGroup}>
-                    <Text style={styles.inputLabel}>Sector</Text>
-                    <TextInput
-                      style={styles.input}
-                      placeholder="Enter.."
-                      placeholderTextColor="#999"
-                      value={formData.sector}
-                      onChangeText={(value) => handleChange("sector", value)}
-                    />
-                  </View>
-                  <View style={styles.inputGroup}>
-                    <Text style={styles.inputLabel}>Country</Text>
-                    <TextInput
-                      style={styles.input}
-                      placeholder="Enter.."
-                      placeholderTextColor="#999"
-                      value={formData.country}
-                      onChangeText={(value) => handleChange("country", value)}
-                    />
-                  </View>
-                  <View style={styles.inputGroup}>
-                    <Text style={styles.inputLabel}>Telephone</Text>
-                    <TextInput
-                      style={styles.input}
-                      placeholder="Enter.."
-                      placeholderTextColor="#999"
-                      keyboardType="phone-pad"
-                      value={formData.telephone}
-                      onChangeText={(value) => handleChange("telephone", value)}
-                    />
-                  </View>
-                  <View style={styles.inputGroup}>
-                    <Text style={styles.inputLabel}>E-mail</Text>
-                    <TextInput
-                      style={styles.input}
-                      placeholder="Enter.."
+                      placeholder={t("fields.placeholder")}
                       placeholderTextColor="#999"
                       keyboardType="email-address"
                       autoCapitalize="none"
                       value={formData.email}
                       onChangeText={(value) => handleChange("email", value)}
+                    />
+                  </View>
+                  <View style={styles.inputGroup}>
+                    <Text style={styles.inputLabel}>{t("fields.telephone")}</Text>
+                    <TextInput
+                      style={styles.input}
+                      placeholder={t("fields.placeholder")}
+                      placeholderTextColor="#999"
+                      keyboardType="phone-pad"
+                      value={formData.telefono}
+                      onChangeText={(value) => handleChange("telefono", value)}
+                    />
+                  </View>
+                  <View style={styles.inputGroup}>
+                    <Text style={styles.inputLabel}>{t("fields.location")}</Text>
+                    <TextInput
+                      style={styles.input}
+                      placeholder={t("fields.placeholder")}
+                      placeholderTextColor="#999"
+                      value={formData.localidad}
+                      onChangeText={(value) => handleChange("localidad", value)}
                     />
                   </View>
                 </View>
@@ -177,13 +188,18 @@ export default function ContactModal({ visible, onClose }: ContactModalProps) {
                     style={styles.cancelButton}
                     onPress={handleCancel}
                   >
-                    <Text style={styles.cancelButtonText}>Cancel</Text>
+                    <Text style={styles.cancelButtonText}>{t("buttons.cancel")}</Text>
                   </TouchableOpacity>
                   <TouchableOpacity
-                    style={styles.acceptButton}
+                    style={[styles.acceptButton, isSubmitting && { opacity: 0.6 }]}
                     onPress={handleAccept}
+                    disabled={isSubmitting}
                   >
-                    <Text style={styles.acceptButtonText}>Accept</Text>
+                    {isSubmitting ? (
+                      <ActivityIndicator color="#fff" />
+                    ) : (
+                      <Text style={styles.acceptButtonText}>{t("buttons.accept")}</Text>
+                    )}
                   </TouchableOpacity>
                 </View>
               </ScrollView>

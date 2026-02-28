@@ -1,0 +1,84 @@
+{
+  "header": {
+    "titleOur": "NUESTROS ",
+    "titleDevices": "DISPOSITIVOS",
+    "subtitle": "Soluciones inteligentes para una limpieza y desinfección eficiente",
+    "thirdTitle": "Menos productos químicos, mismos resultados profesionales"
+  },
+  "avatar": {
+    "textParts": ["Apuesta por el ", "OZONO", " en tu ", "negocio"],
+    "modal": {
+      "title": ["Apuesta por el ", "OZONO", " en tu ", "negocio"],
+      "subtitle": ["Un dispositivo de generación de ", "agua con ozono", " in situ, que permite la limpieza y desinfección de todo tipo de superficies en negocios", " minimizando el uso de productos químicos."],
+      "icons": ["Desinfecta, desengrasa, desodoriza", "Ayuda en la limpieza diaria", "Reduce el uso de detergentes", "Ahorra en costes energéticos", "Consume de forma inteligente"],
+      "description1": ["Especializado en el canal ", "HORECA", ", ", "AVATAR", " es una solución para la hostelería que aporta valor a los negocios al", "eliminar hasta el 90% del uso de productos químicos ", "(y sus envases de plástico)."],
+      "description2": ["", "Simplifica ", "la gestión de pedidos y el almacenamiento de productos de limpieza y reduce los riesgos para los usuarios.", "Todo esto se traduce en ", "ahorro de costes a todos los niveles."],
+      "bubbleTitle": "Control inteligente de mantenimiento",
+      "bubbleItems": [
+        ["Con avisos previos", " precisos y claros", " y una pantalla renovada."],
+        ["Todo está totalmente orientado al usuario para garantizar ", "una completa tranquilidad operativa"]
+      ]
+    }
+  },
+  "wash": {
+    "textParts": ["Reduce ", "detergente y abrillantador en tu ", "lavavajillas comercial"],
+    "modal": {
+      "title": ["Reduce ", "detergente y abrillantador en tu ", "lavavajillas comercial"],
+      "subtitle": ["WASH ", "se conecta a lavavajillas industriales, dando al sistema ", "AVATAR ", "un ", "uso adicional", " en términos de limpieza y desengrase."],
+      "icons": ["Rentable", "Cómodo", "Saludable", "Sostenible", "Ecológico"],
+      "description1": ["Gracias al poder del ", "agua ozonizada", " proporcionada por ", "AVATAR", ", limpia y desengrasa de forma eficiente, ", "reduciendo el uso de detergentes y abrillantadores", ", convirtiéndose así en un sistema más ", "respetuoso con el medio ambiente y sostenible."],
+      "description2": ["Al reducir la manipulación de productos químicos, se reducen los riesgos laborales, se facilita la gestión y se ahorra espacio de almacenamiento. "],
+      "bubbleTitle": "Mejoras tecnológicas para optimizar procesos ",
+      "bubbleItems": [
+        ["Sensor capacitivo", " para instalaciones rápidas y precisas."],
+        ["Carcasa estanca", " para durabilidad y seguridad."],
+        ["Optimización ", "de la distribución de ", "agua ozonizada", "."]
+      ]
+    }
+  },
+  "trolley": {
+    "textParts": ["Limpieza ", "portátil inteligente", " con ", "agua ozonizada"],
+    "modal": {
+      "title": ["Limpieza ", "portátil inteligente", " con ", "agua ozonizada"],
+      "subtitle": ["Un sistema", " totalmente integrado, eficiente y respetuoso con el medio ambiente", " que incorpora el dispositivo ", "AVATAR", " en un carro de limpieza profesional."],
+      "icons": ["Útil", "Duradero", "Eficiente", "Versátil", "Ecológico"],
+      "description1": ["TROLLEY", ", con su diseño personalizable y una amplia gama de accesorios, permite crear ", "diferentes configuraciones que se adaptan a cualquier espacio, sector o necesidad."],
+      "description2": ["Con un tanque de agua de 15 litros, ", "proporciona una autonomía óptima para grandes superficies."],
+      "dotsItems": ["Hoteles, hostales, apartamentos", "Residencias de mayores o estudiantes", "Hospitales, centros de salud", "Centros educativos", "Restaurantes, bares, cafeterías, comedores", "Grandes almacenes, supermercados", "Centros deportivos", "Oficinas, estudios"],
+      "bubbleTitle": "Dos marcas, una visión común",
+      "bubbleItems": [
+        ["La colaboración entre ", "ECOFROG ", "y ", "FILMOP ", "combina la tecnología ", "AVATAR", " con la versatilidad de ", "Alpha.", " Una solución portátil para grandes superficies comprometida con una higiene eficaz y sostenible."]
+      ]
+    }
+  },
+  "cp": {
+    "textParts": ["Para ", "grandes volúmenes", " de agua"],
+    "modal": {
+      "title": ["Para ", "grandes volúmenes", " de agua"],
+      "subtitle": ["Commercial Purifier ", "es perfecto para ", "lavanderías industriales, túneles de lavado de coches", " y todo tipo de superficies, ", "minimizando el uso de productos químicos"],
+      "icons": ["Menor gasto", "Ropa perfecta", "Fácil de usar", "Entorno libre de tóxicos", "Sin detergentes", "Fácil instalación"],
+      "description1": ["Commercial Purifier ", "está diseñado para trabajar con caudales de agua que superan la capacidad de ", "AVATAR."],
+      "description2": ["Desarrollado para ", "lavadoras industriales de más de 10 kg, ", "", "reduce el consumo de energía y agua, ", "minimiza el uso de productos químicos y prolonga la vida útil de las máquinas. También para ", "túneles de lavado de coches y maquinaria de limpieza rotativa, ", "garantizando higiene y desinfección con menor impacto químico y mayor cuidado de las prendas. "],
+      "bubbleTitle": "Mayor seguridad",
+      "bubbleItems": [
+        ["Cuenta con un ", "detector de fugas de agua ", "y elimina la acumulación de cal en tuberías y lavadoras. "]
+      ]
+    }
+  },
+  "elektra": {
+    "textParts": ["Agua ozonizada", " también en ", "casa", "para la ", "limpieza del hogar", " y la ", "colada"],
+    "modal": {
+      "title": ["Agua ozonizada", " también en ", "casa", "para la ", "limpieza del hogar", " y la ", "colada"],
+      "subtitle": ["ELEKTRA", " te permite limpiar y desinfectar", " cualquier habitación de la casa y lavar la ropa", " con agua ozonizada sin necesidad de productos químicos."],
+      "icons": ["Uso mínimo de detergente", "Sin residuos plásticos", "Conserva los colores en agua fría", "Inversión y ahorro en casa", "Funcionamiento sencillo y fácil", "Todo tipo de espacios y superficies"],
+      "description1": ["ELEKTRA", " reduce los costes de consumo de productos de limpieza y energía ", "ya que es eficaz en agua fría. Su sistema ", "ozoniza", " el agua al instante, evitando riesgos de almacenamiento y contaminación.", "Es 100% respetuoso con el medio ambiente, ", "elimina hongos y bacterias", " y protege los colores y neutraliza los olores en el lavado doméstico."],
+      "bubbleTitle": "Múltiples usos",
+      "bubbleItems": [
+        ["Colada conectando ", "ELEKTRA ", "a la lavadora doméstica"],
+        ["Suelos, paredes, fregaderos, ventanas, muebles, azulejos, juntas, mamparas... "],
+        ["Campanas extractoras, hornos, frigoríficos, encimeras, fogones, freidoras, electrodomésticos... "],
+        ["Habitaciones o superficies previamente limpiadas con productos químicos."]
+      ]
+    }
+  }
+}

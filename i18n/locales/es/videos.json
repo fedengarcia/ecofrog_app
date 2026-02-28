@@ -1,0 +1,28 @@
+{
+  "categories": {
+    "restaurants": {
+      "title": "Restaurantes",
+      "description": "Desinfección eficiente para tus clientes"
+    },
+    "hotels": {
+      "title": "Hoteles",
+      "description": "Espacios impecables mejoran la experiencia"
+    },
+    "educationCenter": {
+      "title": "Centro Educativo",
+      "description": "Entorno seguro para un aprendizaje sostenible"
+    },
+    "medicalCenter": {
+      "title": "Centro Médico",
+      "description": "Máxima seguridad para los pacientes"
+    },
+    "catering": {
+      "title": "Catering",
+      "description": "Limpieza experta sin productos químicos"
+    },
+    "b2c": {
+      "title": "B2C",
+      "description": "Agua ozonizada también en casa"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "categories": {
+    "restaurants": {
+      "title": "Restaurants",
+      "description": "Efficient disinfection for your customers"
+    },
+    "hotels": {
+      "title": "Hotels",
+      "description": "Impeccable spaces enhance the experience"
+    },
+    "educationCenter": {
+      "title": "Education Center",
+      "description": "Safe environment for sustainable learning"
+    },
+    "medicalCenter": {
+      "title": "Medical Center",
+      "description": "Maximum safety for patients"
+    },
+    "catering": {
+      "title": "Catering",
+      "description": "Expert cleaning without chemical products"
+    },
+    "b2c": {
+      "title": "B2C",
+      "description": "Ozonated Water also at home"
+    }
+  }
+}

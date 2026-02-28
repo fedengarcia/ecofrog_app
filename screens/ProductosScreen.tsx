@@ -1,24 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import {
   View,
   Text,
   StyleSheet,
   ScrollView,
   Image,
-  Dimensions,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useInactivity } from "../context/InactivityContext";
+import { useTranslation } from "react-i18next";
 import Navbar from "../components/Navbar";
 import ProductCard from "../components/productosScreen/ProductCard";
-import { Product, ProductId, PRODUCTS } from "../types/products";
+import { Product } from "../types/products";
+import { getProducts } from "../i18n/textparts/products";
 import ProductModal from "../components/productModal";
-
-const { width } = Dimensions.get("window");
-const isTablet = width >= 768;
 
 export default function ProductosScreen() {
   const { resetInactivityTimer } = useInactivity();
+  const { t } = useTranslation("products");
+  const products = useMemo(() => getProducts(t), [t]);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -47,21 +47,17 @@ export default function ProductosScreen() {
           />
           <View style={styles.headerTextContainer}>
             <Text style={styles.mainTitle}>
-              <Text style={styles.titleBlack}>OUR </Text>
-              <Text style={styles.titleBlue}>DEVICES</Text>
+              <Text style={styles.titleBlack}>{t("header.titleOur")}</Text>
+              <Text style={styles.titleBlue}>{t("header.titleDevices")}</Text>
             </Text>
-            <Text style={styles.subtitle}>
-              Smart solutions for efficient cleaning and disinfection
-            </Text>
-            <Text style={styles.thirdTitle}>
-              Less chemicals products, same professional results
-            </Text>
+            <Text style={styles.subtitle}>{t("header.subtitle")}</Text>
+            <Text style={styles.thirdTitle}>{t("header.thirdTitle")}</Text>
           </View>
         </View>
 
         {/* Grid de productos */}
         <View style={styles.grid}>
-          {PRODUCTS.map((product) => (
+          {products.map((product) => (
             <ProductCard
               key={product.id}
               product={product}

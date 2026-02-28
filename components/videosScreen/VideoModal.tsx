@@ -12,6 +12,7 @@ import {
 import { Video, ResizeMode } from "expo-av";
 import { X } from "lucide-react-native";
 import { VideoCategory } from "./types";
+import { useTranslation } from "react-i18next";
 
 interface VideoModalProps {
   visible: boolean;
@@ -26,6 +27,7 @@ export default function VideoModal({
   category,
   onClose,
 }: VideoModalProps) {
+  const { t } = useTranslation("common");
   const { width, height } = useWindowDimensions();
   const videoRef = useRef<Video>(null);
   const [isVideoLoading, setIsVideoLoading] = useState(true);
@@ -87,7 +89,7 @@ export default function VideoModal({
                   {isVideoLoading && (
                     <View style={styles.loadingOverlay}>
                       <ActivityIndicator size="large" color="#00B4D8" />
-                      <Text style={styles.loadingText}>Cargando video...</Text>
+                      <Text style={styles.loadingText}>{t("loading.video")}</Text>
                     </View>
                   )}
                   <Video
@@ -104,7 +106,7 @@ export default function VideoModal({
               ) : (
                 <View style={styles.loadingContainer}>
                   <ActivityIndicator size="large" color="#00B4D8" />
-                  <Text style={styles.loadingText}>Cargando video...</Text>
+                  <Text style={styles.loadingText}>{t("loading.video")}</Text>
                 </View>
               )}
             </View>

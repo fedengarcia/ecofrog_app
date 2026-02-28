@@ -11,6 +11,7 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../navigation/types";
 import { useModal } from "../context/ModalContext";
+import { useTranslation } from "react-i18next";
 
 // Importar imágenes
 const arrowBackIcon = require("../assets/navbar/arrowBack.png");
@@ -21,6 +22,7 @@ const contactIcon = require("../assets/navbar/mail.png");
 type NavbarNavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 interface NavbarOption {
+  id: string;
   label: string;
   screen: string | null;
   onClick: () => void;
@@ -30,28 +32,33 @@ interface NavbarOption {
 export default function Navbar() {
   const navigation = useNavigation<NavbarNavigationProp>();
   const { openContactModal, openEcofrogModal } = useModal();
+  const { t } = useTranslation("common");
 
   const NAVBAR_OPTIONS: NavbarOption[] = [
     {
-      label: "Back",
+      id: "back",
+      label: t("navbar.back"),
       screen: "Home",
       onClick: () => navigation.goBack(),
       icon: arrowBackIcon,
     },
     {
-      label: "Products",
+      id: "products",
+      label: t("navbar.products"),
       screen: "Productos",
       onClick: () => navigation.navigate("Productos"),
       icon: productsIcon,
     },
     {
-      label: "EcoFrog",
+      id: "ecofrog",
+      label: t("navbar.ecofrog"),
       screen: null,
       onClick: openEcofrogModal,
       icon: informationIcon,
     },
     {
-      label: "Contact",
+      id: "contact",
+      label: t("navbar.contact"),
       screen: null,
       onClick: openContactModal,
       icon: contactIcon,
@@ -67,11 +74,11 @@ export default function Navbar() {
         <View style={styles.menuContainer}>
           {NAVBAR_OPTIONS.map((option) => (
             <Pressable
-              key={option.label}
+              key={option.id}
               onPress={option.onClick}
               style={{
                 ...styles.navbarOption,
-                ...(option.label === "Contact"
+                ...(option.id === "contact"
                   ? styles.navbarOptionButton
                   : {}),
               }}
@@ -80,10 +87,10 @@ export default function Navbar() {
               <Text
                 style={{
                   ...styles.navbarOptionText,
-                  ...(option.label === "Contact"
+                  ...(option.id === "contact"
                     ? styles.navbarOptionTextButton
                     : {}),
-                  ...(option.label === "EcoFrog"
+                  ...(option.id === "ecofrog"
                     ? {
                         textTransform: "uppercase",
                       }

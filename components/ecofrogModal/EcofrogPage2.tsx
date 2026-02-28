@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useMemo } from "react";
 import {
   View,
   Image,
@@ -8,97 +8,14 @@ import {
   Text,
 } from "react-native";
 import { Video, ResizeMode } from "expo-av";
+import { useTranslation } from "react-i18next";
 import TextParts from "../productModal/TextParts";
-import { TextPart } from "../../types/products";
+import { getEcofrogPage2Data } from "../../i18n/textparts/ecofrogPage2";
 import IconsBottomContainer from "../IconsBottomContainer";
 
-// Datos de la página 2
-const pageData = {
-  title: [
-    { text: "Our " },
-    { text: "mission", highlight: true, bold: true },
-  ] as TextPart[],
-  description: [
-    { text: "Lead a process of " },
-    { text: "ozone ", highlight: true, bold: true },
-    { text: "development and innovation", bold: true },
-    {
-      text: " with the aim of globalising it and contributing to an acceleration in the trend towards",
-    },
-    { text: "more sustainable", bold: true },
-    { text: " and " },
-    { text: "less aggressive processes and habits", bold: true },
-  ] as TextPart[],
-  column1: {
-    title: [
-      {
-        text: "What is",
-      },
-      {
-        text: "ozone",
-        highlight: true,
-        bold: true,
-      },
-      {
-        text: "?",
-      },
-    ] as TextPart[],
-    description: [
-      {
-        text: "O₃ ",
-        highlight: true,
-        bold: true,
-      },
-      {
-        text: "is a molecule formed by three oxygen atoms. ",
-      },
-      {
-        text: "ECOFROG",
-        highlight: true,
-        bold: true,
-      },
-      {
-        text: "‘s technology  injected and stabilised it in tap water, turning it into a powerful cleaner and disinfectant. ",
-      },
-      {
-        text: "ozone",
-        highlight: true,
-        bold: true,
-      },
-      {
-        text: "The ozone eliminates organic matter and decomposes into water and oxygen without leaving any residue.",
-      },
-    ] as TextPart[],
-    video:
-      "https://www.ecofrog.es/wp-content/uploads/2026/02/avatar_ozono_ecofrogg-app-video-modal.mp4",
-  },
-  column2: {
-    description: [
-      {
-        text: "Ozone",
-        highlight: true,
-        bold: true,
-      },
-      {
-        text: " is a biocide approved by Implementing Regulation by the European Commission on 2 June 2023 and evaluated by the Biocidal Products Committee of the ",
-      },
-      {
-        text: "ECHA",
-        bold: true,
-      },
-      {
-        text: " (BPC) on 26 September 2022, which approved the active substance of ozone generated from oxygen as a ",
-      },
-      {
-        text: "biocide.",
-        bold: true,
-      },
-    ] as TextPart[],
-    image: require("../../assets/products/modalEcofrog/advisorsCircle.png"),
-  },
-};
-
 export default function EcofrogPage2() {
+  const { t } = useTranslation("ecofrog");
+  const pageData = useMemo(() => getEcofrogPage2Data(t), [t]);
   const videoRef = useRef<Video>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isVideoLoading, setIsVideoLoading] = useState(true);
@@ -201,7 +118,7 @@ export default function EcofrogPage2() {
 
       {/* Bottom */}
       <View style={styles.bottomContainer}>
-        <Text style={styles.bottomText}>Certificatios | Memebership</Text>
+        <Text style={styles.bottomText}>{pageData.certifications}</Text>
         <Image
           source={require("../../assets/products/modalEcofrog/certificationsMemerships.png")}
           style={styles.certificationsImage}

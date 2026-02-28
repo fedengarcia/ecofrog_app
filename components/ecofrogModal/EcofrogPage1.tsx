@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useMemo } from "react";
 import {
   View,
   Text,
@@ -8,8 +8,9 @@ import {
   Animated,
   Easing,
 } from "react-native";
+import { useTranslation } from "react-i18next";
 import TextParts from "../productModal/TextParts";
-import { TextPart } from "../../types/products";
+import { getEcofrogPage1Data } from "../../i18n/textparts/ecofrogPage1";
 import IconsBottomContainer from "../IconsBottomContainer";
 
 const { width: screenWidth } = Dimensions.get("window");
@@ -55,66 +56,9 @@ const brands = [
   require("../../assets/products/modalEcofrog/brands/brand_31.png"),
 ];
 
-// Datos de la página 1
-const pageData = {
-  // title se renderiza manualmente en el JSX para el subscript del "3"
-  subtitle: [
-    { text: "We market, design and manufacture eco-sustainable and healthy" },
-    {
-      text: " cleaning and disinfection systems.",
-      highlight: true,
-      bold: true,
-    },
-  ] as TextPart[],
-  description: [
-    { text: "ECOFROG", highlight: true, bold: true },
-    {
-      text: " is a ",
-    },
-    { text: "global leader", bold: true },
-    { text: " in " },
-    { text: "ozonated water", bold: true, highlight: true },
-    {
-      text: " , thanks to its constant innovation, a solid international network of distributors, a latest-generation laboratory and a highly qualified professional and commercial team.",
-    },
-  ] as TextPart[],
-  items: [
-    {
-      icon: require("../../assets/products/modalEcofrog/clockSand.png"),
-      title: "+11 years in the sector",
-      description: [
-        { text: "ECOFROG", highlight: true, bold: true },
-        {
-          text: " has led the way in introducing  ",
-        },
-        { text: "ozone", bold: true },
-        {
-          text: " into water in businesses and homes for more than 11 years.",
-        },
-      ] as TextPart[],
-    },
-    {
-      icon: require("../../assets/products/modalEcofrog/world.png"),
-      title: "+20 countries",
-      description: [
-        {
-          text: "Present in Europe, Latin America, United Kingdom, Africa, and the Middle East.",
-        },
-      ] as TextPart[],
-    },
-    {
-      icon: require("../../assets/products/modalEcofrog/users.png"),
-      title: "+60,000 customers",
-      description: [
-        {
-          text: "A logical transition from homes to businesses that involve a community with cleaning and disinfection needs.",
-        },
-      ] as TextPart[],
-    },
-  ],
-};
-
 export default function EcofrogPage1() {
+  const { t } = useTranslation("ecofrog");
+  const pageData = useMemo(() => getEcofrogPage1Data(t), [t]);
   const scrollX = useRef(new Animated.Value(0)).current;
   const isMounted = useRef(true);
 
@@ -157,12 +101,12 @@ export default function EcofrogPage1() {
 
       {/* Título */}
       <View style={styles.titleRow}>
-        <Text style={styles.title}>PIONEERS IN </Text>
-        <Text style={[styles.title, styles.titleHighlight]}>O</Text>
+        <Text style={styles.title}>{pageData.titlePrefix}</Text>
+        <Text style={[styles.title, styles.titleHighlight]}>{pageData.titleO}</Text>
         <Text style={[styles.title, styles.titleHighlight, styles.subscript3]}>
-          3
+          {pageData.titleSubscript}
         </Text>
-        <Text style={[styles.title, styles.titleHighlight]}> TECHNOLOGY</Text>
+        <Text style={[styles.title, styles.titleHighlight]}>{pageData.titleSuffix}</Text>
       </View>
 
       {/* Subtítulo */}

@@ -4,7 +4,9 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../navigation/types";
 import { useInactivity } from "../context/InactivityContext";
+import { useTranslation } from "react-i18next";
 import IconsBottomContainer from "../components/IconsBottomContainer";
+import LanguageDropdown from "../components/LanguageDropdown";
 
 type HomeScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -14,6 +16,7 @@ type HomeScreenNavigationProp = NativeStackNavigationProp<
 export default function HomeScreen() {
   const navigation = useNavigation<HomeScreenNavigationProp>();
   const { resetInactivityTimer } = useInactivity();
+  const { t } = useTranslation("home");
 
   const handleStartTour = () => {
     resetInactivityTimer();
@@ -29,6 +32,9 @@ export default function HomeScreen() {
         resizeMode="contain"
       />
 
+      {/* Language Dropdown */}
+      <LanguageDropdown />
+
       {/* Logo */}
       <Image
         source={require("../assets/ecofrogLogo.png")}
@@ -39,14 +45,13 @@ export default function HomeScreen() {
       <View style={styles.content}>
         {/* Tagline */}
         <Text style={styles.tagline}>
-          Leaders in sustainable cleaning and disinfection solutions in your
-          sector with{" "}
-          <Text style={styles.taglineHighlight}>ozonated water</Text>
+          {t("tagline")}
+          <Text style={styles.taglineHighlight}>{t("taglineHighlight")}</Text>
         </Text>
 
         {/* Start Tour Button */}
         <TouchableOpacity style={styles.button} onPress={handleStartTour}>
-          <Text style={styles.buttonText}>Start the Tour</Text>
+          <Text style={styles.buttonText}>{t("startTour")}</Text>
         </TouchableOpacity>
       </View>
 

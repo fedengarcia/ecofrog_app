@@ -1,0 +1,84 @@
+{
+  "header": {
+    "titleOur": "OUR ",
+    "titleDevices": "DEVICES",
+    "subtitle": "Smart solutions for efficient cleaning and disinfection",
+    "thirdTitle": "Less chemicals products, same professional results"
+  },
+  "avatar": {
+    "textParts": ["Commit to ", "OZONE", " in your ", "business"],
+    "modal": {
+      "title": ["Commit to ", "OZONE", " in your ", "business"],
+      "subtitle": ["An in-situ ", "water ozone", " generation device, which allows the cleaning and disinfection of all types of surfaces in  business while", " minimizing the use of chemical products."],
+      "icons": ["Disinfects, degreases, deodorizes", "Help with daily cleaning", "Reduce your use of detergents", "Save on energy costs", "Consume smartly"],
+      "description1": ["Specialising in the  ", "HORECA", " channel, ", "AVATAR", " is a solution for the hospitality industry that adds value to businesses by", "eliminating up to 90% of the use of chemical products ", "(and their plastic packaging)."],
+      "description2": ["It ", "simplifies ", "order management and cleaning product storage and reduces risks for users.", "All of this translates into ", "cost savings at all levels."],
+      "bubbleTitle": "Intelligent maintenance control",
+      "bubbleItems": [
+        ["With accurate and clear", " advance warnings", " and a renewed display."],
+        ["Everything is fully user-oriented to ensure ", "complete operational tranquility"]
+      ]
+    }
+  },
+  "wash": {
+    "textParts": ["Reduce ", "detergent and rinse aid in your ", "commercial dishwasher"],
+    "modal": {
+      "title": ["Reduce ", "detergent and rinse aid in your ", "commercial dishwasher"],
+      "subtitle": ["WASH ", "connects to industrial dishwashers, giving the ", "AVATAR ", "system an ", "additional use", " in terms of cleaning and degreasing."],
+      "icons": ["Profitable", "Convenient", "Healthy", "Sustainable", "Ecofriendly"],
+      "description1": ["Thanks to the power of ", "ozonated water", " provided by ", "AVATAR", ", it cleans and degreases efficiently, ", "reducing the use of detergents and rinse aids", ", thus becoming a more ", "environmentally friendly and sustainable system."],
+      "description2": ["By reducing the handling of chemicals, occupational risks are reduced, management is facilitated, and storage space is saved. "],
+      "bubbleTitle": "Technological improvements to optimize processes ",
+      "bubbleItems": [
+        ["Capacitive sensor", " for quick and accurate installations."],
+        ["Watertight casing", " for durability and safety."],
+        ["Optimisation ", "of ", "ozonated water", " distribution."]
+      ]
+    }
+  },
+  "trolley": {
+    "textParts": ["Smart ", "portable cleaning", " with ", "ozonated water"],
+    "modal": {
+      "title": ["Smart ", "portable cleaning", " with ", "ozonated water"],
+      "subtitle": ["A", " fully integrated, efficient and environmentally", " friendly system that incorporates the ", "AVATAR", " device into a professional cleaning trolley."],
+      "icons": ["Useful", "Durable", "Efficient", "Versatile", "Ecofriendly"],
+      "description1": ["TROLLEY", " 's customisable design, with a wide range of accessories, allows users to create ", "different configurations that adapt to any space, sector or need."],
+      "description2": ["With a 15-litre water tank, ", "it provides optimum autonomy for large areas."],
+      "dotsItems": ["Hotels, hostels, flats", "Residences for elderly or students", "Hospitals, health centres", "Educational centres", "Restaurants, bars, cafés, canteens", "Department stores, supermarkets", "Sports centres", "Offices, studios"],
+      "bubbleTitle": "Two brands, one common vision",
+      "bubbleItems": [
+        ["The collaboration between ", "ECOFROG ", "and ", "FILMOP ", "combines", "AVATAR", " technology with the versatility of ", "Alpha.", " A portable solution for large areas committed to effective and sustainable hygiene."]
+      ]
+    }
+  },
+  "cp": {
+    "textParts": ["For ", "large volumes", " of water"],
+    "modal": {
+      "title": ["For ", "large volumes", " of water"],
+      "subtitle": ["Commercial Purifier ", "is perfect for ", "industrial laundries, car wash tunnels", " and all types of surfaces, ", "minimising the use of chemical products"],
+      "icons": ["Less expenditure", "Perfect clothing", "Simple to use", "Toxin-free environment", "Without detergents", "Easy installation"],
+      "description1": ["Commercial Purifier ", "is designed to work with water flows exceeding the capacity of ", "AVATAR."],
+      "description2": ["Developed for ", "industrial washing machines over 10 kg, ", "it ", "reduces energy and water consumption, ", "minimises the use of chemical products and extends the useful life of the machines. Also for ", "car wash tunnels and rotating cleaning machinery, ", "ensuring hygiene and disinfection with less chemical impact and greater care for garments. "],
+      "bubbleTitle": "More safety",
+      "bubbleItems": [
+        ["It has a ", "water leak detector ", "and removes limescale build-up from pipes and washing machines. "]
+      ]
+    }
+  },
+  "elektra": {
+    "textParts": ["Ozonated water", " also at ", "home", "for ", "household cleaning", " and ", "laundry"],
+    "modal": {
+      "title": ["Ozonated water", " also at ", "home", "for ", "household cleaning", " and ", "laundry"],
+      "subtitle": ["ELEKTRA", " allows you to clean and disinfect", " any room in the house and wash clothes", " with ozonated water without the need for chemical products."],
+      "icons": ["Minimal detergent usage", "No plastic waste generated", "Preserves colours in cold water", "Investment and savings at home", "Simple and easy operation", "All types of spaces and surfaces"],
+      "description1": ["ELEKTRA", " reduces cleaning product and energy consumption costs ", "as it is effective in cold water. Its system ", "ozonises", " the water instantly, avoiding storage and contamination risks.", "It is 100% environmentally friendly, ", "eliminates fungus and bacteria", " and protects colours and neutralises odours in domestic washing."],
+      "bubbleTitle": "Multiple uses",
+      "bubbleItems": [
+        ["Laundry connecting ", "ELEKTRA ", "to domestic wash machine"],
+        ["Floors, walls, sinks, windows, furniture, tiles, joints, screens... "],
+        ["Extractor hoods, ovens, refrigerators, countertops, stoves, fryers, appliances... "],
+        ["Rooms or surfaces previously cleaned with chemical products."]
+      ]
+    }
+  }
+}

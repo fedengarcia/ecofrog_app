@@ -1,0 +1,18 @@
+{
+  "navbar": {
+    "back": "Back",
+    "products": "Products",
+    "ecofrog": "EcoFrog",
+    "contact": "Contact"
+  },
+  "ecoMessage": {
+    "title": "REDUCE | REUSE | RECYCLE",
+    "subtitle": "ECOFROG'S MIND IS A GREEN FUTURE"
+  },
+  "buttons": {
+    "moreInfo": "MORE INFO"
+  },
+  "loading": {
+    "video": "Loading video..."
+  }
+}

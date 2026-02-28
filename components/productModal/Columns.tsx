@@ -16,6 +16,7 @@ import {
 } from "../../types/products";
 import { columnStyles, cpStyles, baseStyles, getDynamicStyles } from "./styles";
 import { useModal } from "../../context/ModalContext";
+import { useTranslation } from "react-i18next";
 import TextParts from "./TextParts";
 import BubbleText from "./BubbleText";
 
@@ -40,6 +41,7 @@ export default function Columns({
   const [isPlaying, setIsPlaying] = useState(true);
   const [isVideoLoading, setIsVideoLoading] = useState(true);
   const { openContactModal } = useModal();
+  const { t } = useTranslation("common");
   const dynamicStyles = getDynamicStyles(productId);
 
   // Resetear estado de carga cuando cambia el video
@@ -118,7 +120,7 @@ export default function Columns({
                 style={{ width: 24, height: 24, marginRight: 10 }}
                 resizeMode="contain"
               />
-              <Text style={baseStyles.moreInfoButtonText}>MORE INFO</Text>
+              <Text style={baseStyles.moreInfoButtonText}>{t("buttons.moreInfo")}</Text>
             </TouchableOpacity>
           </View>
         )}
@@ -204,7 +206,7 @@ export default function Columns({
               style={{ width: 24, height: 24, marginRight: 10 }}
               resizeMode="contain"
             />
-            <Text style={baseStyles.moreInfoButtonText}>MORE INFO</Text>
+            <Text style={baseStyles.moreInfoButtonText}>{t("buttons.moreInfo")}</Text>
           </TouchableOpacity>
         </View>
       )}

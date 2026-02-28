@@ -1,0 +1,26 @@
+{
+  "title": "Let's talk",
+  "description": "Leave us your contact details and we'll send you personalized information about how ",
+  "descriptionBrand": "ECOFROG",
+  "descriptionMiddle": " can help you to clean effectively, safely and ",
+  "descriptionBold": "without chemicals",
+  "descriptionEnd": ".",
+  "fields": {
+    "name": "Name and surname",
+    "email": "E-mail",
+    "telephone": "Telephone",
+    "location": "Location",
+    "placeholder": "Enter.."
+  },
+  "buttons": {
+    "cancel": "Cancel",
+    "accept": "Accept"
+  },
+  "alerts": {
+    "errorTitle": "Error",
+    "errorEmpty": "Please fill in all fields.",
+    "successTitle": "Success",
+    "successMessage": "Your information has been sent successfully.",
+    "errorSend": "Could not send the form. Please try again."
+  }
+}

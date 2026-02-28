@@ -1,0 +1,26 @@
+{
+  "title": "Hablemos",
+  "description": "Déjanos tus datos de contacto y te enviaremos información personalizada sobre cómo ",
+  "descriptionBrand": "ECOFROG",
+  "descriptionMiddle": " puede ayudarte a limpiar de forma eficaz, segura y ",
+  "descriptionBold": "sin productos químicos",
+  "descriptionEnd": ".",
+  "fields": {
+    "name": "Nombre y apellido",
+    "email": "Correo electrónico",
+    "telephone": "Teléfono",
+    "location": "Localidad",
+    "placeholder": "Ingrese.."
+  },
+  "buttons": {
+    "cancel": "Cancelar",
+    "accept": "Aceptar"
+  },
+  "alerts": {
+    "errorTitle": "Error",
+    "errorEmpty": "Por favor, complete todos los campos.",
+    "successTitle": "Éxito",
+    "successMessage": "Su información ha sido enviada correctamente.",
+    "errorSend": "No se pudo enviar el formulario. Inténtelo de nuevo."
+  }
+}

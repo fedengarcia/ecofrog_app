@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
+import { useTranslation } from "react-i18next";
 
 export default function IconsBottomContainer({
   showmessage = true,
@@ -8,12 +9,14 @@ export default function IconsBottomContainer({
   showmessage?: boolean;
   size?: number;
 }) {
+  const { t } = useTranslation("common");
+
   return (
     <View style={styles.container}>
       {showmessage && (
         <>
-          <Text style={styles.title}>REDUCE | REUSE | RECYCLE</Text>
-          <Text style={styles.subtitle}>ECOFROG'S MIND IS A GREEN FUTURE</Text>
+          <Text style={styles.title}>{t("ecoMessage.title")}</Text>
+          <Text style={styles.subtitle}>{t("ecoMessage.subtitle")}</Text>
         </>
       )}
       <View style={styles.iconsContainer}>

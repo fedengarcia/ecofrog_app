@@ -5,6 +5,8 @@ import { useFonts } from "expo-font";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { InactivityProvider, useInactivity } from "./context/InactivityContext";
 import { ModalProvider } from "./context/ModalContext";
+import { LanguageProvider } from "./i18n/LanguageContext";
+import "./i18n";
 import AppNavigator from "./navigation/AppNavigator";
 import { NavigationContainerRef } from "@react-navigation/native";
 import { RootStackParamList } from "./navigation/types";
@@ -48,11 +50,13 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <InactivityProvider>
-        <ModalProvider>
-          <Navigation />
-        </ModalProvider>
-      </InactivityProvider>
+      <LanguageProvider>
+        <InactivityProvider>
+          <ModalProvider>
+            <Navigation />
+          </ModalProvider>
+        </InactivityProvider>
+      </LanguageProvider>
     </SafeAreaProvider>
   );
 }

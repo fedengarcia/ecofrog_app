@@ -157,6 +157,7 @@ export const columnStyles = StyleSheet.create({
   },
   rightColumn: {
     flex: 1,
+    height: "100%",
     alignItems: "center",
     position: "relative",
   },
@@ -187,7 +188,7 @@ export const columnStyles = StyleSheet.create({
     alignItems: "center",
     position: "absolute",
     flexDirection: "row",
-    bottom: -12,
+    bottom: 50,
   },
 });
 
@@ -254,11 +255,11 @@ export const modalStyles = StyleSheet.create({
   },
   modalContainer: {
     width: width * 0.8,
-    height: height * 0.75,
+    height: height * 0.8,
     backgroundColor: "#fff",
     borderRadius: 20,
     paddingHorizontal: 40,
-    paddingVertical: 30,
+    paddingVertical: 20,
     position: "relative",
   },
   closeButton: {
