@@ -209,7 +209,7 @@ export default function EcofrogPage1() {
         </Animated.View>
       </View>
 
-      <View style={{ marginTop: -10 }}>
+      <View>
         <IconsBottomContainer showmessage={false} size={50} />
       </View>
 

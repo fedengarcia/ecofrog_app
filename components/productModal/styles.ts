@@ -119,6 +119,7 @@ export const iconStyles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "center",
     width: "100%",
+    paddingBottom: 25,
   },
   iconItem: {
     width: 80,
@@ -144,13 +145,15 @@ export const iconStyles = StyleSheet.create({
 // Estilos de las columnas
 export const columnStyles = StyleSheet.create({
   bottomContainer: {
+    flex: 1,
     flexDirection: "row",
     gap: 30,
     width: "100%",
-    alignItems: "flex-start",
+    alignItems: "center",
   },
   leftColumn: {
     flex: 1,
+    height: "100%",
   },
   rightColumn: {
     flex: 1,
@@ -251,11 +254,11 @@ export const modalStyles = StyleSheet.create({
   },
   modalContainer: {
     width: width * 0.8,
-    maxHeight: height * 0.8,
+    height: height * 0.75,
     backgroundColor: "#fff",
     borderRadius: 20,
-    padding: 50,
-    paddingTop: 30,
+    paddingHorizontal: 40,
+    paddingVertical: 30,
     position: "relative",
   },
   closeButton: {
@@ -308,6 +311,6 @@ export const getDynamicStyles = (productId: ProductId) => {
     iconWidth:
       productId === ProductId.WASH || productId === ProductId.TROLLEY
         ? 110
-        : 90,
+        : 95,
   };
 };

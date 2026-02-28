@@ -217,7 +217,6 @@ const styles = StyleSheet.create({
   content: {
     width: "100%",
     paddingHorizontal: 20,
-    paddingBottom: 20,
     alignItems: "center",
     position: "relative",
     overflow: "visible",
@@ -250,7 +249,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: "bold",
     color: "#000",
-    marginBottom: 15,
+    marginBottom: 20,
     fontFamily: "Exo-Bold",
     textAlign: "left",
   },
@@ -350,13 +349,14 @@ const styles = StyleSheet.create({
     top: "10%",
     left: "50%",
     width: 280,
-    transform: [{ translateX: -0.5 * 280 }, { translateY: -0.5 * 280 }],
+    transform: [{ translateX: -0.5 * 280 }, { translateY: -0.5 * 250 }],
     aspectRatio: 1,
   },
   bottomContainer: {
     width: "100%",
     alignItems: "center",
     paddingHorizontal: 20,
+    marginBottom: 20,
   },
   bottomText: {
     width: "100%",

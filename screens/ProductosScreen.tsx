@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "center",
     alignContent: "flex-start",
-    columnGap: 20,
+    columnGap: 15,
     rowGap: 120,
   },
 });

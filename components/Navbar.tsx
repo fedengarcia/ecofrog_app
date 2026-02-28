@@ -35,7 +35,7 @@ export default function Navbar() {
     {
       label: "Back",
       screen: "Home",
-      onClick: () => navigation.navigate("Home"),
+      onClick: () => navigation.goBack(),
       icon: arrowBackIcon,
     },
     {
