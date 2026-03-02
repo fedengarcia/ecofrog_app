@@ -19,6 +19,7 @@ import { useModal } from "../../context/ModalContext";
 import { useTranslation } from "react-i18next";
 import TextParts from "./TextParts";
 import BubbleText from "./BubbleText";
+import { scale, moderateScale } from "../../utils/scaling";
 
 interface ColumnsProps {
   productId: ProductId;
@@ -93,22 +94,23 @@ export default function Columns({
           <View style={cpStyles.cpVideoSection}>
             <TouchableWithoutFeedback onPress={handleVideoPress}>
               <View style={cpStyles.cpVideoContainer}>
-                {isVideoLoading && (
-                  <View style={videoLoadingStyles.loadingOverlay}>
-                    <ActivityIndicator size="large" color="#00B4D8" />
-                  </View>
-                )}
                 <Video
                   ref={videoRef}
                   source={{ uri: video }}
-                  style={[baseStyles.video, isVideoLoading && { opacity: 0 }]}
+                  style={baseStyles.video}
                   resizeMode={ResizeMode.COVER}
                   shouldPlay={true}
                   isLooping={true}
                   rate={1.0}
                   onReadyForDisplay={() => setIsVideoLoading(false)}
                   onLoadStart={() => setIsVideoLoading(true)}
+                  onError={() => setIsVideoLoading(false)}
                 />
+                {isVideoLoading && (
+                  <View style={videoLoadingStyles.loadingOverlay}>
+                    <ActivityIndicator size="large" color="#00B4D8" />
+                  </View>
+                )}
               </View>
             </TouchableWithoutFeedback>
             <TouchableOpacity
@@ -117,10 +119,16 @@ export default function Columns({
             >
               <Image
                 source={require("../../assets/navbar/mail.png")}
-                style={{ width: 24, height: 24, marginRight: 10 }}
+                style={{
+                  width: scale(24),
+                  height: scale(24),
+                  marginRight: scale(10),
+                }}
                 resizeMode="contain"
               />
-              <Text style={baseStyles.moreInfoButtonText}>{t("buttons.moreInfo")}</Text>
+              <Text style={baseStyles.moreInfoButtonText}>
+                {t("buttons.moreInfo")}
+              </Text>
             </TouchableOpacity>
           </View>
         )}
@@ -176,22 +184,23 @@ export default function Columns({
         <View style={columnStyles.rightColumn}>
           <TouchableWithoutFeedback onPress={handleVideoPress}>
             <View style={columnStyles.videoContainer}>
-              {isVideoLoading && (
-                <View style={videoLoadingStyles.loadingOverlay}>
-                  <ActivityIndicator size="large" color="#00B4D8" />
-                </View>
-              )}
               <Video
                 ref={videoRef}
                 source={{ uri: video }}
-                style={[baseStyles.video, isVideoLoading && { opacity: 0 }]}
+                style={baseStyles.video}
                 resizeMode={ResizeMode.CONTAIN}
                 shouldPlay={true}
                 isLooping={true}
                 rate={1.0}
                 onReadyForDisplay={() => setIsVideoLoading(false)}
                 onLoadStart={() => setIsVideoLoading(true)}
+                onError={() => setIsVideoLoading(false)}
               />
+              {isVideoLoading && (
+                <View style={videoLoadingStyles.loadingOverlay}>
+                  <ActivityIndicator size="large" color="#00B4D8" />
+                </View>
+              )}
             </View>
           </TouchableWithoutFeedback>
           <TouchableOpacity
@@ -203,10 +212,16 @@ export default function Columns({
           >
             <Image
               source={require("../../assets/navbar/mail.png")}
-              style={{ width: 24, height: 24, marginRight: 10 }}
+              style={{
+                width: scale(24),
+                height: scale(24),
+                marginRight: scale(10),
+              }}
               resizeMode="contain"
             />
-            <Text style={baseStyles.moreInfoButtonText}>{t("buttons.moreInfo")}</Text>
+            <Text style={baseStyles.moreInfoButtonText}>
+              {t("buttons.moreInfo")}
+            </Text>
           </TouchableOpacity>
         </View>
       )}
@@ -220,7 +235,8 @@ const videoLoadingStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#000",
-    borderRadius: 15,
-    zIndex: 1,
+    borderRadius: moderateScale(15, 0.5),
+    zIndex: 10,
+    elevation: 10,
   },
 });

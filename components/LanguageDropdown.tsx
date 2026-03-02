@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { useLanguage } from "../i18n/LanguageContext";
+import { scale, verticalScale, moderateScale } from "../utils/scaling";
 
 const flags: Record<string, any> = {
   en: require("../assets/flags/en.png"),
@@ -57,38 +58,38 @@ export default function LanguageDropdown() {
 const styles = StyleSheet.create({
   container: {
     position: "absolute",
-    top: 40,
-    right: 40,
+    top: verticalScale(40),
+    right: scale(40),
     zIndex: 100,
   },
   button: {
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#fff",
-    borderRadius: 12,
-    paddingHorizontal: 18,
-    paddingVertical: 12,
+    borderRadius: moderateScale(12, 0.5),
+    paddingHorizontal: scale(18),
+    paddingVertical: verticalScale(12),
     borderWidth: 1,
     borderColor: "#ddd",
-    gap: 10,
+    gap: scale(10),
   },
   buttonText: {
-    fontSize: 20,
+    fontSize: moderateScale(20, 0.3),
     fontFamily: "Exo-Medium",
     color: "#333",
   },
   arrow: {
-    fontSize: 14,
+    fontSize: moderateScale(14, 0.3),
     color: "#666",
   },
   flag: {
-    width: 32,
-    height: 22,
+    width: scale(32),
+    height: verticalScale(22),
   },
   dropdown: {
-    marginTop: 4,
+    marginTop: verticalScale(4),
     backgroundColor: "#fff",
-    borderRadius: 12,
+    borderRadius: moderateScale(12, 0.5),
     borderWidth: 1,
     borderColor: "#ddd",
     overflow: "hidden",
@@ -96,12 +97,12 @@ const styles = StyleSheet.create({
   option: {
     flexDirection: "row",
     alignItems: "center",
-    paddingHorizontal: 18,
-    paddingVertical: 12,
-    gap: 10,
+    paddingHorizontal: scale(18),
+    paddingVertical: verticalScale(12),
+    gap: scale(10),
   },
   optionText: {
-    fontSize: 20,
+    fontSize: moderateScale(20, 0.3),
     fontFamily: "Exo-Medium",
     color: "#333",
   },

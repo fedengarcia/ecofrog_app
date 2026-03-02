@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { BubbleText as BubbleTextType, ProductId } from "../../types/products";
 import { getProductColor } from "../../types/products";
 import TextParts from "./TextParts";
+import { scale, verticalScale, moderateScale } from "../../utils/scaling";
 
 interface BubbleTextProps {
   bubbleText: BubbleTextType;
@@ -45,36 +46,35 @@ const styles = StyleSheet.create({
   bubbleContainer: {
     backgroundColor: "#E0E0E0",
     width: "100%",
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-
-    borderRadius: 10,
-    gap: 5,
-    marginTop: 20,
+    paddingHorizontal: scale(20),
+    paddingVertical: verticalScale(10),
+    borderRadius: moderateScale(10, 0.5),
+    gap: scale(5),
+    marginTop: verticalScale(20),
   },
   bubbleContainerFlat: {
     backgroundColor: "#E0E0E0",
-    padding: 10,
-    borderRadius: 10,
-    gap: 5,
+    padding: scale(10),
+    borderRadius: moderateScale(10, 0.5),
+    gap: scale(5),
   },
   bubbleItem: {
     flexDirection: "row",
   },
   bubbleTitle: {
-    fontSize: 18,
+    fontSize: moderateScale(18, 0.3),
     fontWeight: "bold",
   },
   bubbleBullet: {
-    fontSize: 18,
-    marginRight: 10,
-    lineHeight: 18,
+    fontSize: moderateScale(18, 0.3),
+    marginRight: scale(10),
+    lineHeight: moderateScale(18, 0.3),
   },
   bubbleText: {
-    fontSize: 18,
+    fontSize: moderateScale(18, 0.3),
     color: "black",
     fontFamily: "Exo-Regular",
-    lineHeight: 18,
+    lineHeight: moderateScale(18, 0.3),
     textAlign: "left",
     flex: 1,
   },

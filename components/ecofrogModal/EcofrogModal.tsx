@@ -11,6 +11,7 @@ import {
 import EcofrogPage1 from "./EcofrogPage1";
 import EcofrogPage2 from "./EcofrogPage2";
 import { ArrowLeft, ArrowRight } from "lucide-react-native";
+import { scale, verticalScale, moderateScale } from "../../utils/scaling";
 
 const { width, height } = Dimensions.get("window");
 
@@ -66,7 +67,7 @@ export default function EcofrogModal({ visible, onClose }: EcofrogModalProps) {
                   style={styles.arrowLeft}
                   onPress={goToPrevPage}
                 >
-                  <ArrowLeft size={30} color="#49454F" />
+                  <ArrowLeft size={moderateScale(30, 0.3)} color="#49454F" />
                 </TouchableOpacity>
               )}
 
@@ -76,7 +77,7 @@ export default function EcofrogModal({ visible, onClose }: EcofrogModalProps) {
                   style={styles.arrowRight}
                   onPress={goToNextPage}
                 >
-                  <ArrowRight size={30} color="#49454F" />
+                  <ArrowRight size={moderateScale(30, 0.3)} color="#49454F" />
                 </TouchableOpacity>
               )}
 
@@ -101,36 +102,36 @@ const styles = StyleSheet.create({
     width: width * 0.8,
     maxHeight: height * 0.8,
     backgroundColor: "#fff",
-    borderRadius: 20,
-    padding: 50,
-    paddingTop: 30,
+    borderRadius: moderateScale(20, 0.5),
+    padding: scale(50),
+    paddingTop: verticalScale(30),
     position: "relative",
   },
   closeButton: {
     position: "absolute",
-    top: 15,
-    right: 15,
+    top: verticalScale(15),
+    right: scale(15),
     zIndex: 10,
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: scale(40),
+    height: scale(40),
+    borderRadius: moderateScale(20, 0.5),
     backgroundColor: "#f0f0f0",
     justifyContent: "center",
     alignItems: "center",
   },
   closeButtonText: {
-    fontSize: 24,
+    fontSize: moderateScale(24, 0.3),
     color: "#333",
     fontWeight: "bold",
   },
   arrowLeft: {
     position: "absolute",
-    left: 15,
+    left: scale(15),
     top: "50%",
     zIndex: 10,
-    width: 50,
-    height: 50,
-    borderRadius: 25,
+    width: scale(50),
+    height: scale(50),
+    borderRadius: moderateScale(25, 0.5),
     borderColor: "#49454F",
     borderWidth: 2,
     justifyContent: "center",
@@ -138,12 +139,12 @@ const styles = StyleSheet.create({
   },
   arrowRight: {
     position: "absolute",
-    right: 15,
+    right: scale(15),
     top: "50%",
     zIndex: 10,
-    width: 50,
-    height: 50,
-    borderRadius: 25,
+    width: scale(50),
+    height: scale(50),
+    borderRadius: moderateScale(25, 0.5),
     borderColor: "#49454F",
     borderWidth: 2,
     justifyContent: "center",

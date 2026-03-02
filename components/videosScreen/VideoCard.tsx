@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { VideoCategory } from "./types";
+import { scale, verticalScale, moderateScale } from "../../utils/scaling";
 
 interface VideoCardProps {
   category: VideoCategory;
@@ -21,9 +22,9 @@ export default function VideoCard({ category, onPress }: VideoCardProps) {
 
   // 2 columnas cuando width > 500px, 1 columna sino
   const isTwoColumns = width > 500;
-  const horizontalPadding = 24; // padding del ScrollView (12) * 2
-  const gap = 60; // gap del grid
-  const cardMargin = 16; // margin de la card (8 * 2)
+  const horizontalPadding = scale(24); // padding del ScrollView (12) * 2
+  const gap = scale(60); // gap del grid
+  const cardMargin = scale(16); // margin de la card (8 * 2)
 
   const cardWidth = isTwoColumns
     ? (width - horizontalPadding - gap - cardMargin * 2) / 2
@@ -61,9 +62,9 @@ export default function VideoCard({ category, onPress }: VideoCardProps) {
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: 20,
-    margin: 8,
-    height: 260,
+    borderRadius: moderateScale(20, 0.5),
+    margin: scale(8),
+    height: verticalScale(260),
     overflow: "hidden",
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
@@ -77,36 +78,36 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   backgroundImageStyle: {
-    borderRadius: 20,
+    borderRadius: moderateScale(20, 0.5),
   },
   gradient: {
     flex: 1,
-    padding: 20,
-    gap: 10,
+    padding: scale(20),
+    gap: scale(10),
     justifyContent: "flex-end",
     alignItems: "center",
   },
   icon: {
-    width: 48,
-    height: 48,
-    borderRadius: 10,
-    marginBottom: 12,
+    width: scale(48),
+    height: scale(48),
+    borderRadius: moderateScale(10, 0.5),
+    marginBottom: verticalScale(12),
   },
   title: {
     fontFamily: "Exo-SemiBold",
-    fontSize: 35,
+    fontSize: moderateScale(35, 0.3),
     fontWeight: "600",
     color: "#ffffff",
-    marginBottom: 6,
+    marginBottom: verticalScale(6),
     textAlign: "center",
-    lineHeight: 35,
+    lineHeight: moderateScale(35, 0.3),
   },
   description: {
     fontFamily: "Exo-Medium",
-    fontSize: 14,
+    fontSize: moderateScale(14, 0.3),
     fontWeight: "500",
     color: "#ffffff",
     textAlign: "center",
-    lineHeight: 14,
+    lineHeight: moderateScale(14, 0.3),
   },
 });

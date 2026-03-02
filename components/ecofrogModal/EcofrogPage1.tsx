@@ -12,11 +12,12 @@ import { useTranslation } from "react-i18next";
 import TextParts from "../productModal/TextParts";
 import { getEcofrogPage1Data } from "../../i18n/textparts/ecofrogPage1";
 import IconsBottomContainer from "../IconsBottomContainer";
+import { scale, verticalScale, moderateScale } from "../../utils/scaling";
 
 const { width: screenWidth } = Dimensions.get("window");
 
-const BRAND_SIZE = 100;
-const BRAND_MARGIN = 20;
+const BRAND_SIZE = scale(100);
+const BRAND_MARGIN = scale(20);
 const BRAND_TOTAL = BRAND_SIZE + BRAND_MARGIN;
 
 // Solo agregar las imágenes extra necesarias para cubrir la pantalla
@@ -174,19 +175,19 @@ const styles = StyleSheet.create({
     overflow: "visible",
   },
   logo: {
-    width: 350,
-    height: 120,
-    marginBottom: 10,
+    width: scale(350),
+    height: verticalScale(120),
+    marginBottom: verticalScale(10),
   },
   titleRow: {
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
     alignItems: "flex-end",
-    marginBottom: 5,
+    marginBottom: verticalScale(5),
   },
   title: {
-    fontSize: 32,
+    fontSize: moderateScale(32, 0.3),
     fontWeight: "bold",
     color: "#000",
     fontFamily: "Exo-Medium",
@@ -195,70 +196,70 @@ const styles = StyleSheet.create({
     color: "#00B4D8",
   },
   subscript3: {
-    fontSize: 20,
+    fontSize: moderateScale(20, 0.3),
   },
   subtitle: {
     width: "100%",
-    fontSize: 24,
+    fontSize: moderateScale(24, 0.3),
     textAlign: "center",
     color: "#000",
-    marginBottom: 20,
+    marginBottom: verticalScale(20),
     fontFamily: "Exo-Medium",
-    lineHeight: 26,
+    lineHeight: moderateScale(26, 0.3),
   },
   description: {
     width: "100%",
-    fontSize: 20,
+    fontSize: moderateScale(20, 0.3),
     textAlign: "left",
     color: "#000",
-    marginBottom: 20,
+    marginBottom: verticalScale(20),
     fontFamily: "Exo-Regular",
-    lineHeight: 26,
+    lineHeight: moderateScale(26, 0.3),
   },
 
   item: {
-    width: 400,
+    width: scale(400),
     height: "auto",
-    padding: 15,
+    padding: scale(15),
     overflow: "hidden",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-start",
     backgroundColor: "#F5F5F5",
-    marginBottom: 20,
+    marginBottom: verticalScale(20),
   },
   itemIcon: {
-    width: 40,
-    height: 40,
-    marginBottom: 10,
+    width: scale(40),
+    height: scale(40),
+    marginBottom: verticalScale(10),
   },
   itemContent: {
     width: "100%",
     flex: 1,
-    marginLeft: 15,
+    marginLeft: scale(15),
     flexDirection: "column",
     alignItems: "flex-start",
     flexShrink: 1,
   },
   itemTitle: {
-    fontSize: 21,
+    fontSize: moderateScale(21, 0.3),
     fontWeight: "bold",
     color: "#000",
-    marginBottom: 5,
+    marginBottom: verticalScale(5),
     fontFamily: "Exo-Bold",
     textAlign: "left",
   },
   itemDescription: {
-    fontSize: 16,
+    fontSize: moderateScale(16, 0.3),
     textAlign: "left",
     color: "#000",
     fontFamily: "Exo-Medium",
-    lineHeight: 22,
+    lineHeight: moderateScale(22, 0.3),
   },
   carouselContainer: {
     width: "100%",
     overflow: "hidden",
-    marginBottom: 20,
+    marginBottom: verticalScale(20),
   },
   carouselTrack: {
     flexDirection: "row",

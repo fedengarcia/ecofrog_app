@@ -1,5 +1,6 @@
 import { StyleSheet, Dimensions } from "react-native";
 import { ProductId, getProductColor } from "../../types/products";
+import { scale, verticalScale, moderateScale } from "../../utils/scaling";
 
 const { width, height } = Dimensions.get("window");
 
@@ -18,10 +19,11 @@ export const baseStyles = StyleSheet.create({
   video: {
     width: "100%",
     height: "100%",
+    backgroundColor: "#000",
   },
   moreInfoButtonText: {
     color: "#fff",
-    fontSize: 18,
+    fontSize: moderateScale(18, 0.3),
     fontFamily: "Exo-Bold",
     fontWeight: "700",
   },
@@ -30,44 +32,44 @@ export const baseStyles = StyleSheet.create({
     flexDirection: "row",
   },
   bubbleTitle: {
-    fontSize: 16,
+    fontSize: moderateScale(16, 0.3),
     fontWeight: "bold",
   },
   bubbleText: {
-    fontSize: 18,
+    fontSize: moderateScale(18, 0.3),
     color: "black",
     fontFamily: "Exo-Regular",
-    lineHeight: 18,
+    lineHeight: moderateScale(18, 0.3),
     textAlign: "left",
   },
   bubbleBullet: {
-    fontSize: 18,
-    marginRight: 10,
-    lineHeight: 18,
+    fontSize: moderateScale(18, 0.3),
+    marginRight: scale(10),
+    lineHeight: moderateScale(18, 0.3),
   },
   bubbleContainer: {
     backgroundColor: "#E0E0E0",
     width: "100%",
-    padding: 20,
-    borderRadius: 10,
-    gap: 5,
-    marginTop: 20,
+    padding: scale(20),
+    borderRadius: moderateScale(10, 0.5),
+    gap: scale(5),
+    marginTop: verticalScale(20),
   },
   // Decorativas
   bubbleMedium: {
-    width: 400,
-    height: 400,
+    width: scale(400),
+    height: scale(400),
     position: "absolute",
     bottom: 0,
-    right: 140,
+    right: scale(140),
     zIndex: 0,
   },
   bubbleLeft: {
-    width: 400,
-    height: 400,
+    width: scale(400),
+    height: scale(400),
     position: "absolute",
-    bottom: 80,
-    left: -100,
+    bottom: verticalScale(80),
+    left: scale(-100),
     zIndex: 0,
   },
 });
@@ -79,36 +81,36 @@ export const headerStyles = StyleSheet.create({
     flexDirection: "row",
   },
   productImage: {
-    width: 220,
+    width: scale(220),
     position: "absolute",
   },
   productImageOverlay: {
-    width: 100,
-    height: 60,
+    width: scale(100),
+    height: verticalScale(60),
     backgroundColor: "#fff",
   },
   productLogo: {
-    width: 350,
-    height: 120,
-    marginBottom: 20,
+    width: scale(350),
+    height: verticalScale(120),
+    marginBottom: verticalScale(20),
   },
   title: {
-    fontSize: 28,
+    fontSize: moderateScale(28, 0.3),
     textAlign: "left",
     color: "#000",
-    marginBottom: 15,
+    marginBottom: verticalScale(15),
     fontFamily: "Exo-SemiBold",
-    lineHeight: 24,
-    width: 500,
+    lineHeight: moderateScale(24, 0.3),
+    width: scale(500),
   },
   subtitle: {
-    fontSize: 20,
+    fontSize: moderateScale(20, 0.3),
     textAlign: "left",
     color: "#000000",
-    marginBottom: 25,
-    width: 500,
+    marginBottom: verticalScale(25),
+    width: scale(500),
     fontFamily: "Exo-Regular",
-    lineHeight: 20,
+    lineHeight: moderateScale(20, 0.3),
   },
 });
 
@@ -119,76 +121,73 @@ export const iconStyles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "center",
     width: "100%",
-    paddingBottom: 25,
+    paddingBottom: verticalScale(25),
   },
   iconItem: {
-    width: 80,
-    height: 105,
-    gap: 8,
+    width: scale(80),
+    height: verticalScale(105),
+    gap: scale(8),
     alignItems: "center",
-    marginBottom: 24,
+    marginBottom: verticalScale(24),
   },
   icon: {
-    width: 80,
-    height: 80,
+    width: scale(80),
+    height: scale(80),
   },
   iconLegend: {
-    fontSize: 16,
+    fontSize: moderateScale(16, 0.3),
     fontWeight: "bold",
     textTransform: "uppercase",
     textAlign: "center",
     fontFamily: "Exo-Regular",
-    lineHeight: 14,
+    lineHeight: moderateScale(14, 0.3),
   },
 });
 
 // Estilos de las columnas
 export const columnStyles = StyleSheet.create({
   bottomContainer: {
-    flex: 1,
     flexDirection: "row",
-    gap: 30,
+    gap: scale(30),
     width: "100%",
-    alignItems: "center",
+    alignItems: "flex-start",
   },
   leftColumn: {
     flex: 1,
-    height: "100%",
   },
   rightColumn: {
     flex: 1,
-    height: "100%",
     alignItems: "center",
     position: "relative",
   },
   description: {
-    fontSize: 18,
+    fontSize: moderateScale(18, 0.3),
     textAlign: "left",
     color: "#000000",
-    marginBottom: 20,
+    marginBottom: verticalScale(20),
     fontFamily: "Exo-Regular",
-    lineHeight: 18,
+    lineHeight: moderateScale(18, 0.3),
   },
   videoContainer: {
     width: "100%",
     height: height * 0.4,
     backgroundColor: "#000000",
-    borderRadius: 10,
+    borderRadius: moderateScale(10, 0.5),
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 15,
+    marginBottom: verticalScale(15),
     position: "relative",
     overflow: "hidden",
   },
   moreInfoButton: {
     width: "60%",
-    height: 60,
-    borderRadius: 10,
+    height: verticalScale(60),
+    borderRadius: moderateScale(10, 0.5),
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
     flexDirection: "row",
-    bottom: 50,
+    bottom: verticalScale(0),
   },
 });
 
@@ -196,24 +195,24 @@ export const columnStyles = StyleSheet.create({
 export const cpStyles = StyleSheet.create({
   cpContainer: {
     width: "100%",
-    gap: 20,
+    gap: scale(20),
   },
   cpDescriptionContainer: {
     width: "100%",
-    gap: 15,
+    gap: scale(15),
   },
   cpDescription: {
-    fontSize: 18,
+    fontSize: moderateScale(18, 0.3),
     textAlign: "left",
     color: "#333",
     fontFamily: "Exo-Regular",
-    lineHeight: 16,
+    lineHeight: moderateScale(16, 0.3),
   },
   cpBubbleTextContainer: {
     backgroundColor: "#E0E0E0",
-    padding: 10,
-    borderRadius: 10,
-    gap: 5,
+    padding: scale(10),
+    borderRadius: moderateScale(10, 0.5),
+    gap: scale(5),
     alignSelf: "flex-end",
     width: "70%",
   },
@@ -221,27 +220,27 @@ export const cpStyles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     position: "relative",
-    marginBottom: 20,
+    marginBottom: verticalScale(20),
   },
   cpVideoContainer: {
     width: "100%",
-    height: 220,
+    height: verticalScale(220),
     backgroundColor: "#000",
-    borderRadius: 10,
+    borderRadius: moderateScale(10, 0.5),
     justifyContent: "center",
     alignItems: "center",
     overflow: "hidden",
   },
   cpMoreInfoButton: {
     width: "40%",
-    height: 50,
+    height: verticalScale(50),
     backgroundColor: "black",
-    borderRadius: 10,
+    borderRadius: moderateScale(10, 0.5),
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
     position: "absolute",
-    bottom: -25,
+    bottom: verticalScale(-25),
   },
 });
 
@@ -257,25 +256,25 @@ export const modalStyles = StyleSheet.create({
     width: width * 0.8,
     height: height * 0.8,
     backgroundColor: "#fff",
-    borderRadius: 20,
-    paddingHorizontal: 40,
-    paddingVertical: 20,
+    borderRadius: moderateScale(20, 0.5),
+    paddingHorizontal: scale(40),
+    paddingVertical: verticalScale(20),
     position: "relative",
   },
   closeButton: {
     position: "absolute",
-    top: 15,
-    right: 15,
+    top: verticalScale(15),
+    right: scale(15),
     zIndex: 10,
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: scale(40),
+    height: scale(40),
+    borderRadius: moderateScale(20, 0.5),
     backgroundColor: "#f0f0f0",
     justifyContent: "center",
     alignItems: "center",
   },
   closeButtonText: {
-    fontSize: 24,
+    fontSize: moderateScale(24, 0.3),
     color: "#333",
     fontWeight: "bold",
   },
@@ -292,26 +291,34 @@ export const getDynamicStyles = (productId: ProductId) => {
     bubbleTitleColor: color,
     // Posiciones específicas de imagen según producto
     productImagePosition: {
-      top:
+      top: verticalScale(
         productId === ProductId.CP
           ? -80
           : productId === ProductId.WASH
             ? -70
-            : -200,
-      left: productId === ProductId.CP ? -100 : -130,
+            : -150,
+      ),
+      left: scale(productId === ProductId.CP ? -100 : -130),
     },
     // Gap de iconos según cantidad
     getIconsGap: (iconsCount: number) =>
-      iconsCount <= 5
-        ? productId === ProductId.WASH || productId === ProductId.TROLLEY
-          ? 15
-          : 40
-        : 15,
+      scale(
+        iconsCount <= 5
+          ? productId === ProductId.WASH || productId === ProductId.TROLLEY
+            ? 15
+            : 40
+          : 15,
+      ),
     // Margin bottom según producto
-    iconsMarginBottom: productId === ProductId.TROLLEY ? 10 : 25,
-    iconWidth:
-      productId === ProductId.WASH || productId === ProductId.TROLLEY
-        ? 110
-        : 95,
+    iconsMarginBottom: verticalScale(
+      productId === ProductId.TROLLEY
+        ? -35
+        : productId === ProductId.WASH
+          ? -10
+          : 25,
+    ),
+    iconWidth: scale(
+      productId === ProductId.WASH || productId === ProductId.TROLLEY ? 90 : 80,
+    ),
   };
 };

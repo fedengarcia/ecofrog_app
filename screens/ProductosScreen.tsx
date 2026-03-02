@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import {
   View,
   Text,
@@ -14,13 +14,20 @@ import ProductCard from "../components/productosScreen/ProductCard";
 import { Product } from "../types/products";
 import { getProducts } from "../i18n/textparts/products";
 import ProductModal from "../components/productModal";
+import { scale, verticalScale, moderateScale } from "../utils/scaling";
 
 export default function ProductosScreen() {
-  const { resetInactivityTimer } = useInactivity();
+  const { resetInactivityTimer, setIsVideoPlaying } = useInactivity();
   const { t } = useTranslation("products");
   const products = useMemo(() => getProducts(t), [t]);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [modalVisible, setModalVisible] = useState(false);
+
+  // Señalizar al contexto de inactividad cuando el modal de producto tiene video
+  useEffect(() => {
+    setIsVideoPlaying(modalVisible && !!selectedProduct?.modalData?.video);
+    return () => setIsVideoPlaying(false);
+  }, [modalVisible, selectedProduct]);
 
   const handleProductPress = (product: Product) => {
     setSelectedProduct(product);
@@ -84,30 +91,30 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     flexGrow: 1,
-    paddingTop: 40,
-    paddingHorizontal: 20,
+    paddingTop: verticalScale(40),
+    paddingHorizontal: scale(20),
   },
   header: {
     flexDirection: "row",
     alignItems: "flex-start",
-    marginBottom: 15,
-    paddingHorizontal: 20,
-    paddingVertical: 15,
+    marginBottom: verticalScale(15),
+    paddingHorizontal: scale(20),
+    paddingVertical: verticalScale(15),
   },
   headerIcon: {
-    width: 47,
-    height: 47,
-    marginRight: 16,
+    width: scale(47),
+    height: scale(47),
+    marginRight: scale(16),
   },
   headerTextContainer: {
     flex: 1,
-    marginBottom: 140,
+    marginBottom: verticalScale(140),
   },
   mainTitle: {
-    fontSize: 36,
+    fontSize: moderateScale(36, 0.3),
     fontFamily: "Exo-Bold",
     fontWeight: "700",
-    lineHeight: 36,
+    lineHeight: moderateScale(36, 0.3),
   },
   titleBlack: {
     color: "#000",
@@ -116,18 +123,18 @@ const styles = StyleSheet.create({
     color: "#00B4D8",
   },
   subtitle: {
-    fontSize: 22,
+    fontSize: moderateScale(22, 0.3),
     fontFamily: "Exo-Light",
     fontWeight: "300",
     color: "#000000",
-    marginBottom: 6,
+    marginBottom: verticalScale(6),
   },
   thirdTitle: {
-    fontSize: 24,
+    fontSize: moderateScale(24, 0.3),
     fontFamily: "Exo-SemiBold",
     fontWeight: "600",
     color: "#00B4D8",
-    lineHeight: 24,
+    lineHeight: moderateScale(24, 0.3),
     textTransform: "uppercase",
   },
   grid: {
@@ -136,7 +143,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "center",
     alignContent: "flex-start",
-    columnGap: 15,
-    rowGap: 120,
+    columnGap: scale(15),
+    rowGap: verticalScale(120),
   },
 });

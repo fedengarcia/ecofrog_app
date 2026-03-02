@@ -12,6 +12,7 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../navigation/types";
 import { useModal } from "../context/ModalContext";
 import { useTranslation } from "react-i18next";
+import { scale, verticalScale, moderateScale } from "../utils/scaling";
 
 // Importar imágenes
 const arrowBackIcon = require("../assets/navbar/arrowBack.png");
@@ -111,13 +112,13 @@ export default function Navbar() {
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    height: 91,
+    height: verticalScale(91),
     backgroundColor: "#fff",
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: 20,
+    paddingHorizontal: scale(20),
     // Shadow para iOS
     shadowColor: "#000",
     shadowOffset: {
@@ -134,23 +135,23 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    gap: 5,
+    gap: scale(5),
   },
   navbarOption: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    paddingHorizontal: 10,
-    paddingVertical: 10,
-    gap: 10,
+    paddingHorizontal: scale(10),
+    paddingVertical: verticalScale(10),
+    gap: scale(10),
   },
   navbarOptionButton: {
     backgroundColor: "#3498db",
-    borderRadius: 10,
+    borderRadius: moderateScale(10, 0.5),
   },
   navbarOptionText: {
-    fontSize: 20,
+    fontSize: moderateScale(20, 0.3),
     fontWeight: "500",
     fontFamily: "Exo-Medium",
     color: "#3498db",
@@ -159,12 +160,12 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   logo: {
-    width: 70,
-    height: 70,
+    width: scale(70),
+    height: scale(70),
     resizeMode: "contain",
   },
   icon: {
-    width: 24,
-    height: 24,
+    width: scale(24),
+    height: scale(24),
   },
 });

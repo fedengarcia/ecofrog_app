@@ -8,12 +8,13 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Product, ProductId, TextPart } from "../../types/products";
+import { scale, verticalScale, moderateScale } from "../../utils/scaling";
 
 const { width } = Dimensions.get("window");
 const isTablet = width >= 768;
 
 // 3 columnas en tablet, 1 en móvil
-const CARD_WIDTH = isTablet ? (width - 80) / 3 : width - 40;
+const CARD_WIDTH = isTablet ? (width - scale(80)) / 3 : width - scale(40);
 
 interface ProductCardProps {
   product: Product;
@@ -49,13 +50,13 @@ export default function ProductCard({ product, onPress }: ProductCardProps) {
           ...{
             bottom:
               product.id === ProductId.AVATAR
-                ? -60
+                ? verticalScale(-60)
                 : product.id === ProductId.WASH
-                  ? -150
+                  ? verticalScale(-150)
                   : product.id === ProductId.CP
-                    ? -100
+                    ? verticalScale(-100)
                     : product.id === ProductId.ELEKTRA
-                      ? -55
+                      ? verticalScale(-55)
                       : undefined,
           },
         }}
@@ -75,34 +76,34 @@ export default function ProductCard({ product, onPress }: ProductCardProps) {
 const styles = StyleSheet.create({
   card: {
     width: CARD_WIDTH,
-    borderRadius: 16,
-    padding: 10,
+    borderRadius: moderateScale(16, 0.5),
+    padding: scale(10),
     alignItems: "center",
     position: "relative",
   },
   overlay: {
     width: "100%",
-    height: 200,
+    height: verticalScale(200),
     position: "relative",
   },
   image: {
     width: "100%",
-    height: 340,
+    height: verticalScale(340),
     position: "absolute",
     bottom: 0,
     left: 0,
   },
   logo: {
-    width: 140,
-    height: 40,
-    marginBottom: 12,
+    width: scale(140),
+    height: verticalScale(40),
+    marginBottom: verticalScale(12),
   },
   description: {
-    fontSize: 18,
+    fontSize: moderateScale(18, 0.3),
     color: "#333",
     textAlign: "center",
     fontWeight: "500",
-    lineHeight: 24,
+    lineHeight: moderateScale(24, 0.3),
   },
   bold: {
     fontFamily: "Exo-Bold",

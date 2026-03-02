@@ -61,6 +61,25 @@ export const InactivityProvider: React.FC<InactivityProviderProps> = ({
     isVideoPlayingRef.current = isVideoPlaying;
   }, [isVideoPlaying]);
 
+  // Gestionar el timer cuando cambia el estado de video
+  useEffect(() => {
+    if (isVideoPlaying) {
+      // Video reproduciéndose — pausar el timer de inactividad
+      if (inactivityTimer.current) {
+        clearTimeout(inactivityTimer.current);
+        inactivityTimer.current = null;
+      }
+    } else if (!showSleepBackground) {
+      // Video detenido y no estamos en sleep — reiniciar el timer
+      if (inactivityTimer.current) {
+        clearTimeout(inactivityTimer.current);
+      }
+      inactivityTimer.current = setTimeout(() => {
+        setShowSleepBackground(true);
+      }, INACTIVITY_TIMEOUT);
+    }
+  }, [isVideoPlaying, showSleepBackground]);
+
   const setNavigationRef = (
     ref: NavigationContainerRef<RootStackParamList> | null,
   ) => {

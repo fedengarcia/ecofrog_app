@@ -1,7 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { useRef } from "react";
+import { Dimensions } from "react-native";
 import { useFonts } from "expo-font";
+
+// TODO: TEMPORAL - Borrar despues de verificar dimensiones
+const { width, height } = Dimensions.get("window");
+console.log(`📐 SCREEN DIMENSIONS: width=${width}, height=${height}, ratio=${(width/height).toFixed(2)}`);
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { InactivityProvider, useInactivity } from "./context/InactivityContext";
 import { ModalProvider } from "./context/ModalContext";

@@ -12,6 +12,8 @@ import { useTranslation } from "react-i18next";
 import TextParts from "../productModal/TextParts";
 import { getEcofrogPage2Data } from "../../i18n/textparts/ecofrogPage2";
 import IconsBottomContainer from "../IconsBottomContainer";
+import { scale, verticalScale, moderateScale } from "../../utils/scaling";
+import { useInactivity } from "../../context/InactivityContext";
 
 export default function EcofrogPage2() {
   const { t } = useTranslation("ecofrog");
@@ -19,9 +21,16 @@ export default function EcofrogPage2() {
   const videoRef = useRef<Video>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isVideoLoading, setIsVideoLoading] = useState(true);
+  const { setIsVideoPlaying } = useInactivity();
 
   useEffect(() => {
     setIsVideoLoading(true);
+  }, []);
+
+  // Señalizar al contexto de inactividad que hay video reproduciéndose
+  useEffect(() => {
+    setIsVideoPlaying(true);
+    return () => setIsVideoPlaying(false);
   }, []);
 
   const handleVideoPress = async () => {
@@ -81,21 +90,21 @@ export default function EcofrogPage2() {
               onPress={handleVideoPress}
               style={styles.videoWrapper}
             >
-              {isVideoLoading && (
-                <View style={styles.loadingOverlay}>
-                  <ActivityIndicator size="large" color="#00B4D8" />
-                </View>
-              )}
               <Video
                 ref={videoRef}
                 source={{ uri: pageData.column1.video }}
-                style={[styles.video, isVideoLoading && { opacity: 0 }]}
+                style={styles.video}
                 resizeMode={ResizeMode.COVER}
                 isLooping
                 shouldPlay
                 isMuted
                 onLoad={() => setIsVideoLoading(false)}
               />
+              {isVideoLoading && (
+                <View style={styles.loadingOverlay}>
+                  <ActivityIndicator size="large" color="#00B4D8" />
+                </View>
+              )}
             </TouchableOpacity>
           </View>
         </View>
@@ -130,10 +139,12 @@ export default function EcofrogPage2() {
   );
 }
 
+const COLUMN_IMAGE_WIDTH = scale(280);
+
 const styles = StyleSheet.create({
   content: {
     width: "100%",
-    paddingHorizontal: 20,
+    paddingHorizontal: scale(20),
     alignItems: "center",
     position: "relative",
     overflow: "visible",
@@ -143,88 +154,87 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     width: "100%",
-    height: 500,
+    height: verticalScale(500),
     overflow: "hidden",
-
     zIndex: 0,
   },
   backgroundImage: {
     position: "absolute",
-    top: -320,
-    right: -40,
-    width: 900,
-    height: 900,
+    top: verticalScale(-320),
+    right: scale(-40),
+    width: scale(900),
+    height: scale(900),
     opacity: 0.1,
   },
   logo: {
-    width: 350,
-    height: 120,
-    marginBottom: 30,
+    width: scale(350),
+    height: verticalScale(120),
+    marginBottom: verticalScale(30),
   },
   title: {
     width: "100%",
-    fontSize: 22,
+    fontSize: moderateScale(22, 0.3),
     fontWeight: "bold",
     color: "#000",
-    marginBottom: 20,
+    marginBottom: verticalScale(20),
     fontFamily: "Exo-Bold",
     textAlign: "left",
   },
   description: {
     width: "100%",
-    fontSize: 20,
+    fontSize: moderateScale(20, 0.3),
     textAlign: "left",
     color: "#000",
-    marginBottom: 20,
+    marginBottom: verticalScale(20),
     fontFamily: "Exo-Regular",
-    lineHeight: 26,
+    lineHeight: moderateScale(26, 0.3),
   },
   columnsRow: {
     flexDirection: "row",
     width: "100%",
-    gap: 20,
-    marginTop: 10,
+    gap: scale(20),
+    marginTop: verticalScale(10),
     alignItems: "stretch",
     overflow: "visible",
   },
   columnLeft: {
     width: "60%",
-    padding: 18,
+    padding: scale(18),
     overflow: "visible",
   },
   columnRight: {
     width: "40%",
-    borderRadius: 16,
-    height: 320,
+    borderRadius: moderateScale(16, 0.5),
+    height: verticalScale(320),
   },
   columnTitleLeft: {
     width: "100%",
-    fontSize: 22,
+    fontSize: moderateScale(22, 0.3),
     fontWeight: "bold",
     color: "#000",
-    marginBottom: 14,
+    marginBottom: verticalScale(14),
     fontFamily: "Exo-Bold",
     textAlign: "right",
   },
   columnDescLeft: {
     width: "100%",
-    fontSize: 16,
+    fontSize: moderateScale(16, 0.3),
     textAlign: "right",
     color: "#000",
-    marginBottom: 16,
+    marginBottom: verticalScale(16),
     fontFamily: "Exo-Regular",
-    lineHeight: 24,
+    lineHeight: moderateScale(24, 0.3),
   },
   columnDescRight: {
     width: "100%",
-    fontSize: 16,
+    fontSize: moderateScale(16, 0.3),
     textAlign: "left",
     color: "#000",
-    marginBottom: 16,
+    marginBottom: verticalScale(16),
     fontFamily: "Exo-Regular",
-    lineHeight: 24,
+    lineHeight: moderateScale(24, 0.3),
     backgroundColor: "#F2F2F7",
-    padding: 12,
+    padding: scale(12),
   },
   videoSection: {
     width: "100%",
@@ -233,28 +243,30 @@ const styles = StyleSheet.create({
   videoWrapper: {
     width: "100%",
     aspectRatio: 16 / 9,
-    borderRadius: 12,
+    borderRadius: moderateScale(12, 0.5),
     overflow: "hidden",
     backgroundColor: "#000",
   },
   plantImage: {
     position: "absolute",
-    right: 180,
-    bottom: 40,
-    width: 400,
-    height: 400,
+    right: scale(180),
+    bottom: verticalScale(40),
+    width: scale(400),
+    height: scale(400),
     zIndex: -2,
   },
   video: {
     width: "100%",
     height: "100%",
+    backgroundColor: "#000",
   },
   loadingOverlay: {
     ...StyleSheet.absoluteFillObject,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#000",
-    zIndex: 1,
+    zIndex: 10,
+    elevation: 10,
   },
   columnImageWrapper: {
     width: "100%",
@@ -265,27 +277,30 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: "10%",
     left: "50%",
-    width: 280,
-    transform: [{ translateX: -0.5 * 280 }, { translateY: -0.5 * 250 }],
+    width: COLUMN_IMAGE_WIDTH,
+    transform: [
+      { translateX: -0.5 * COLUMN_IMAGE_WIDTH },
+      { translateY: -0.5 * verticalScale(200) },
+    ],
     aspectRatio: 1,
   },
   bottomContainer: {
     width: "100%",
     alignItems: "center",
-    paddingHorizontal: 20,
-    marginBottom: 20,
+    paddingHorizontal: scale(20),
+    marginBottom: verticalScale(20),
   },
   bottomText: {
     width: "100%",
     textAlign: "left",
-    fontSize: 20,
+    fontSize: moderateScale(20, 0.3),
     color: "#000",
     fontFamily: "Exo-Bold",
   },
   certificationsImage: {
-    marginTop: -10,
-    marginBottom: 20,
+    marginTop: verticalScale(-10),
+    marginBottom: verticalScale(20),
     width: "100%",
-    height: 60,
+    height: verticalScale(60),
   },
 });

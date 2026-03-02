@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { useTranslation } from "react-i18next";
+import { scale, verticalScale, moderateScale } from "../utils/scaling";
 
 export default function IconsBottomContainer({
   showmessage = true,
@@ -10,6 +11,7 @@ export default function IconsBottomContainer({
   size?: number;
 }) {
   const { t } = useTranslation("common");
+  const scaledSize = scale(size);
 
   return (
     <View style={styles.container}>
@@ -22,17 +24,17 @@ export default function IconsBottomContainer({
       <View style={styles.iconsContainer}>
         <Image
           source={require("../assets/home/iconStats.png")}
-          style={[{ width: size, height: size }]}
+          style={[{ width: scaledSize, height: scaledSize }]}
           resizeMode="contain"
         />
         <Image
           source={require("../assets/home/iconEco.png")}
-          style={[{ width: size, height: size }]}
+          style={[{ width: scaledSize, height: scaledSize }]}
           resizeMode="contain"
         />
         <Image
           source={require("../assets/home/iconRecicle.png")}
-          style={[{ width: size, height: size }]}
+          style={[{ width: scaledSize, height: scaledSize }]}
           resizeMode="contain"
         />
       </View>
@@ -47,24 +49,24 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: "Exo-Bold",
-    fontSize: 20,
-    lineHeight: 24,
+    fontSize: moderateScale(20, 0.3),
+    lineHeight: moderateScale(24, 0.3),
     textAlign: "center",
     color: "#009FE3",
-    marginBottom: 5,
+    marginBottom: verticalScale(5),
   },
   subtitle: {
     fontFamily: "Exo-Bold",
-    fontSize: 20,
-    lineHeight: 24,
+    fontSize: moderateScale(20, 0.3),
+    lineHeight: moderateScale(24, 0.3),
     textAlign: "center",
     color: "#000",
-    marginBottom: 20,
+    marginBottom: verticalScale(20),
   },
   iconsContainer: {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    gap: 30,
+    gap: scale(30),
   },
 });

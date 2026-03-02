@@ -13,6 +13,8 @@ import { Video, ResizeMode } from "expo-av";
 import { X } from "lucide-react-native";
 import { VideoCategory } from "./types";
 import { useTranslation } from "react-i18next";
+import { scale, verticalScale, moderateScale } from "../../utils/scaling";
+import { useInactivity } from "../../context/InactivityContext";
 
 interface VideoModalProps {
   visible: boolean;
@@ -31,6 +33,13 @@ export default function VideoModal({
   const { width, height } = useWindowDimensions();
   const videoRef = useRef<Video>(null);
   const [isVideoLoading, setIsVideoLoading] = useState(true);
+  const { setIsVideoPlaying } = useInactivity();
+
+  // Señalizar al contexto de inactividad cuando hay video reproduciéndose
+  useEffect(() => {
+    setIsVideoPlaying(visible && !!videoUrl);
+    return () => setIsVideoPlaying(false);
+  }, [visible, videoUrl]);
 
   // Calcular dimensiones del modal manteniendo aspect ratio 9:16
   const maxHeight = height * 0.9;
@@ -81,27 +90,27 @@ export default function VideoModal({
                 onPress={handleClose}
                 style={styles.closeButton}
               >
-                <X size={28} color="#fff" />
+                <X size={moderateScale(28, 0.3)} color="#fff" />
               </TouchableOpacity>
 
               {videoUrl ? (
                 <View style={styles.videoWrapper}>
-                  {isVideoLoading && (
-                    <View style={styles.loadingOverlay}>
-                      <ActivityIndicator size="large" color="#00B4D8" />
-                      <Text style={styles.loadingText}>{t("loading.video")}</Text>
-                    </View>
-                  )}
                   <Video
                     ref={videoRef}
                     source={{ uri: videoUrl }}
-                    style={[styles.video, isVideoLoading && { opacity: 0 }]}
+                    style={styles.video}
                     useNativeControls
                     resizeMode={ResizeMode.CONTAIN}
                     shouldPlay
                     onReadyForDisplay={() => setIsVideoLoading(false)}
                     onLoadStart={() => setIsVideoLoading(true)}
                   />
+                  {isVideoLoading && (
+                    <View style={styles.loadingOverlay}>
+                      <ActivityIndicator size="large" color="#00B4D8" />
+                      <Text style={styles.loadingText}>{t("loading.video")}</Text>
+                    </View>
+                  )}
                 </View>
               ) : (
                 <View style={styles.loadingContainer}>
@@ -126,17 +135,17 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     backgroundColor: "#000",
-    borderRadius: 16,
+    borderRadius: moderateScale(16, 0.5),
     overflow: "hidden",
   },
   closeButton: {
     position: "absolute",
-    top: 12,
-    right: 12,
+    top: verticalScale(12),
+    right: scale(12),
     zIndex: 10,
     backgroundColor: "rgba(0, 0, 0, 0.5)",
-    borderRadius: 20,
-    padding: 8,
+    borderRadius: moderateScale(20, 0.5),
+    padding: scale(8),
   },
   videoWrapper: {
     flex: 1,
@@ -147,13 +156,15 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     height: "100%",
+    backgroundColor: "#000",
   },
   loadingOverlay: {
     ...StyleSheet.absoluteFillObject,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#000",
-    zIndex: 1,
+    zIndex: 10,
+    elevation: 10,
   },
   loadingContainer: {
     flex: 1,
@@ -162,8 +173,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#000",
   },
   loadingText: {
-    fontSize: 16,
+    fontSize: moderateScale(16, 0.3),
     color: "#666",
-    marginTop: 12,
+    marginTop: verticalScale(12),
   },
 });
