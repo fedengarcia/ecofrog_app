@@ -16,8 +16,8 @@ import { scale, verticalScale, moderateScale } from "../../utils/scaling";
 
 const { width: screenWidth } = Dimensions.get("window");
 
-const BRAND_SIZE = scale(100);
-const BRAND_MARGIN = scale(20);
+const BRAND_SIZE = scale(70);
+const BRAND_MARGIN = scale(15);
 const BRAND_TOTAL = BRAND_SIZE + BRAND_MARGIN;
 
 // Solo agregar las imágenes extra necesarias para cubrir la pantalla
@@ -103,11 +103,15 @@ export default function EcofrogPage1() {
       {/* Título */}
       <View style={styles.titleRow}>
         <Text style={styles.title}>{pageData.titlePrefix}</Text>
-        <Text style={[styles.title, styles.titleHighlight]}>{pageData.titleO}</Text>
+        <Text style={[styles.title, styles.titleHighlight]}>
+          {pageData.titleO}
+        </Text>
         <Text style={[styles.title, styles.titleHighlight, styles.subscript3]}>
           {pageData.titleSubscript}
         </Text>
-        <Text style={[styles.title, styles.titleHighlight]}>{pageData.titleSuffix}</Text>
+        <Text style={[styles.title, styles.titleHighlight]}>
+          {pageData.titleSuffix}
+        </Text>
       </View>
 
       {/* Subtítulo */}
@@ -175,19 +179,19 @@ const styles = StyleSheet.create({
     overflow: "visible",
   },
   logo: {
-    width: scale(350),
-    height: verticalScale(120),
-    marginBottom: verticalScale(10),
+    width: scale(280),
+    height: verticalScale(80),
+    marginBottom: verticalScale(5),
   },
   titleRow: {
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
     alignItems: "flex-end",
-    marginBottom: verticalScale(5),
+    marginBottom: verticalScale(3),
   },
   title: {
-    fontSize: moderateScale(32, 0.3),
+    fontSize: moderateScale(24, 0.3),
     fontWeight: "bold",
     color: "#000",
     fontFamily: "Exo-Medium",
@@ -196,70 +200,70 @@ const styles = StyleSheet.create({
     color: "#00B4D8",
   },
   subscript3: {
-    fontSize: moderateScale(20, 0.3),
+    fontSize: moderateScale(16, 0.3),
   },
   subtitle: {
     width: "100%",
-    fontSize: moderateScale(24, 0.3),
+    fontSize: moderateScale(18, 0.3),
     textAlign: "center",
     color: "#000",
-    marginBottom: verticalScale(20),
+    marginBottom: verticalScale(10),
     fontFamily: "Exo-Medium",
-    lineHeight: moderateScale(26, 0.3),
+    lineHeight: moderateScale(20, 0.3),
   },
   description: {
     width: "100%",
-    fontSize: moderateScale(20, 0.3),
+    fontSize: moderateScale(14, 0.3),
     textAlign: "left",
     color: "#000",
-    marginBottom: verticalScale(20),
+    marginBottom: verticalScale(10),
     fontFamily: "Exo-Regular",
-    lineHeight: moderateScale(26, 0.3),
+    lineHeight: moderateScale(18, 0.3),
   },
 
   item: {
-    width: scale(400),
+    width: scale(340),
     height: "auto",
-    padding: scale(15),
+    padding: scale(10),
     overflow: "hidden",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-start",
     backgroundColor: "#F5F5F5",
-    marginBottom: verticalScale(20),
+    marginBottom: verticalScale(10),
   },
   itemIcon: {
-    width: scale(40),
-    height: scale(40),
-    marginBottom: verticalScale(10),
+    width: scale(30),
+    height: scale(30),
+    marginBottom: verticalScale(5),
   },
   itemContent: {
     width: "100%",
     flex: 1,
-    marginLeft: scale(15),
+    marginLeft: scale(10),
     flexDirection: "column",
     alignItems: "flex-start",
     flexShrink: 1,
   },
   itemTitle: {
-    fontSize: moderateScale(21, 0.3),
+    fontSize: moderateScale(16, 0.3),
     fontWeight: "bold",
     color: "#000",
-    marginBottom: verticalScale(5),
+    marginBottom: verticalScale(2),
     fontFamily: "Exo-Bold",
     textAlign: "left",
   },
   itemDescription: {
-    fontSize: moderateScale(16, 0.3),
+    fontSize: moderateScale(12, 0.3),
     textAlign: "left",
     color: "#000",
     fontFamily: "Exo-Medium",
-    lineHeight: moderateScale(22, 0.3),
+    lineHeight: moderateScale(16, 0.3),
   },
   carouselContainer: {
     width: "100%",
     overflow: "hidden",
-    marginBottom: verticalScale(20),
+    marginBottom: verticalScale(10),
   },
   carouselTrack: {
     flexDirection: "row",
@@ -274,16 +278,16 @@ const styles = StyleSheet.create({
   sprayContainer: {
     position: "absolute",
     zIndex: 2,
-    bottom: Dimensions.get("window").height * 0.16,
-    left: -Dimensions.get("window").width * 0.36,
+    bottom: Dimensions.get("window").height * 0.12,
+    left: -Dimensions.get("window").width * 0.32,
     width: "100%",
-    height: Dimensions.get("window").height * 0.2,
+    height: Dimensions.get("window").height * 0.15,
     overflow: "visible",
     alignItems: "center",
   },
   sprayImage: {
-    width: Dimensions.get("window").width * 0.65,
-    height: Dimensions.get("window").width * 0.65,
+    width: Dimensions.get("window").width * 0.5,
+    height: Dimensions.get("window").width * 0.5,
     objectFit: "contain",
   },
 });

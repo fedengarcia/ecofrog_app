@@ -139,7 +139,7 @@ export default function EcofrogPage2() {
   );
 }
 
-const COLUMN_IMAGE_WIDTH = scale(280);
+const COLUMN_IMAGE_WIDTH = scale(200);
 
 const styles = StyleSheet.create({
   content: {
@@ -167,27 +167,27 @@ const styles = StyleSheet.create({
     opacity: 0.1,
   },
   logo: {
-    width: scale(350),
-    height: verticalScale(120),
-    marginBottom: verticalScale(30),
+    width: scale(280),
+    height: verticalScale(80),
+    marginBottom: verticalScale(15),
   },
   title: {
     width: "100%",
-    fontSize: moderateScale(22, 0.3),
+    fontSize: moderateScale(18, 0.3),
     fontWeight: "bold",
     color: "#000",
-    marginBottom: verticalScale(20),
+    marginBottom: verticalScale(10),
     fontFamily: "Exo-Bold",
     textAlign: "left",
   },
   description: {
     width: "100%",
-    fontSize: moderateScale(20, 0.3),
+    fontSize: moderateScale(14, 0.3),
     textAlign: "left",
     color: "#000",
-    marginBottom: verticalScale(20),
+    marginBottom: verticalScale(10),
     fontFamily: "Exo-Regular",
-    lineHeight: moderateScale(26, 0.3),
+    lineHeight: moderateScale(18, 0.3),
   },
   columnsRow: {
     flexDirection: "row",
@@ -199,42 +199,42 @@ const styles = StyleSheet.create({
   },
   columnLeft: {
     width: "60%",
-    padding: scale(18),
+    padding: scale(12),
     overflow: "visible",
   },
   columnRight: {
     width: "40%",
     borderRadius: moderateScale(16, 0.5),
-    height: verticalScale(320),
+    height: verticalScale(250),
   },
   columnTitleLeft: {
     width: "100%",
-    fontSize: moderateScale(22, 0.3),
+    fontSize: moderateScale(16, 0.3),
     fontWeight: "bold",
     color: "#000",
-    marginBottom: verticalScale(14),
+    marginBottom: verticalScale(8),
     fontFamily: "Exo-Bold",
     textAlign: "right",
   },
   columnDescLeft: {
     width: "100%",
-    fontSize: moderateScale(16, 0.3),
+    fontSize: moderateScale(12, 0.3),
     textAlign: "right",
     color: "#000",
-    marginBottom: verticalScale(16),
+    marginBottom: verticalScale(10),
     fontFamily: "Exo-Regular",
-    lineHeight: moderateScale(24, 0.3),
+    lineHeight: moderateScale(16, 0.3),
   },
   columnDescRight: {
     width: "100%",
-    fontSize: moderateScale(16, 0.3),
+    fontSize: moderateScale(11, 0.3),
     textAlign: "left",
     color: "#000",
-    marginBottom: verticalScale(16),
+    marginBottom: verticalScale(10),
     fontFamily: "Exo-Regular",
-    lineHeight: moderateScale(24, 0.3),
+    lineHeight: moderateScale(14, 0.3),
     backgroundColor: "#F2F2F7",
-    padding: scale(12),
+    padding: scale(8),
   },
   videoSection: {
     width: "100%",
@@ -249,10 +249,10 @@ const styles = StyleSheet.create({
   },
   plantImage: {
     position: "absolute",
-    right: scale(180),
-    bottom: verticalScale(40),
-    width: scale(400),
-    height: scale(400),
+    right: scale(140),
+    bottom: verticalScale(30),
+    width: scale(300),
+    height: scale(300),
     zIndex: -2,
   },
   video: {
@@ -288,19 +288,19 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     paddingHorizontal: scale(20),
-    marginBottom: verticalScale(20),
+    marginBottom: verticalScale(10),
   },
   bottomText: {
     width: "100%",
     textAlign: "left",
-    fontSize: moderateScale(20, 0.3),
+    fontSize: moderateScale(14, 0.3),
     color: "#000",
     fontFamily: "Exo-Bold",
   },
   certificationsImage: {
-    marginTop: verticalScale(-10),
-    marginBottom: verticalScale(20),
+    marginTop: verticalScale(-5),
+    marginBottom: verticalScale(10),
     width: "100%",
-    height: verticalScale(60),
+    height: verticalScale(40),
   },
 });

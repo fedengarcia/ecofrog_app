@@ -1,20 +1,7 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  Dimensions,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Product, ProductId, TextPart } from "../../types/products";
 import { scale, verticalScale, moderateScale } from "../../utils/scaling";
-
-const { width } = Dimensions.get("window");
-const isTablet = width >= 768;
-
-// 3 columnas en tablet, 1 en móvil
-const CARD_WIDTH = isTablet ? (width - scale(80)) / 3 : width - scale(40);
 
 interface ProductCardProps {
   product: Product;
@@ -22,6 +9,9 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product, onPress }: ProductCardProps) {
+  // 3 columnas en tablet, 1 en móvil
+  // Restamos padding horizontal (40) + 2 gaps entre 3 columnas (30)
+  const CARD_WIDTH = 200;
   const renderTextParts = (parts: TextPart[]) => {
     return (
       <Text style={styles.description}>
@@ -42,7 +32,11 @@ export default function ProductCard({ product, onPress }: ProductCardProps) {
   };
 
   return (
-    <TouchableOpacity style={styles.card} onPress={onPress} activeOpacity={0.7}>
+    <TouchableOpacity
+      style={[styles.card, { width: CARD_WIDTH }]}
+      onPress={onPress}
+      activeOpacity={0.7}
+    >
       <View
         style={{
           ...styles.image,
@@ -75,7 +69,6 @@ export default function ProductCard({ product, onPress }: ProductCardProps) {
 
 const styles = StyleSheet.create({
   card: {
-    width: CARD_WIDTH,
     borderRadius: moderateScale(16, 0.5),
     padding: scale(10),
     alignItems: "center",
@@ -99,7 +92,7 @@ const styles = StyleSheet.create({
     marginBottom: verticalScale(12),
   },
   description: {
-    fontSize: moderateScale(18, 0.3),
+    fontSize: moderateScale(16, 0.3),
     color: "#333",
     textAlign: "center",
     fontWeight: "500",

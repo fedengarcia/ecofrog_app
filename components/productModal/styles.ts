@@ -81,7 +81,7 @@ export const headerStyles = StyleSheet.create({
     flexDirection: "row",
   },
   productImage: {
-    width: scale(220),
+    width: scale(200),
     position: "absolute",
   },
   productImageOverlay: {
@@ -90,27 +90,28 @@ export const headerStyles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   productLogo: {
-    width: scale(350),
-    height: verticalScale(120),
-    marginBottom: verticalScale(20),
+    width: scale(280),
+    height: verticalScale(90),
+    marginBottom: verticalScale(10),
   },
   title: {
-    fontSize: moderateScale(28, 0.3),
+    fontSize: moderateScale(22, 0.3),
     textAlign: "left",
     color: "#000",
-    marginBottom: verticalScale(15),
+    marginBottom: verticalScale(8),
     fontFamily: "Exo-SemiBold",
-    lineHeight: moderateScale(24, 0.3),
+    lineHeight: moderateScale(28, 0.3),
     width: scale(500),
   },
   subtitle: {
-    fontSize: moderateScale(20, 0.3),
+    fontSize: moderateScale(16, 0.3),
     textAlign: "left",
     color: "#000000",
-    marginBottom: verticalScale(25),
+    marginBottom: verticalScale(15),
     width: scale(500),
     fontFamily: "Exo-Regular",
     lineHeight: moderateScale(20, 0.3),
+    paddingRight: scale(10),
   },
 });
 
@@ -121,26 +122,26 @@ export const iconStyles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "center",
     width: "100%",
-    paddingBottom: verticalScale(25),
+    paddingVertical: verticalScale(20),
   },
   iconItem: {
-    width: scale(80),
-    height: verticalScale(105),
-    gap: scale(8),
+    width: scale(60),
+    height: verticalScale(75),
+    gap: scale(4),
     alignItems: "center",
-    marginBottom: verticalScale(24),
+    marginBottom: verticalScale(10),
   },
   icon: {
-    width: scale(80),
-    height: scale(80),
+    width: scale(50),
+    height: scale(50),
   },
   iconLegend: {
-    fontSize: moderateScale(16, 0.3),
+    fontSize: moderateScale(10, 0.3),
     fontWeight: "bold",
     textTransform: "uppercase",
     textAlign: "center",
     fontFamily: "Exo-Regular",
-    lineHeight: moderateScale(14, 0.3),
+    lineHeight: moderateScale(11, 0.3),
   },
 });
 
@@ -170,7 +171,7 @@ export const columnStyles = StyleSheet.create({
   },
   videoContainer: {
     width: "100%",
-    height: height * 0.4,
+    flex: 1,
     backgroundColor: "#000000",
     borderRadius: moderateScale(10, 0.5),
     justifyContent: "center",
@@ -195,18 +196,18 @@ export const columnStyles = StyleSheet.create({
 export const cpStyles = StyleSheet.create({
   cpContainer: {
     width: "100%",
-    gap: scale(20),
+    gap: scale(40),
   },
   cpDescriptionContainer: {
     width: "100%",
-    gap: scale(15),
+    gap: scale(10),
   },
   cpDescription: {
-    fontSize: moderateScale(18, 0.3),
+    fontSize: moderateScale(16, 0.3),
     textAlign: "left",
     color: "#333",
     fontFamily: "Exo-Regular",
-    lineHeight: moderateScale(16, 0.3),
+    lineHeight: moderateScale(22, 0.3),
   },
   cpBubbleTextContainer: {
     backgroundColor: "#E0E0E0",
@@ -214,13 +215,13 @@ export const cpStyles = StyleSheet.create({
     borderRadius: moderateScale(10, 0.5),
     gap: scale(5),
     alignSelf: "flex-end",
-    width: "70%",
+    width: "100%",
   },
   cpVideoSection: {
     width: "100%",
     alignItems: "center",
     position: "relative",
-    marginBottom: verticalScale(20),
+    marginBottom: verticalScale(10),
   },
   cpVideoContainer: {
     width: "100%",
@@ -293,32 +294,101 @@ export const getDynamicStyles = (productId: ProductId) => {
     productImagePosition: {
       top: verticalScale(
         productId === ProductId.CP
-          ? -80
+          ? -120
           : productId === ProductId.WASH
             ? -70
-            : -150,
+            : productId === ProductId.AVATAR
+              ? -200
+              : productId === ProductId.TROLLEY
+                ? -240
+                : productId === ProductId.ELEKTRA
+                  ? -180
+                  : -150,
       ),
-      left: scale(productId === ProductId.CP ? -100 : -130),
+      left: scale(productId === ProductId.CP ? -80 : -120),
     },
     // Gap de iconos según cantidad
     getIconsGap: (iconsCount: number) =>
       scale(
         iconsCount <= 5
           ? productId === ProductId.WASH || productId === ProductId.TROLLEY
-            ? 15
-            : 40
-          : 15,
+            ? 10
+            : productId === ProductId.AVATAR
+              ? 30
+              : 25
+          : 10,
       ),
     // Margin bottom según producto
     iconsMarginBottom: verticalScale(
       productId === ProductId.TROLLEY
-        ? -35
+        ? -20
         : productId === ProductId.WASH
-          ? -10
-          : 25,
+          ? -20
+          : 10,
     ),
     iconWidth: scale(
-      productId === ProductId.WASH || productId === ProductId.TROLLEY ? 90 : 80,
+      productId === ProductId.WASH || productId === ProductId.TROLLEY
+        ? 100
+        : productId === ProductId.AVATAR
+          ? 80
+          : productId === ProductId.CP
+            ? 80
+            : productId === ProductId.ELEKTRA
+              ? 85
+              : 60,
+    ),
+    // Margin bottom del header según producto (negativo para subir contenido)
+    headerMarginBottom: verticalScale(
+      productId === ProductId.AVATAR
+        ? 0
+        : productId === ProductId.WASH
+          ? -20
+          : productId === ProductId.TROLLEY
+            ? -20
+            : productId === ProductId.CP
+              ? 0
+              : productId === ProductId.ELEKTRA
+                ? 0
+                : 10,
+    ),
+    // Tamaños de texto para descripción y dots (más pequeño para Trolley)
+    descriptionFontSize: moderateScale(
+      productId === ProductId.TROLLEY
+        ? 16
+        : productId === ProductId.ELEKTRA
+          ? 16
+          : productId === ProductId.WASH || productId === ProductId.AVATAR
+            ? 16
+            : 18,
+      0.3,
+    ),
+    descriptionLineHeight: moderateScale(
+      productId === ProductId.TROLLEY
+        ? 14
+        : productId === ProductId.ELEKTRA
+          ? 18
+          : 18,
+      0.3,
+    ),
+    bubbleTextFontSize: moderateScale(
+      productId === ProductId.TROLLEY
+        ? 16
+        : productId === ProductId.ELEKTRA
+          ? 14
+          : 18,
+      0.3,
+    ),
+    bubbleTextLineHeight: moderateScale(
+      productId === ProductId.TROLLEY
+        ? 16
+        : productId === ProductId.ELEKTRA
+          ? 14
+          : 18,
+      0.3,
+    ),
+    bubbleContainerPadding: scale(productId === ProductId.TROLLEY ? 10 : 20),
+    bubbleContainerMarginTop: verticalScale(
+      productId === ProductId.TROLLEY ? 10 : 20,
     ),
   };
 };

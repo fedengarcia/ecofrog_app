@@ -25,7 +25,12 @@ export default function Header({
 
   return (
     <>
-      <View style={headerStyles.headerContainer}>
+      <View
+        style={[
+          headerStyles.headerContainer,
+          { marginBottom: dynamicStyles.headerMarginBottom },
+        ]}
+      >
         <View style={headerStyles.productImageOverlay} />
         <Image
           source={imageModal ?? image}

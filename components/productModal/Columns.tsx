@@ -102,6 +102,7 @@ export default function Columns({
                   shouldPlay={true}
                   isLooping={true}
                   rate={1.0}
+                  isMuted={true}
                   onReadyForDisplay={() => setIsVideoLoading(false)}
                   onLoadStart={() => setIsVideoLoading(true)}
                   onError={() => setIsVideoLoading(false)}
@@ -145,7 +146,11 @@ export default function Columns({
         {description_1 && (
           <TextParts
             parts={description_1}
-            baseStyle={columnStyles.description}
+            baseStyle={{
+              ...columnStyles.description,
+              fontSize: dynamicStyles.descriptionFontSize,
+              lineHeight: dynamicStyles.descriptionLineHeight,
+            }}
           />
         )}
 
@@ -153,7 +158,11 @@ export default function Columns({
         {description_2 && (
           <TextParts
             parts={description_2}
-            baseStyle={columnStyles.description}
+            baseStyle={{
+              ...columnStyles.description,
+              fontSize: dynamicStyles.descriptionFontSize,
+              lineHeight: dynamicStyles.descriptionLineHeight,
+            }}
           />
         )}
 
@@ -165,11 +174,20 @@ export default function Columns({
                 style={{
                   ...baseStyles.bubbleBullet,
                   color: dynamicStyles.bulletColor,
+                  fontSize: dynamicStyles.bubbleTextFontSize,
+                  lineHeight: dynamicStyles.bubbleTextLineHeight,
                 }}
               >
                 »
               </Text>
-              <TextParts parts={item} baseStyle={baseStyles.bubbleText} />
+              <TextParts
+                parts={item}
+                baseStyle={{
+                  ...baseStyles.bubbleText,
+                  fontSize: dynamicStyles.bubbleTextFontSize,
+                  lineHeight: dynamicStyles.bubbleTextLineHeight,
+                }}
+              />
             </View>
           ))}
 
@@ -191,6 +209,7 @@ export default function Columns({
                 resizeMode={ResizeMode.CONTAIN}
                 shouldPlay={true}
                 isLooping={true}
+                isMuted={true}
                 rate={1.0}
                 onReadyForDisplay={() => setIsVideoLoading(false)}
                 onLoadStart={() => setIsVideoLoading(true)}

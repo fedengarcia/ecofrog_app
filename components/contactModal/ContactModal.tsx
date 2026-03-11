@@ -104,7 +104,7 @@ export default function ContactModal({ visible, onClose }: ContactModalProps) {
               url: "https://www.ecofrog.es",
             },
           }),
-        }
+        },
       );
 
       if (!response.ok) {
@@ -129,11 +129,13 @@ export default function ContactModal({ visible, onClose }: ContactModalProps) {
       onRequestClose={onClose}
     >
       {/* Bubbles en la esquina inferior izquierda */}
-      <Image
-        source={require("../../assets/contact/bubbles.png")}
-        style={styles.bubbles}
-        resizeMode="contain"
-      />
+      <View style={styles.bubbles} pointerEvents="none">
+        <Image
+          source={require("../../assets/contact/bubbles.png")}
+          style={{ width: "100%", height: "100%" }}
+          resizeMode="contain"
+        />
+      </View>
       <TouchableWithoutFeedback onPress={onClose}>
         <View style={styles.overlay}>
           <TouchableWithoutFeedback onPress={() => {}}>
@@ -211,15 +213,11 @@ export default function ContactModal({ visible, onClose }: ContactModalProps) {
                       placeholder={t("fields.placeholder")}
                       placeholderTextColor="#999"
                       value={formData.localidad}
-                      onChangeText={(value) =>
-                        handleChange("localidad", value)
-                      }
+                      onChangeText={(value) => handleChange("localidad", value)}
                     />
                   </View>
                   <View style={styles.inputGroup}>
-                    <Text style={styles.inputLabel}>
-                      {t("fields.advisor")}
-                    </Text>
+                    <Text style={styles.inputLabel}>{t("fields.advisor")}</Text>
                     <TextInput
                       style={styles.input}
                       placeholder={t("fields.placeholder")}
@@ -276,7 +274,7 @@ export default function ContactModal({ visible, onClose }: ContactModalProps) {
                         style={styles.privacyLink}
                         onPress={() =>
                           Linking.openURL(
-                            "https://www.ecofrog.es/politica-privacidad/"
+                            "https://www.ecofrog.es/politica-privacidad/",
                           )
                         }
                       >

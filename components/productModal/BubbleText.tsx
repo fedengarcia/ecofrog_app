@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { BubbleText as BubbleTextType, ProductId } from "../../types/products";
 import { getProductColor } from "../../types/products";
+import { getDynamicStyles } from "./styles";
 import TextParts from "./TextParts";
 import { scale, verticalScale, moderateScale } from "../../utils/scaling";
 
@@ -18,24 +19,52 @@ export default function BubbleText({
 }: BubbleTextProps) {
   const color = getProductColor(productId);
   const titleColor = productId === ProductId.ELEKTRA ? "#8D418F" : color;
+  const dynamicStyles = getDynamicStyles(productId);
 
   const containerStyle = isInsideContainer
-    ? styles.bubbleContainer
+    ? {
+        ...styles.bubbleContainer,
+        padding: dynamicStyles.bubbleContainerPadding,
+        marginTop: dynamicStyles.bubbleContainerMarginTop,
+      }
     : styles.bubbleContainerFlat;
 
   return (
     <View style={containerStyle}>
       {bubbleText.title && (
-        <Text style={[styles.bubbleTitle, { color: titleColor }]}>
+        <Text
+          style={[
+            styles.bubbleTitle,
+            { color: titleColor, fontSize: dynamicStyles.bubbleTextFontSize },
+          ]}
+        >
           {bubbleText.title}
         </Text>
       )}
       {bubbleText.items.map((item, index) => (
         <View key={index} style={styles.bubbleItem}>
           {!bubbleText.withoutDots && (
-            <Text style={[styles.bubbleBullet, { color }]}>»</Text>
+            <Text
+              style={[
+                styles.bubbleBullet,
+                {
+                  color,
+                  fontSize: dynamicStyles.bubbleTextFontSize,
+                  lineHeight: dynamicStyles.bubbleTextLineHeight,
+                },
+              ]}
+            >
+              »
+            </Text>
           )}
-          <TextParts parts={item} baseStyle={styles.bubbleText} />
+          <TextParts
+            parts={item}
+            baseStyle={{
+              ...styles.bubbleText,
+              fontSize: dynamicStyles.bubbleTextFontSize,
+              lineHeight: dynamicStyles.bubbleTextLineHeight,
+            }}
+          />
         </View>
       ))}
     </View>

@@ -52,8 +52,12 @@ export default function VideoCard({ category, onPress }: VideoCardProps) {
             style={styles.icon}
             resizeMode="contain"
           />
-          <Text style={styles.title}>{category.title}</Text>
-          <Text style={styles.description}>{category.description}</Text>
+          <Text style={styles.title} numberOfLines={1}>
+            {category.title}
+          </Text>
+          <Text style={styles.description} numberOfLines={2}>
+            {category.description}
+          </Text>
         </LinearGradient>
       </ImageBackground>
     </TouchableOpacity>
@@ -95,12 +99,12 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: "Exo-SemiBold",
-    fontSize: moderateScale(35, 0.3),
+    fontSize: moderateScale(26, 0.3),
     fontWeight: "600",
     color: "#ffffff",
     marginBottom: verticalScale(6),
     textAlign: "center",
-    lineHeight: moderateScale(35, 0.3),
+    lineHeight: moderateScale(42, 0.3),
   },
   description: {
     fontFamily: "Exo-Medium",
@@ -108,6 +112,6 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     color: "#ffffff",
     textAlign: "center",
-    lineHeight: moderateScale(14, 0.3),
+    lineHeight: moderateScale(18, 0.3),
   },
 });

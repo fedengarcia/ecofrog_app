@@ -1,11 +1,5 @@
 import React, { useState, useMemo, useEffect } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  Image,
-} from "react-native";
+import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useInactivity } from "../context/InactivityContext";
 import { useTranslation } from "react-i18next";
@@ -92,7 +86,7 @@ const styles = StyleSheet.create({
   scrollContent: {
     flexGrow: 1,
     paddingTop: verticalScale(40),
-    paddingHorizontal: scale(20),
+    paddingHorizontal: 20,
   },
   header: {
     flexDirection: "row",
@@ -100,6 +94,7 @@ const styles = StyleSheet.create({
     marginBottom: verticalScale(15),
     paddingHorizontal: scale(20),
     paddingVertical: verticalScale(15),
+    paddingBottom: 0,
   },
   headerIcon: {
     width: scale(47),
@@ -143,7 +138,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "center",
     alignContent: "flex-start",
-    columnGap: scale(15),
-    rowGap: verticalScale(120),
+    columnGap: 25,
+    rowGap: verticalScale(70),
   },
 });
