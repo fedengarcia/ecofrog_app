@@ -139,7 +139,7 @@ export default function EcofrogPage2() {
   );
 }
 
-const COLUMN_IMAGE_WIDTH = scale(200);
+const COLUMN_IMAGE_WIDTH = scale(240);
 
 const styles = StyleSheet.create({
   content: {
@@ -276,7 +276,7 @@ const styles = StyleSheet.create({
   },
   columnImage: {
     position: "absolute",
-    top: "-40%",
+    top: "-10%",
     left: "50%",
     width: COLUMN_IMAGE_WIDTH,
     transform: [
