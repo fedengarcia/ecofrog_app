@@ -34,8 +34,8 @@ i18n.use(initReactI18next).init({
       ecofrog: esEcofrog,
     },
   },
-  lng: "en",
-  fallbackLng: "en",
+  lng: "es",
+  fallbackLng: "es",
   defaultNS: "common",
   ns: ["common", "home", "products", "videos", "contact", "ecofrog"],
   interpolation: {

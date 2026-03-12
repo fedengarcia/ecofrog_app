@@ -8,7 +8,13 @@ const flags: Record<string, any> = {
   es: require("../assets/flags/es.png"),
 };
 
-export default function LanguageDropdown() {
+interface LanguageDropdownProps {
+  disabled?: boolean;
+}
+
+export default function LanguageDropdown({
+  disabled = false,
+}: LanguageDropdownProps) {
   const { language, changeLanguage } = useLanguage();
   const [open, setOpen] = useState(false);
 
@@ -22,14 +28,22 @@ export default function LanguageDropdown() {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button} onPress={() => setOpen(!open)}>
+      <TouchableOpacity
+        style={[styles.button, disabled && styles.buttonDisabled]}
+        onPress={() => !disabled && setOpen(!open)}
+        activeOpacity={disabled ? 1 : 0.7}
+      >
         <Image
           source={flags[language]}
           style={styles.flag}
           resizeMode="contain"
         />
-        <Text style={styles.buttonText}>{labels[language]}</Text>
-        <Text style={styles.arrow}>{open ? "\u25B2" : "\u25BC"}</Text>
+        <Text style={[styles.buttonText, disabled && styles.textDisabled]}>
+          {labels[language]}
+        </Text>
+        {!disabled && (
+          <Text style={styles.arrow}>{open ? "\u25B2" : "\u25BC"}</Text>
+        )}
       </TouchableOpacity>
       {open && (
         <View style={styles.dropdown}>
@@ -105,5 +119,11 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(20, 0.3),
     fontFamily: "Exo-Medium",
     color: "#333",
+  },
+  buttonDisabled: {
+    opacity: 0.7,
+  },
+  textDisabled: {
+    color: "#666",
   },
 });
