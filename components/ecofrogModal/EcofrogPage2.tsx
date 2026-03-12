@@ -145,10 +145,10 @@ const styles = StyleSheet.create({
   content: {
     width: "100%",
     height: "100%",
+    flex: 1,
     paddingHorizontal: scale(20),
     alignItems: "center",
     justifyContent: "space-around",
-    position: "relative",
     overflow: "visible",
   },
   backgroundImageWrapper: {
@@ -194,7 +194,6 @@ const styles = StyleSheet.create({
   columnsRow: {
     flexDirection: "row",
     width: "100%",
-    height: "100%",
     gap: scale(20),
     marginTop: verticalScale(10),
     alignItems: "stretch",
@@ -277,7 +276,7 @@ const styles = StyleSheet.create({
   },
   columnImage: {
     position: "absolute",
-    top: "10%",
+    top: "-40%",
     left: "50%",
     width: COLUMN_IMAGE_WIDTH,
     transform: [
@@ -288,14 +287,10 @@ const styles = StyleSheet.create({
   },
   bottomContainer: {
     width: "100%",
-    flex: 1,
-
     alignItems: "center",
     paddingHorizontal: scale(20),
   },
   bottomText: {
-    flex: 1,
-
     width: "100%",
     textAlign: "left",
     fontSize: moderateScale(14, 0.3),
@@ -306,6 +301,6 @@ const styles = StyleSheet.create({
     marginTop: verticalScale(-5),
     marginBottom: verticalScale(10),
     width: "100%",
-    height: verticalScale(40),
+    height: verticalScale(60),
   },
 });

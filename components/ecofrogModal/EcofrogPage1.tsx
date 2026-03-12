@@ -16,7 +16,7 @@ import { scale, verticalScale, moderateScale } from "../../utils/scaling";
 
 const { width: screenWidth } = Dimensions.get("window");
 
-const BRAND_SIZE = scale(70);
+const BRAND_SIZE = scale(80);
 const BRAND_MARGIN = scale(15);
 const BRAND_TOTAL = BRAND_SIZE + BRAND_MARGIN;
 
@@ -123,7 +123,11 @@ export default function EcofrogPage1() {
       {/* Items */}
       {pageData.items.map((item, index) => (
         <View key={index} style={styles.item}>
-          <Image source={item.icon} style={styles.itemIcon} />
+          <Image
+            source={item.icon}
+            style={styles.itemIcon}
+            resizeMode="contain"
+          />
           <View style={styles.itemContent}>
             <TextParts
               parts={[{ text: item.title, bold: true }]}
@@ -227,8 +231,7 @@ const styles = StyleSheet.create({
   item: {
     width: "80%",
     height: "auto",
-    padding: scale(10),
-    overflow: "hidden",
+    padding: scale(12),
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-start",
@@ -236,9 +239,9 @@ const styles = StyleSheet.create({
     marginBottom: verticalScale(10),
   },
   itemIcon: {
-    width: scale(30),
-    height: scale(30),
-    marginBottom: verticalScale(5),
+    width: scale(50),
+    height: scale(50),
+    marginRight: scale(10),
   },
   itemContent: {
     width: "100%",
