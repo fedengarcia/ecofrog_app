@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "EcoFrog App",
-    "slug": "ecofrog_app",
+    "slug": "ecofrog",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/logo.png",
@@ -40,8 +40,9 @@
     },
     "extra": {
       "eas": {
-        "projectId": "f401d803-294d-45ae-817a-f915148649ae"
+        "projectId": "0f95b614-208d-45f8-a88d-f6f7d9a0b5f8"
       }
-    }
+    },
+    "owner": "fedengarcias-organization"
   }
 }
