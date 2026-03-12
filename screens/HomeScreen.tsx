@@ -74,10 +74,10 @@ const styles = StyleSheet.create({
   },
   backgroundFrog: {
     position: "absolute",
-    bottom: 0,
-    left: 0,
-    width: scale(750),
-    height: scale(750),
+    bottom: -350,
+    left: -380,
+    width: scale(1250),
+    height: scale(1250),
     opacity: 1,
   },
   logo: {

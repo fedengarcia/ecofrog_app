@@ -174,14 +174,17 @@ export default function EcofrogPage1() {
 
 const styles = StyleSheet.create({
   content: {
+    flex: 1,
+    height: "100%",
     width: "100%",
     alignItems: "center",
+    justifyContent: "space-around",
     overflow: "visible",
   },
   logo: {
-    width: scale(280),
-    height: verticalScale(80),
-    marginBottom: verticalScale(5),
+    width: scale(300),
+    height: verticalScale(100),
+    marginBottom: verticalScale(15),
   },
   titleRow: {
     flexDirection: "row",
@@ -191,7 +194,7 @@ const styles = StyleSheet.create({
     marginBottom: verticalScale(3),
   },
   title: {
-    fontSize: moderateScale(24, 0.3),
+    fontSize: moderateScale(22, 0.3),
     fontWeight: "bold",
     color: "#000",
     fontFamily: "Exo-Medium",
@@ -213,16 +216,16 @@ const styles = StyleSheet.create({
   },
   description: {
     width: "100%",
-    fontSize: moderateScale(14, 0.3),
+    fontSize: moderateScale(18, 0.3),
     textAlign: "left",
     color: "#000",
     marginBottom: verticalScale(10),
     fontFamily: "Exo-Regular",
-    lineHeight: moderateScale(18, 0.3),
+    lineHeight: moderateScale(24, 0.3),
   },
 
   item: {
-    width: scale(340),
+    width: "80%",
     height: "auto",
     padding: scale(10),
     overflow: "hidden",
@@ -246,7 +249,7 @@ const styles = StyleSheet.create({
     flexShrink: 1,
   },
   itemTitle: {
-    fontSize: moderateScale(16, 0.3),
+    fontSize: moderateScale(18, 0.3),
     fontWeight: "bold",
     color: "#000",
     marginBottom: verticalScale(2),
@@ -254,11 +257,11 @@ const styles = StyleSheet.create({
     textAlign: "left",
   },
   itemDescription: {
-    fontSize: moderateScale(12, 0.3),
+    fontSize: moderateScale(16, 0.3),
     textAlign: "left",
     color: "#000",
     fontFamily: "Exo-Medium",
-    lineHeight: moderateScale(16, 0.3),
+    lineHeight: moderateScale(20, 0.3),
   },
   carouselContainer: {
     width: "100%",
@@ -279,7 +282,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     zIndex: 2,
     bottom: Dimensions.get("window").height * 0.12,
-    left: -Dimensions.get("window").width * 0.32,
+    left: -Dimensions.get("window").width * 0.36,
     width: "100%",
     height: Dimensions.get("window").height * 0.15,
     overflow: "visible",

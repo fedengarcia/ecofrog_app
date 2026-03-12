@@ -13,9 +13,9 @@ import { RootStackParamList } from "../navigation/types";
 import { useModal } from "../context/ModalContext";
 import { useTranslation } from "react-i18next";
 import { scale, verticalScale, moderateScale } from "../utils/scaling";
+import { ArrowLeftCircle } from "lucide-react-native";
 
 // Importar imágenes
-const arrowBackIcon = require("../assets/navbar/arrowBack.png");
 const productsIcon = require("../assets/navbar/product.png");
 const informationIcon = require("../assets/navbar/information.png");
 const contactIcon = require("../assets/navbar/mail.png");
@@ -27,21 +27,21 @@ interface NavbarOption {
   label: string;
   screen: string | null;
   onClick: () => void;
-  icon: ImageSourcePropType;
+  icon: ImageSourcePropType | React.ReactNode;
 }
 
 export default function Navbar() {
   const navigation = useNavigation<NavbarNavigationProp>();
-  const { openContactModal, openEcofrogModal } = useModal();
+  const { openContactModal, openEcofrogModal, openH2O3Modal } = useModal();
   const { t } = useTranslation("common");
 
   const NAVBAR_OPTIONS: NavbarOption[] = [
     {
-      id: "back",
-      label: t("navbar.back"),
+      id: "",
+      label: "",
       screen: "Home",
       onClick: () => navigation.goBack(),
-      icon: arrowBackIcon,
+      icon: <ArrowLeftCircle color="#3498db" />,
     },
     {
       id: "products",
@@ -49,6 +49,13 @@ export default function Navbar() {
       screen: "Productos",
       onClick: () => navigation.navigate("Productos"),
       icon: productsIcon,
+    },
+    {
+      id: "H₂O + O₃",
+      label: "H₂O + O₃",
+      screen: null,
+      onClick: openH2O3Modal,
+      icon: informationIcon,
     },
     {
       id: "ecofrog",
@@ -79,12 +86,17 @@ export default function Navbar() {
               onPress={option.onClick}
               style={{
                 ...styles.navbarOption,
-                ...(option.id === "contact"
-                  ? styles.navbarOptionButton
-                  : {}),
+                ...(option.id === "contact" ? styles.navbarOptionButton : {}),
               }}
             >
-              <Image source={option.icon} style={styles.icon} />
+              {React.isValidElement(option.icon) ? (
+                option.icon
+              ) : (
+                <Image
+                  source={option.icon as ImageSourcePropType}
+                  style={styles.icon}
+                />
+              )}
               <Text
                 style={{
                   ...styles.navbarOptionText,

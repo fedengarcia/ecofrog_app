@@ -4,32 +4,72 @@
     "titleO": "O",
     "titleSubscript": "3",
     "titleSuffix": " TECNOLOGÍA",
-    "subtitle": ["Comercializamos, diseñamos y fabricamos sistemas de", " limpieza y desinfección eco-sostenibles y saludables."],
-    "description": ["ECOFROG", " es un ", "líder global", " en ", "agua ozonizada", " , gracias a su constante innovación, una sólida red internacional de distribuidores, un laboratorio de última generación y un equipo profesional y comercial altamente cualificado."],
+    "subtitle": [
+      "Comercializamos, diseñamos y fabricamos sistemas de",
+      " limpieza y desinfección eco-sostenibles y saludables."
+    ],
+    "description": [
+      "ECOFROG",
+      " es un ",
+      "líder global",
+      " en ",
+      "agua ozonizada",
+      ", gracias a su constante innovación, una sólida red internacional de distribuidores, un laboratorio de última generación y un equipo profesional y comercial altamente cualificado."
+    ],
     "items": [
       {
         "title": "+11 años en el sector",
-        "description": ["ECOFROG", " ha liderado el camino en la introducción del ", "ozono", " en el agua en negocios y hogares durante más de 11 años."]
+        "description": [
+          "ECOFROG",
+          " ha liderado el camino en la introducción del ",
+          "ozono",
+          " en el agua en negocios y hogares durante más de 11 años."
+        ]
       },
       {
         "title": "+20 países",
-        "description": ["Presente en Europa, América Latina, Reino Unido, África y Oriente Medio."]
+        "description": [
+          "Presente en Europa, América Latina, Reino Unido, África y Oriente Medio."
+        ]
       },
       {
         "title": "+60.000 clientes",
-        "description": ["Una transición lógica de hogares a negocios que involucra una comunidad con necesidades de limpieza y desinfección."]
+        "description": [
+          "Una transición lógica de hogares a negocios que involucra una comunidad con necesidades de limpieza y desinfección."
+        ]
       }
     ]
   },
   "page2": {
     "title": ["Nuestra ", "misión"],
-    "description": ["Liderar un proceso de ", "desarrollo e innovación del ozono ", "", " con el objetivo de globalizarlo y contribuir a una aceleración en la tendencia hacia", "procesos y hábitos más sostenibles", " y ", "menos agresivos"],
+    "description": [
+      "Liderar un proceso de ",
+      "desarrollo e innovación del ozono ",
+      "",
+      " con el objetivo de globalizarlo y contribuir a una aceleración en la tendencia hacia",
+      "procesos y hábitos más sostenibles",
+      " y ",
+      "menos agresivos"
+    ],
     "column1": {
       "title": ["¿Qué es el ", "ozono", "?"],
-      "description": ["O₃ ", "es una molécula formada por tres átomos de oxígeno. ", "ECOFROG", " inyecta y estabiliza esta molécula en el agua del grifo, convirtiéndola en un potente limpiador y desinfectante. ", "El ozono", " elimina la materia orgánica y se descompone en agua y oxígeno sin dejar ningún residuo."]
+      "description": [
+        "O₃ ",
+        "es una molécula formada por tres átomos de oxígeno. ",
+        "ECOFROG",
+        " inyecta y estabiliza esta molécula en el agua del grifo, convirtiéndola en un potente limpiador y desinfectante. ",
+        "El ozono",
+        " elimina la materia orgánica y se descompone en agua y oxígeno sin dejar ningún residuo."
+      ]
     },
     "column2": {
-      "description": ["El ozono", " es un biocida aprobado por el Reglamento de Ejecución de la Comisión Europea el 2 de junio de 2023 y evaluado por el Comité de Productos Biocidas de la ", "ECHA", " (BPC) el 26 de septiembre de 2022, que aprobó la sustancia activa del ozono generado a partir de oxígeno como ", "biocida."]
+      "description": [
+        "El ozono",
+        " es un biocida aprobado por el Reglamento de Ejecución de la Comisión Europea el 2 de junio de 2023 y evaluado por el Comité de Productos Biocidas de la ",
+        "ECHA",
+        " (BPC) el 26 de septiembre de 2022, que aprobó la sustancia activa del ozono generado a partir de oxígeno como ",
+        "biocida."
+      ]
     },
     "certifications": "Certificaciones | Membresías"
   }
