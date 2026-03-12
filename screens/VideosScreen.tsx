@@ -26,7 +26,7 @@ export default function VideosScreen() {
         icon: require("../assets/videos/restaurantsIcon.png"),
         backgroundImage: require("../assets/videos/restaurantImage.png"),
         videoUrl:
-          "https://www.ecofrog.es/wp-content/uploads/2026/03/RESTAURANTES-RN-APP.mp4",
+          "https://www.ecofrog.es/wp-content/uploads/2026/03/VIDEO_SCREEN_RN_RESTAURANTES.mp4",
       },
       {
         id: VideoCategoryId.HOTELS,
@@ -35,7 +35,7 @@ export default function VideosScreen() {
         icon: require("../assets/videos/hotelsIcon.png"),
         backgroundImage: require("../assets/videos/hotelsImage.png"),
         videoUrl:
-          "https://www.ecofrog.es/wp-content/uploads/2026/03/HOTELES-RN-APP.mp4",
+          "https://www.ecofrog.es/wp-content/uploads/2026/03/VIDEO_SCREEN_RN_HOTELES.mp4",
       },
       {
         id: VideoCategoryId.EDUCATION_CENTER,
@@ -44,7 +44,7 @@ export default function VideosScreen() {
         icon: require("../assets/videos/educationIcon.png"),
         backgroundImage: require("../assets/videos/escolaImage.png"),
         videoUrl:
-          "https://www.ecofrog.es/wp-content/uploads/2026/03/EDUCACIONAL-RN-APP.mp4",
+          "https://www.ecofrog.es/wp-content/uploads/2026/03/VIDEO_SCREEN_RN_CENTRO_EDUCATIVO.mp4",
       },
       {
         id: VideoCategoryId.MEDICAL_CENTER,
@@ -52,7 +52,8 @@ export default function VideosScreen() {
         description: t("categories.medicalCenter.description"),
         icon: require("../assets/videos/MedicalCenterIcon.png"),
         backgroundImage: require("../assets/videos/medicalCenterImage.png"),
-        videoUrl: "",
+        videoUrl:
+          "https://www.ecofrog.es/wp-content/uploads/2026/03/VIDEO_SCREEN_RN_CENTRO_MEDICO.mp4",
       },
       {
         id: VideoCategoryId.CATERING,
@@ -61,7 +62,7 @@ export default function VideosScreen() {
         icon: require("../assets/videos/cateringIcon.png"),
         backgroundImage: require("../assets/videos/cateringImage.png"),
         videoUrl:
-          "https://www.ecofrog.es/wp-content/uploads/2026/03/CATERING-RN-APP.mp4",
+          "https://www.ecofrog.es/wp-content/uploads/2026/03/VIDEO_SCREEN_RN_CATERING.mp4",
       },
       {
         id: VideoCategoryId.B2C,
@@ -69,7 +70,8 @@ export default function VideosScreen() {
         description: t("categories.b2c.description"),
         icon: require("../assets/videos/ozonatedWaterIcon.png"),
         backgroundImage: require("../assets/videos/ozonatedWaterImage.png"),
-        videoUrl: "",
+        videoUrl:
+          "https://www.ecofrog.es/wp-content/uploads/2026/03/VIDEO_SCREEN_RN_B2C.mp4",
       },
     ],
     [t],

@@ -5,7 +5,38 @@ function tp(texts: string[], styles: Partial<TextPart>[]): TextPart[] {
   return texts.map((text, i) => ({ text, ...styles[i] }));
 }
 
+// Videos por idioma
+const productVideos: Record<ProductId, { es: string; en: string }> = {
+  [ProductId.AVATAR]: {
+    es: "https://www.ecofrog.es/wp-content/uploads/2026/03/PROD-RN-AVATAR_ESPANOL.mp4",
+    en: "", // TODO: completar con URL en inglés
+  },
+  [ProductId.WASH]: {
+    es: "https://www.ecofrog.es/wp-content/uploads/2026/03/PROD-RN-WASH_ESPANOL.mp4",
+    en: "", // TODO: completar con URL en inglés
+  },
+  [ProductId.TROLLEY]: {
+    es: "https://www.ecofrog.es/wp-content/uploads/2026/03/PROD-RN-TROLLEY_ESPANOL.mp4",
+    en: "", // TODO: completar con URL en inglés
+  },
+  [ProductId.CP]: {
+    es: "https://www.ecofrog.es/wp-content/uploads/2026/03/PROD-RN-CP.mp4",
+    en: "", // TODO: completar con URL en inglés
+  },
+  [ProductId.ELEKTRA]: {
+    es: "https://www.ecofrog.es/wp-content/uploads/2026/03/PROD-RN-ELEKTRA_ESPANOL.mp4",
+    en: "", // TODO: completar con URL en inglés
+  },
+};
+
+function getVideoUrl(productId: ProductId, language: string): string {
+  const lang = language === "es" ? "es" : "en";
+  return productVideos[productId][lang];
+}
+
 export function getProducts(t: TFunction): Product[] {
+  const language = t("language") || "es";
+
   return [
     {
       id: ProductId.AVATAR,
@@ -17,8 +48,7 @@ export function getProducts(t: TFunction): Product[] {
       ),
       modalData: {
         imageModal: require("../../assets/products/avatar/avatarModal.png"),
-        video:
-          "https://www.ecofrog.es/wp-content/uploads/2026/02/avatar-ecofrog-app-video-modal.mp4",
+        video: getVideoUrl(ProductId.AVATAR, language),
         showBubbleMedium: false,
         title: tp(
           t("products:avatar.modal.title", { returnObjects: true }) as string[],
@@ -118,8 +148,7 @@ export function getProducts(t: TFunction): Product[] {
       ),
       modalData: {
         imageModal: require("../../assets/products/wash/washModal.png"),
-        video:
-          "https://www.ecofrog.es/wp-content/uploads/2026/02/wash-ecofrog-app-video-modal.mp4",
+        video: getVideoUrl(ProductId.WASH, language),
         showBubbleMedium: false,
         title: tp(
           t("products:wash.modal.title", { returnObjects: true }) as string[],
@@ -231,8 +260,7 @@ export function getProducts(t: TFunction): Product[] {
       ),
       modalData: {
         imageModal: require("../../assets/products/trolley/trolleyModal.png"),
-        video:
-          "https://www.ecofrog.es/wp-content/uploads/2026/02/trolley-ecofrogg-app-video-modal.mp4",
+        video: getVideoUrl(ProductId.TROLLEY, language),
         showBubbleMedium: false,
         title: tp(
           t("products:trolley.modal.title", {
@@ -338,8 +366,7 @@ export function getProducts(t: TFunction): Product[] {
       ),
       modalData: {
         imageModal: require("../../assets/products/cp/cpModal.png"),
-        video:
-          "https://www.ecofrog.es/wp-content/uploads/2026/03/PROD-RN-CP.mp4",
+        video: getVideoUrl(ProductId.CP, language),
         showBubbleLeft: false,
         showBubbleMedium: false,
         title: tp(
@@ -427,8 +454,7 @@ export function getProducts(t: TFunction): Product[] {
         ],
       ),
       modalData: {
-        video:
-          "https://www.ecofrog.es/wp-content/uploads/2026/02/elektra-ecofrogg-app-video-modal.mp4",
+        video: getVideoUrl(ProductId.ELEKTRA, language),
         showBubbleMedium: false,
         title: tp(
           t("products:elektra.modal.title", {

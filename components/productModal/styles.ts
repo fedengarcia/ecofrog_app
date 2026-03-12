@@ -151,7 +151,8 @@ export const columnStyles = StyleSheet.create({
     flexDirection: "row",
     gap: scale(30),
     width: "100%",
-    alignItems: "flex-start",
+    flex: 1,
+    alignItems: "stretch",
   },
   leftColumn: {
     flex: 1,
@@ -159,7 +160,6 @@ export const columnStyles = StyleSheet.create({
   rightColumn: {
     flex: 1,
     alignItems: "center",
-    position: "relative",
   },
   description: {
     fontSize: moderateScale(18, 0.3),
@@ -324,7 +324,9 @@ export const getDynamicStyles = (productId: ProductId) => {
         ? -20
         : productId === ProductId.WASH
           ? -20
-          : 10,
+          : productId === ProductId.AVATAR
+            ? 30
+            : 10,
     ),
     iconWidth: scale(
       productId === ProductId.WASH || productId === ProductId.TROLLEY

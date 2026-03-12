@@ -198,10 +198,10 @@ export default function Columns({
       </View>
 
       {/* Columna derecha: Video con botón */}
-      {video && (
-        <View style={columnStyles.rightColumn}>
-          <TouchableWithoutFeedback onPress={handleVideoPress}>
-            <View style={columnStyles.videoContainer}>
+      <View style={columnStyles.rightColumn}>
+        <TouchableWithoutFeedback onPress={handleVideoPress}>
+          <View style={columnStyles.videoContainer}>
+            {video ? (
               <Video
                 ref={videoRef}
                 source={{ uri: video }}
@@ -215,35 +215,35 @@ export default function Columns({
                 onLoadStart={() => setIsVideoLoading(true)}
                 onError={() => setIsVideoLoading(false)}
               />
-              {isVideoLoading && (
-                <View style={videoLoadingStyles.loadingOverlay}>
-                  <ActivityIndicator size="large" color="#00B4D8" />
-                </View>
-              )}
-            </View>
-          </TouchableWithoutFeedback>
-          <TouchableOpacity
+            ) : null}
+            {(isVideoLoading || !video) && (
+              <View style={videoLoadingStyles.loadingOverlay}>
+                <ActivityIndicator size="large" color="#00B4D8" />
+              </View>
+            )}
+          </View>
+        </TouchableWithoutFeedback>
+        <TouchableOpacity
+          style={{
+            ...columnStyles.moreInfoButton,
+            backgroundColor: dynamicStyles.moreInfoButtonColor,
+          }}
+          onPress={openContactModal}
+        >
+          <Image
+            source={require("../../assets/navbar/mail.png")}
             style={{
-              ...columnStyles.moreInfoButton,
-              backgroundColor: dynamicStyles.moreInfoButtonColor,
+              width: scale(24),
+              height: scale(24),
+              marginRight: scale(10),
             }}
-            onPress={openContactModal}
-          >
-            <Image
-              source={require("../../assets/navbar/mail.png")}
-              style={{
-                width: scale(24),
-                height: scale(24),
-                marginRight: scale(10),
-              }}
-              resizeMode="contain"
-            />
-            <Text style={baseStyles.moreInfoButtonText}>
-              {t("buttons.moreInfo")}
-            </Text>
-          </TouchableOpacity>
-        </View>
-      )}
+            resizeMode="contain"
+          />
+          <Text style={baseStyles.moreInfoButtonText}>
+            {t("buttons.moreInfo")}
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
