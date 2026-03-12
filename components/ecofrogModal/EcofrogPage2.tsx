@@ -243,7 +243,7 @@ const styles = StyleSheet.create({
   },
   videoWrapper: {
     width: "100%",
-    aspectRatio: 16 / 9,
+    height: 200,
     borderRadius: moderateScale(12, 0.5),
     overflow: "hidden",
     backgroundColor: "#000",

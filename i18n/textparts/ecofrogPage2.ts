@@ -2,11 +2,21 @@ import { TFunction } from "i18next";
 import { TextPart } from "../../types/products";
 
 export function getEcofrogPage2Data(t: TFunction) {
-  const titleArr = t("ecofrog:page2.title", { returnObjects: true }) as string[];
-  const descArr = t("ecofrog:page2.description", { returnObjects: true }) as string[];
-  const col1TitleArr = t("ecofrog:page2.column1.title", { returnObjects: true }) as string[];
-  const col1DescArr = t("ecofrog:page2.column1.description", { returnObjects: true }) as string[];
-  const col2DescArr = t("ecofrog:page2.column2.description", { returnObjects: true }) as string[];
+  const titleArr = t("ecofrog:page2.title", {
+    returnObjects: true,
+  }) as string[];
+  const descArr = t("ecofrog:page2.description", {
+    returnObjects: true,
+  }) as string[];
+  const col1TitleArr = t("ecofrog:page2.column1.title", {
+    returnObjects: true,
+  }) as string[];
+  const col1DescArr = t("ecofrog:page2.column1.description", {
+    returnObjects: true,
+  }) as string[];
+  const col2DescArr = t("ecofrog:page2.column2.description", {
+    returnObjects: true,
+  }) as string[];
 
   return {
     title: [
@@ -36,7 +46,8 @@ export function getEcofrogPage2Data(t: TFunction) {
         { text: col1DescArr[4], highlight: true, bold: true },
         { text: col1DescArr[5] },
       ] as TextPart[],
-      video: "https://www.ecofrog.es/wp-content/uploads/2026/02/avatar_ozono_ecofrogg-app-video-modal.mp4",
+      video:
+        "https://www.ecofrog.es/wp-content/uploads/2026/03/O3_RN_VIDEO.mp4",
     },
     column2: {
       description: [
