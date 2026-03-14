@@ -171,7 +171,7 @@ export const columnStyles = StyleSheet.create({
     lineHeight: moderateScale(18, 0.3),
   },
   videoContainer: {
-    width: "100%",
+    width: "110%",
     flex: 1,
     backgroundColor: "#000000",
     borderRadius: moderateScale(10, 0.5),

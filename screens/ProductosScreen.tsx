@@ -118,18 +118,18 @@ const styles = StyleSheet.create({
     color: "#00B4D8",
   },
   subtitle: {
-    fontSize: moderateScale(20, 0.3),
+    fontSize: moderateScale(18, 0.3),
     fontFamily: "Exo-Regular",
     fontWeight: "400",
     color: "#000000",
     marginBottom: verticalScale(6),
   },
   thirdTitle: {
-    fontSize: moderateScale(24, 0.3),
+    fontSize: moderateScale(20, 0.3),
     fontFamily: "Exo-SemiBold",
     fontWeight: "600",
     color: "#00B4D8",
-    lineHeight: moderateScale(24, 0.3),
+    lineHeight: moderateScale(22, 0.3),
     textTransform: "uppercase",
   },
   grid: {
