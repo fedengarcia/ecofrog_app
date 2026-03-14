@@ -357,8 +357,8 @@ const styles = StyleSheet.create({
     borderRadius: moderateScale(10, 0.5),
   },
   title: {
-    fontFamily: "Exo-Medium",
-    fontWeight: "500",
+    fontFamily: "Exo-Bold",
+    fontWeight: "bold",
     fontSize: moderateScale(32, 0.3),
     textAlign: "center",
     color: "#000000",

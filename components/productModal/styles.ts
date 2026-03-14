@@ -34,6 +34,7 @@ export const baseStyles = StyleSheet.create({
   bubbleTitle: {
     fontSize: moderateScale(16, 0.3),
     fontWeight: "bold",
+    fontFamily: "Exo-Bold",
   },
   bubbleText: {
     fontSize: moderateScale(18, 0.3),
@@ -99,7 +100,7 @@ export const headerStyles = StyleSheet.create({
     textAlign: "left",
     color: "#000",
     marginBottom: verticalScale(8),
-    fontFamily: "Exo-SemiBold",
+    fontFamily: "Exo-Bold",
     lineHeight: moderateScale(28, 0.3),
     width: scale(500),
   },

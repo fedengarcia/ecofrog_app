@@ -9,7 +9,7 @@
     "name": "Name and surname",
     "email": "E-mail",
     "telephone": "Telephone",
-    "telephonePlaceholder": "+39...",
+    "telephonePlaceholder": "+34...",
     "location": "Location",
     "advisor": "Advisor who attended you",
     "placeholder": "Enter.."

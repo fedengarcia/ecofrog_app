@@ -93,10 +93,11 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: moderateScale(16, 0.3),
-    color: "#333",
+    color: "#000000",
     textAlign: "center",
     fontWeight: "500",
-    lineHeight: moderateScale(24, 0.3),
+    fontFamily: "Exo-Regular",
+    lineHeight: moderateScale(20, 0.3),
   },
   bold: {
     fontFamily: "Exo-Bold",

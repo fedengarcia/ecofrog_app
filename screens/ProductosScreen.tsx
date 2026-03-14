@@ -118,9 +118,9 @@ const styles = StyleSheet.create({
     color: "#00B4D8",
   },
   subtitle: {
-    fontSize: moderateScale(22, 0.3),
-    fontFamily: "Exo-Light",
-    fontWeight: "300",
+    fontSize: moderateScale(20, 0.3),
+    fontFamily: "Exo-Regular",
+    fontWeight: "400",
     color: "#000000",
     marginBottom: verticalScale(6),
   },

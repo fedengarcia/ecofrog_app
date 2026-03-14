@@ -9,7 +9,7 @@
     "name": "Nombre y apellido",
     "email": "Correo electrónico",
     "telephone": "Teléfono",
-    "telephonePlaceholder": "+39...",
+    "telephonePlaceholder": "+34...",
     "location": "Localidad",
     "advisor": "Asesor que lo atendió",
     "placeholder": "Ingrese.."

@@ -192,16 +192,19 @@ const styles = StyleSheet.create({
   },
   titleRow: {
     flexDirection: "row",
+    width: "100%",
     flexWrap: "wrap",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "flex-end",
+    fontFamily: "Exo-Medium",
     marginBottom: verticalScale(3),
   },
   title: {
     fontSize: moderateScale(22, 0.3),
     fontWeight: "bold",
     color: "#000",
-    fontFamily: "Exo-Medium",
+    textAlign: "left",
+    fontFamily: "Exo-Bold",
   },
   titleHighlight: {
     color: "#00B4D8",
@@ -212,7 +215,7 @@ const styles = StyleSheet.create({
   subtitle: {
     width: "100%",
     fontSize: moderateScale(18, 0.3),
-    textAlign: "center",
+    textAlign: "left",
     color: "#000",
     marginBottom: verticalScale(10),
     fontFamily: "Exo-Medium",

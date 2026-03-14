@@ -41,9 +41,18 @@ export default function Columns({
   const videoRef = useRef<Video>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isVideoLoading, setIsVideoLoading] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
   const { openContactModal } = useModal();
   const { t } = useTranslation("common");
   const dynamicStyles = getDynamicStyles(productId);
+
+  const toggleMute = async () => {
+    const newMutedState = !isMuted;
+    setIsMuted(newMutedState);
+    if (videoRef.current) {
+      await videoRef.current.setIsMutedAsync(newMutedState);
+    }
+  };
 
   // Resetear estado de carga cuando cambia el video
   useEffect(() => {
@@ -102,7 +111,8 @@ export default function Columns({
                   shouldPlay={true}
                   isLooping={true}
                   rate={1.0}
-                  isMuted={true}
+                  volume={1.0}
+                  isMuted={isMuted}
                   onReadyForDisplay={() => setIsVideoLoading(false)}
                   onLoadStart={() => setIsVideoLoading(true)}
                   onError={() => setIsVideoLoading(false)}
@@ -112,6 +122,14 @@ export default function Columns({
                     <ActivityIndicator size="large" color="#00B4D8" />
                   </View>
                 )}
+                <TouchableOpacity
+                  style={videoLoadingStyles.muteButton}
+                  onPress={toggleMute}
+                >
+                  <Text style={videoLoadingStyles.muteButtonText}>
+                    {isMuted ? "🔇" : "🔊"}
+                  </Text>
+                </TouchableOpacity>
               </View>
             </TouchableWithoutFeedback>
             <TouchableOpacity
@@ -206,10 +224,11 @@ export default function Columns({
                 ref={videoRef}
                 source={{ uri: video }}
                 style={baseStyles.video}
-                resizeMode={ResizeMode.CONTAIN}
+                resizeMode={ResizeMode.COVER}
                 shouldPlay={true}
                 isLooping={true}
-                isMuted={true}
+                volume={1.0}
+                isMuted={isMuted}
                 rate={1.0}
                 onReadyForDisplay={() => setIsVideoLoading(false)}
                 onLoadStart={() => setIsVideoLoading(true)}
@@ -221,6 +240,14 @@ export default function Columns({
                 <ActivityIndicator size="large" color="#00B4D8" />
               </View>
             )}
+            <TouchableOpacity
+              style={videoLoadingStyles.muteButton}
+              onPress={toggleMute}
+            >
+              <Text style={videoLoadingStyles.muteButtonText}>
+                {isMuted ? "🔇" : "🔊"}
+              </Text>
+            </TouchableOpacity>
           </View>
         </TouchableWithoutFeedback>
         <TouchableOpacity
@@ -257,5 +284,20 @@ const videoLoadingStyles = StyleSheet.create({
     borderRadius: moderateScale(15, 0.5),
     zIndex: 10,
     elevation: 10,
+  },
+  muteButton: {
+    position: "absolute",
+    top: scale(10),
+    right: scale(10),
+    backgroundColor: "rgba(0, 0, 0, 0.6)",
+    borderRadius: scale(20),
+    width: scale(40),
+    height: scale(40),
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 20,
+  },
+  muteButtonText: {
+    fontSize: scale(20),
   },
 });

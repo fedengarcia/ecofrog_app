@@ -1,6 +1,13 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useEffect,
+} from "react";
 import ContactModal from "../components/contactModal/ContactModal";
 import EcofrogModal from "../components/ecofrogModal/EcofrogModal";
+import { useInactivity } from "./InactivityContext";
 
 interface ModalContextType {
   openContactModal: () => void;
@@ -29,6 +36,16 @@ export const ModalProvider = ({ children }: ModalProviderProps) => {
   const [isContactModalVisible, setIsContactModalVisible] = useState(false);
   const [isEcofrogModalVisible, setIsEcofrogModalVisible] = useState(false);
   const [isH2O3ModalVisible, setIsH2O3ModalVisible] = useState(false);
+  const { showSleepBackground } = useInactivity();
+
+  // Cerrar todos los modales cuando se activa el modo sleep
+  useEffect(() => {
+    if (showSleepBackground) {
+      setIsContactModalVisible(false);
+      setIsEcofrogModalVisible(false);
+      setIsH2O3ModalVisible(false);
+    }
+  }, [showSleepBackground]);
 
   const openContactModal = () => setIsContactModalVisible(true);
   const closeContactModal = () => setIsContactModalVisible(false);

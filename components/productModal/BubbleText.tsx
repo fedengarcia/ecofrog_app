@@ -93,6 +93,7 @@ const styles = StyleSheet.create({
   bubbleTitle: {
     fontSize: moderateScale(18, 0.3),
     fontWeight: "bold",
+    fontFamily: "Exo-Bold",
   },
   bubbleBullet: {
     fontSize: moderateScale(18, 0.3),
