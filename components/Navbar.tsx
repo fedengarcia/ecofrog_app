@@ -41,7 +41,7 @@ export default function Navbar() {
       label: "",
       screen: "Home",
       onClick: () => navigation.goBack(),
-      icon: <ArrowLeftCircle color="#3498db" />,
+      icon: <ArrowLeftCircle color="#3498db" size={34} />,
     },
     {
       id: "products",
@@ -86,7 +86,7 @@ export default function Navbar() {
               onPress={option.onClick}
               style={{
                 ...styles.navbarOption,
-                ...(option.id === "contact" ? styles.navbarOptionButton : {}),
+                ...(option.id !== "" ? styles.navbarOptionButton : {}),
               }}
             >
               {React.isValidElement(option.icon) ? (
@@ -94,15 +94,13 @@ export default function Navbar() {
               ) : (
                 <Image
                   source={option.icon as ImageSourcePropType}
-                  style={styles.icon}
+                  style={[styles.icon, { tintColor: "#fff" }]}
                 />
               )}
               <Text
                 style={{
                   ...styles.navbarOptionText,
-                  ...(option.id === "contact"
-                    ? styles.navbarOptionTextButton
-                    : {}),
+                  ...(option.id !== "" ? styles.navbarOptionTextButton : {}),
                   ...(option.id === "ecofrog"
                     ? {
                         textTransform: "uppercase",
@@ -154,16 +152,16 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    paddingHorizontal: scale(10),
-    paddingVertical: verticalScale(10),
-    gap: scale(10),
+    paddingHorizontal: scale(9),
+    paddingVertical: verticalScale(8),
+    gap: scale(8),
   },
   navbarOptionButton: {
     backgroundColor: "#3498db",
-    borderRadius: moderateScale(10, 0.5),
+    borderRadius: moderateScale(8, 0.5),
   },
   navbarOptionText: {
-    fontSize: moderateScale(20, 0.3),
+    fontSize: moderateScale(18, 0.3),
     fontWeight: "500",
     fontFamily: "Exo-Medium",
     color: "#3498db",
