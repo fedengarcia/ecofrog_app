@@ -98,9 +98,8 @@ const styles = StyleSheet.create({
     marginBottom: verticalScale(12),
   },
   title: {
-    fontFamily: "Exo-Bold",
+    fontFamily: "Exo-SemiBold",
     fontSize: moderateScale(26, 0.3),
-    fontWeight: "bold",
     color: "#ffffff",
     marginBottom: verticalScale(6),
     textAlign: "center",

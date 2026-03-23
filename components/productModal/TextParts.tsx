@@ -14,7 +14,12 @@ export default function TextParts({ parts, baseStyle }: TextPartsProps) {
         <React.Fragment key={index}>
           <Text
             style={[
+              part.light && styles.lightText,
+              part.regular && styles.regularText,
+              part.medium && styles.mediumText,
+              part.semiBold && styles.semiBoldText,
               part.bold && styles.boldText,
+              part.extraBold && styles.extraBoldText,
               part.highlight && !part.otherColor && styles.highlightText,
               part.otherColor && { color: part.otherColor },
             ]}
@@ -29,9 +34,23 @@ export default function TextParts({ parts, baseStyle }: TextPartsProps) {
 }
 
 const styles = StyleSheet.create({
+  lightText: {
+    fontFamily: "Exo-Light",
+  },
+  regularText: {
+    fontFamily: "Exo-Regular",
+  },
+  mediumText: {
+    fontFamily: "Exo-Medium",
+  },
+  semiBoldText: {
+    fontFamily: "Exo-SemiBold",
+  },
   boldText: {
     fontFamily: "Exo-Bold",
-    fontWeight: "700",
+  },
+  extraBoldText: {
+    fontFamily: "Exo-ExtraBold",
   },
   highlightText: {
     color: "#00B4D8",

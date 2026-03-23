@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: moderateScale(18, 0.3),
-    fontFamily: "Exo-Regular",
+    fontFamily: "Exo-Light",
     fontWeight: "400",
     color: "#000000",
     marginBottom: verticalScale(6),

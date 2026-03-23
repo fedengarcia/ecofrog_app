@@ -13,6 +13,11 @@ export enum ProductId {
 export interface TextPart {
   text: string;
   bold?: boolean;
+  light?: boolean;
+  semiBold?: boolean;
+  medium?: boolean;
+  regular?: boolean;
+  extraBold?: boolean;
   highlight?: boolean;
   otherColor?: string;
   break?: boolean;

@@ -16,8 +16,11 @@ import { scale, verticalScale, moderateScale } from "../../utils/scaling";
 import { useInactivity } from "../../context/InactivityContext";
 
 export default function EcofrogPage2() {
-  const { t } = useTranslation("ecofrog");
-  const pageData = useMemo(() => getEcofrogPage2Data(t), [t]);
+  const { t, i18n } = useTranslation("ecofrog");
+  const pageData = useMemo(
+    () => getEcofrogPage2Data(t, i18n.language),
+    [t, i18n.language],
+  );
   const videoRef = useRef<Video>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isVideoLoading, setIsVideoLoading] = useState(true);

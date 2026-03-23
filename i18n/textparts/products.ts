@@ -45,7 +45,12 @@ export function getProducts(t: TFunction): Product[] {
       image: require("../../assets/products/avatar/avatarImage.png"),
       textParts: tp(
         t("products:avatar.textParts", { returnObjects: true }) as string[],
-        [{}, { highlight: true }, {}, { bold: true }],
+        [
+          { medium: true },
+          { highlight: true },
+          { medium: true },
+          { bold: true },
+        ],
       ),
       modalData: {
         imageModal: require("../../assets/products/avatar/avatarModal.png"),
@@ -53,13 +58,23 @@ export function getProducts(t: TFunction): Product[] {
         showBubbleMedium: false,
         title: tp(
           t("products:avatar.modal.title", { returnObjects: true }) as string[],
-          [{}, { highlight: true }, {}, { bold: true }],
+          [
+            { medium: true },
+            { highlight: true },
+            { medium: true },
+            { bold: true },
+          ],
         ),
         subtitle: tp(
           t("products:avatar.modal.subtitle", {
             returnObjects: true,
           }) as string[],
-          [{}, { highlight: true, bold: true }, {}, { bold: true }],
+          [
+            { regular: true },
+            { highlight: true, bold: true },
+            { regular: true },
+            { bold: true },
+          ],
         ),
         icons: [
           {
@@ -108,20 +123,26 @@ export function getProducts(t: TFunction): Product[] {
             returnObjects: true,
           }) as string[],
           [
-            {},
+            { regular: true },
             { highlight: true, bold: true },
-            {},
+            { regular: true },
             { highlight: true, bold: true },
-            {},
+            { regular: true },
             { bold: true },
-            {},
+            { regular: true },
           ],
         ),
         description_2: tp(
           t("products:avatar.modal.description2", {
             returnObjects: true,
           }) as string[],
-          [{}, { bold: true }, { break: true }, {}, { bold: true }],
+          [
+            { regular: true },
+            { bold: true },
+            { break: true },
+            { regular: true },
+            { bold: true },
+          ],
         ),
         bubbleText: {
           title: t("products:avatar.modal.bubbleTitle"),
@@ -133,7 +154,9 @@ export function getProducts(t: TFunction): Product[] {
           ).map((item, idx) =>
             tp(
               item,
-              idx === 0 ? [{}, { bold: true }, {}] : [{}, { bold: true }],
+              idx === 0
+                ? [{ regular: true }, { bold: true }, { regular: true }]
+                : [{ regular: true }, { bold: true }],
             ),
           ),
         },
@@ -145,7 +168,7 @@ export function getProducts(t: TFunction): Product[] {
       image: require("../../assets/products/wash/washImage.png"),
       textParts: tp(
         t("products:wash.textParts", { returnObjects: true }) as string[],
-        [{ bold: true }, {}, { highlight: true }],
+        [{ bold: true }, { medium: true }, { highlight: true }],
       ),
       modalData: {
         imageModal: require("../../assets/products/wash/washModal.png"),
@@ -153,7 +176,7 @@ export function getProducts(t: TFunction): Product[] {
         showBubbleMedium: false,
         title: tp(
           t("products:wash.modal.title", { returnObjects: true }) as string[],
-          [{ bold: true }, {}, { highlight: true }],
+          [{ bold: true }, { medium: true }, { highlight: true }],
         ),
         subtitle: tp(
           t("products:wash.modal.subtitle", {
@@ -161,11 +184,11 @@ export function getProducts(t: TFunction): Product[] {
           }) as string[],
           [
             { bold: true, highlight: true },
-            {},
+            { regular: true },
             { bold: true, highlight: true },
-            {},
+            { regular: true },
             { bold: true },
-            {},
+            { regular: true },
           ],
         ),
         icons: [
@@ -215,13 +238,13 @@ export function getProducts(t: TFunction): Product[] {
             returnObjects: true,
           }) as string[],
           [
-            {},
+            { regular: true },
             { highlight: true, bold: true },
-            {},
+            { regular: true },
             { bold: true, highlight: true },
-            {},
+            { regular: true },
             { bold: true },
-            {},
+            { regular: true },
             { bold: true },
           ],
         ),
@@ -229,7 +252,7 @@ export function getProducts(t: TFunction): Product[] {
           t("products:wash.modal.description2", {
             returnObjects: true,
           }) as string[],
-          [{}],
+          [{ regular: true }],
         ),
         bubbleText: {
           title: t("products:wash.modal.bubbleTitle"),
@@ -243,9 +266,9 @@ export function getProducts(t: TFunction): Product[] {
             if (idx === 1) return tp(item, [{ bold: true }, {}]);
             return tp(item, [
               { bold: true },
-              {},
+              { regular: true },
               { bold: true, highlight: true },
-              {},
+              { regular: true },
             ]);
           }),
         },
@@ -257,7 +280,12 @@ export function getProducts(t: TFunction): Product[] {
       image: require("../../assets/products/trolley/trolleyImage.png"),
       textParts: tp(
         t("products:trolley.textParts", { returnObjects: true }) as string[],
-        [{}, { bold: true }, {}, { highlight: true }],
+        [
+          { medium: true },
+          { bold: true },
+          { medium: true },
+          { highlight: true },
+        ],
       ),
       modalData: {
         imageModal: require("../../assets/products/trolley/trolleyModal.png"),
@@ -267,13 +295,24 @@ export function getProducts(t: TFunction): Product[] {
           t("products:trolley.modal.title", {
             returnObjects: true,
           }) as string[],
-          [{}, { bold: true }, {}, { highlight: true }],
+          [
+            { medium: true },
+            { bold: true },
+            { medium: true },
+            { highlight: true },
+          ],
         ),
         subtitle: tp(
           t("products:trolley.modal.subtitle", {
             returnObjects: true,
           }) as string[],
-          [{}, { bold: true }, {}, { bold: true, highlight: true }, {}],
+          [
+            { regular: true },
+            { bold: true },
+            { regular: true },
+            { bold: true, highlight: true },
+            { regular: true },
+          ],
         ),
         icons: [
           {
@@ -321,13 +360,13 @@ export function getProducts(t: TFunction): Product[] {
           t("products:trolley.modal.description1", {
             returnObjects: true,
           }) as string[],
-          [{ bold: true, highlight: true }, {}, { bold: true }],
+          [{ bold: true, highlight: true }, { regular: true }, { bold: true }],
         ),
         description_2: tp(
           t("products:trolley.modal.description2", {
             returnObjects: true,
           }) as string[],
-          [{ bold: true }, {}],
+          [{ bold: true }, { regular: true }],
         ),
         descrptionWithDots: (
           t("products:trolley.modal.dotsItems", {
@@ -343,15 +382,15 @@ export function getProducts(t: TFunction): Product[] {
             }) as string[][]
           ).map((item) =>
             tp(item, [
-              {},
+              { regular: true },
               { highlight: true, bold: true },
-              {},
+              { regular: true },
               { highlight: true, bold: true },
-              {},
+              { regular: true },
               { highlight: true, bold: true },
-              {},
+              { regular: true },
               { bold: true },
-              {},
+              { regular: true },
             ]),
           ),
         },
@@ -363,7 +402,7 @@ export function getProducts(t: TFunction): Product[] {
       image: require("../../assets/products/cp/cpImage.png"),
       textParts: tp(
         t("products:cp.textParts", { returnObjects: true }) as string[],
-        [{}, { bold: true }, {}],
+        [{ medium: true }, { bold: true }, { medium: true }],
       ),
       modalData: {
         imageModal: require("../../assets/products/cp/cpModal.png"),
@@ -372,11 +411,17 @@ export function getProducts(t: TFunction): Product[] {
         showBubbleMedium: false,
         title: tp(
           t("products:cp.modal.title", { returnObjects: true }) as string[],
-          [{}, { bold: true }, {}],
+          [{ medium: true }, { bold: true }, { medium: true }],
         ),
         subtitle: tp(
           t("products:cp.modal.subtitle", { returnObjects: true }) as string[],
-          [{ bold: true }, {}, { bold: true }, {}, { bold: true }],
+          [
+            { bold: true },
+            { regular: true },
+            { bold: true },
+            { regular: true },
+            { bold: true },
+          ],
         ),
         icons: [
           {
@@ -420,13 +465,21 @@ export function getProducts(t: TFunction): Product[] {
           t("products:cp.modal.description1", {
             returnObjects: true,
           }) as string[],
-          [{ bold: true }, {}, { bold: true, highlight: true }],
+          [{ bold: true }, { regular: true }, { bold: true, highlight: true }],
         ),
         description_2: tp(
           t("products:cp.modal.description2", {
             returnObjects: true,
           }) as string[],
-          [{}, { bold: true }, {}, { bold: true }, {}, { highlight: true }, {}],
+          [
+            { regular: true },
+            { bold: true },
+            { regular: true },
+            { bold: true },
+            { regular: true },
+            { highlight: true },
+            { regular: true },
+          ],
         ),
         bubbleText: {
           title: t("products:cp.modal.bubbleTitle"),
@@ -434,7 +487,9 @@ export function getProducts(t: TFunction): Product[] {
             t("products:cp.modal.bubbleItems", {
               returnObjects: true,
             }) as string[][]
-          ).map((item) => tp(item, [{}, { bold: true }, {}])),
+          ).map((item) =>
+            tp(item, [{ regular: true }, { bold: true }, { regular: true }]),
+          ),
         },
       },
     },
@@ -446,11 +501,11 @@ export function getProducts(t: TFunction): Product[] {
         t("products:elektra.textParts", { returnObjects: true }) as string[],
         [
           { highlight: true, otherColor: "#8D418F" },
-          {},
-          {},
-          {},
+          { medium: true },
+          { medium: true },
+          { medium: true },
           { bold: true },
-          {},
+          { medium: true },
           { bold: true },
         ],
       ),
@@ -463,11 +518,11 @@ export function getProducts(t: TFunction): Product[] {
           }) as string[],
           [
             { highlight: true, otherColor: "#8D418F", bold: true },
-            {},
-            {},
-            {},
+            { medium: true },
+            { medium: true },
+            { medium: true },
             { bold: true },
-            {},
+            { medium: true },
             { bold: true },
           ],
         ),
@@ -477,9 +532,9 @@ export function getProducts(t: TFunction): Product[] {
           }) as string[],
           [
             { highlight: true, otherColor: "#8D418F", bold: true },
-            {},
+            { regular: true },
             { bold: true },
-            {},
+            { regular: true },
           ],
         ),
         icons: [
@@ -539,12 +594,12 @@ export function getProducts(t: TFunction): Product[] {
           [
             { highlight: true, otherColor: "#8D418F", bold: true },
             { bold: true },
-            {},
+            { regular: true },
             { highlight: true, otherColor: "#8D418F", bold: true },
             { break: true },
-            {},
+            { regular: true },
             { bold: true },
-            {},
+            { regular: true },
           ],
         ),
         bubbleText: {
@@ -557,11 +612,11 @@ export function getProducts(t: TFunction): Product[] {
           ).map((item, idx) => {
             if (idx === 0)
               return tp(item, [
-                {},
+                { regular: true },
                 { otherColor: "#8D418F", highlight: true, bold: true },
-                {},
+                { regular: true },
               ]);
-            return tp(item, [{}]);
+            return tp(item, [{ regular: true }]);
           }),
         },
       },

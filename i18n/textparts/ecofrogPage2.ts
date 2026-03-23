@@ -20,31 +20,31 @@ export function getEcofrogPage2Data(t: TFunction) {
 
   return {
     title: [
-      { text: titleArr[0] },
+      { text: titleArr[0], bold: true },
       { text: titleArr[1], highlight: true, bold: true },
     ] as TextPart[],
     description: [
-      { text: descArr[0] },
+      { text: descArr[0], light: true },
       { text: descArr[1], highlight: true, bold: true },
       { text: descArr[2], bold: true },
-      { text: descArr[3] },
+      { text: descArr[3], light: true },
       { text: descArr[4], bold: true },
-      { text: descArr[5] },
+      { text: descArr[5], light: true },
       { text: descArr[6], bold: true },
     ] as TextPart[],
     column1: {
       title: [
-        { text: col1TitleArr[0] },
+        { text: col1TitleArr[0], bold: true },
         { text: col1TitleArr[1], highlight: true, bold: true },
-        { text: col1TitleArr[2] },
+        { text: col1TitleArr[2], bold: true },
       ] as TextPart[],
       description: [
         { text: col1DescArr[0], highlight: true, bold: true },
-        { text: col1DescArr[1] },
+        { text: col1DescArr[1], light: true },
         { text: col1DescArr[2], highlight: true, bold: true },
-        { text: col1DescArr[3] },
+        { text: col1DescArr[3], light: true },
         { text: col1DescArr[4], highlight: true, bold: true },
-        { text: col1DescArr[5] },
+        { text: col1DescArr[5], light: true },
       ] as TextPart[],
       video:
         "https://www.ecofrog.es/wp-content/uploads/2026/03/O3_RN_VIDEO.mp4",
@@ -52,9 +52,9 @@ export function getEcofrogPage2Data(t: TFunction) {
     column2: {
       description: [
         { text: col2DescArr[0], highlight: true, bold: true },
-        { text: col2DescArr[1] },
+        { text: col2DescArr[1], regular: true },
         { text: col2DescArr[2], bold: true },
-        { text: col2DescArr[3] },
+        { text: col2DescArr[3], regular: true },
         { text: col2DescArr[4], bold: true },
       ] as TextPart[],
       image: require("../../assets/products/modalEcofrog/advisorsCircle.png"),
