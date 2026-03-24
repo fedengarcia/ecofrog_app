@@ -105,7 +105,7 @@ export default function Columns({
               <View style={cpStyles.cpVideoContainer}>
                 <Video
                   ref={videoRef}
-                  source={{ uri: video }}
+                  source={video}
                   style={baseStyles.video}
                   resizeMode={ResizeMode.COVER}
                   shouldPlay={true}
@@ -222,7 +222,7 @@ export default function Columns({
             {video ? (
               <Video
                 ref={videoRef}
-                source={{ uri: video }}
+                source={video}
                 style={baseStyles.video}
                 resizeMode={ResizeMode.COVER}
                 shouldPlay={true}

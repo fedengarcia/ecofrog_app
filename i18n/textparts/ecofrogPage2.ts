@@ -1,7 +1,9 @@
 import { TFunction } from "i18next";
+import i18n from "../index";
 import { TextPart } from "../../types/products";
 
 export function getEcofrogPage2Data(t: TFunction) {
+  const isSpanish = i18n.language === "es";
   const titleArr = t("ecofrog:page2.title", {
     returnObjects: true,
   }) as string[];
@@ -46,8 +48,7 @@ export function getEcofrogPage2Data(t: TFunction) {
         { text: col1DescArr[4], highlight: true, bold: true },
         { text: col1DescArr[5], light: true },
       ] as TextPart[],
-      video:
-        "https://www.ecofrog.es/wp-content/uploads/2026/03/O3_RN_VIDEO.mp4",
+      video: require("../../assets/products/modalEcofrog/ozono_video_es.mp4"),
     },
     column2: {
       description: [
@@ -57,7 +58,9 @@ export function getEcofrogPage2Data(t: TFunction) {
         { text: col2DescArr[3], regular: true },
         { text: col2DescArr[4], bold: true },
       ] as TextPart[],
-      image: require("../../assets/products/modalEcofrog/advisorsCircle.png"),
+      image: isSpanish
+        ? require("../../assets/products/modalEcofrog/advisorsCircle_es.png")
+        : require("../../assets/products/modalEcofrog/advisorsCircle.png"),
     },
     certifications: t("ecofrog:page2.certifications"),
   };

@@ -10,6 +10,7 @@ import {
   VideoCategoryId,
 } from "../components/videosScreen/types";
 import { scale } from "../utils/scaling";
+import i18n from "../i18n";
 
 export default function VideosScreen() {
   const { t } = useTranslation("videos");
@@ -25,8 +26,7 @@ export default function VideosScreen() {
         description: t("categories.restaurants.description"),
         icon: require("../assets/videos/restaurantsIcon.png"),
         backgroundImage: require("../assets/videos/restaurantImage.png"),
-        videoUrl:
-          "https://www.ecofrog.es/wp-content/uploads/2026/03/VIDEO_SCREEN_RN_RESTAURANTES.mp4",
+        videoUrl: require("../assets/videos/videos_es/restaurants_es.mp4"),
       },
       {
         id: VideoCategoryId.HOTELS,
@@ -34,8 +34,7 @@ export default function VideosScreen() {
         description: t("categories.hotels.description"),
         icon: require("../assets/videos/hotelsIcon.png"),
         backgroundImage: require("../assets/videos/hotelsImage.png"),
-        videoUrl:
-          "https://www.ecofrog.es/wp-content/uploads/2026/03/VIDEO_SCREEN_RN_HOTELES.mp4",
+        videoUrl: require("../assets/videos/videos_es/hotels_es.mp4"),
       },
       {
         id: VideoCategoryId.EDUCATION_CENTER,
@@ -43,8 +42,7 @@ export default function VideosScreen() {
         description: t("categories.educationCenter.description"),
         icon: require("../assets/videos/educationIcon.png"),
         backgroundImage: require("../assets/videos/escolaImage.png"),
-        videoUrl:
-          "https://www.ecofrog.es/wp-content/uploads/2026/03/VIDEO_SCREEN_RN_CENTRO_EDUCATIVO.mp4",
+        videoUrl: require("../assets/videos/videos_es/education_center_es.mp4"),
       },
       {
         id: VideoCategoryId.MEDICAL_CENTER,
@@ -52,8 +50,7 @@ export default function VideosScreen() {
         description: t("categories.medicalCenter.description"),
         icon: require("../assets/videos/MedicalCenterIcon.png"),
         backgroundImage: require("../assets/videos/medicalCenterImage.png"),
-        videoUrl:
-          "https://www.ecofrog.es/wp-content/uploads/2026/03/VIDEO_SCREEN_RN_CENTRO_MEDICO.mp4",
+        videoUrl: require("../assets/videos/videos_es/medical_center_es.mp4"),
       },
       {
         id: VideoCategoryId.CATERING,
@@ -61,8 +58,7 @@ export default function VideosScreen() {
         description: t("categories.catering.description"),
         icon: require("../assets/videos/cateringIcon.png"),
         backgroundImage: require("../assets/videos/cateringImage.png"),
-        videoUrl:
-          "https://www.ecofrog.es/wp-content/uploads/2026/03/VIDEO_SCREEN_RN_CATERING.mp4",
+        videoUrl: require("../assets/videos/videos_es/catering_es.mp4"),
       },
       {
         id: VideoCategoryId.B2C,
@@ -70,8 +66,7 @@ export default function VideosScreen() {
         description: t("categories.b2c.description"),
         icon: require("../assets/videos/ozonatedWaterIcon.png"),
         backgroundImage: require("../assets/videos/ozonatedWaterImage.png"),
-        videoUrl:
-          "https://www.ecofrog.es/wp-content/uploads/2026/03/VIDEO_SCREEN_RN_B2C.mp4",
+        videoUrl: require("../assets/videos/videos_es/b2c_es.mp4"),
       },
     ],
     [t],

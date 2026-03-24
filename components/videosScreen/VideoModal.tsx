@@ -97,7 +97,7 @@ export default function VideoModal({
                 <View style={styles.videoWrapper}>
                   <Video
                     ref={videoRef}
-                    source={{ uri: videoUrl }}
+                    source={videoUrl}
                     style={styles.video}
                     useNativeControls
                     resizeMode={ResizeMode.CONTAIN}
@@ -108,7 +108,9 @@ export default function VideoModal({
                   {isVideoLoading && (
                     <View style={styles.loadingOverlay}>
                       <ActivityIndicator size="large" color="#00B4D8" />
-                      <Text style={styles.loadingText}>{t("loading.video")}</Text>
+                      <Text style={styles.loadingText}>
+                        {t("loading.video")}
+                      </Text>
                     </View>
                   )}
                 </View>

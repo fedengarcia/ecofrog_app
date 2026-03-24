@@ -8,23 +8,23 @@ function tp(texts: string[], styles: Partial<TextPart>[]): TextPart[] {
 // Videos por idioma
 const productVideos: Record<ProductId, { es: string; en: string }> = {
   [ProductId.AVATAR]: {
-    es: "https://www.ecofrog.es/wp-content/uploads/2026/03/PROD-RN-AVATAR_ESPANOL.mp4",
+    es: require("../../assets/products/avatar/avatar_video_es.mp4"),
     en: "", // TODO: completar con URL en inglés
   },
   [ProductId.WASH]: {
-    es: "https://www.ecofrog.es/wp-content/uploads/2026/03/PROD-RN-WASH_ESPANOL.mp4",
+    es: require("../../assets/products/wash/wash_video_es.mp4"),
     en: "", // TODO: completar con URL en inglés
   },
   [ProductId.TROLLEY]: {
-    es: "https://www.ecofrog.es/wp-content/uploads/2026/03/PROD-RN-TROLLEY_ESPANOL.mp4",
+    es: require("../../assets/products/trolley/trolley_video_es.mp4"),
     en: "", // TODO: completar con URL en inglés
   },
   [ProductId.CP]: {
-    es: "https://www.ecofrog.es/wp-content/uploads/2026/03/PROD-RN-CP.mp4",
+    es: require("../../assets/products/cp/cp_video_es.mp4"),
     en: "", // TODO: completar con URL en inglés
   },
   [ProductId.ELEKTRA]: {
-    es: "https://www.ecofrog.es/wp-content/uploads/2026/03/PROD-RN-ELEKTRA_ESPANOL.mp4",
+    es: require("../../assets/products/elektra/elektra_video_es.mp4"),
     en: "", // TODO: completar con URL en inglés
   },
 };

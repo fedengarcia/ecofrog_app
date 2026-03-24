@@ -17,10 +17,7 @@ import { useInactivity } from "../../context/InactivityContext";
 
 export default function EcofrogPage2() {
   const { t, i18n } = useTranslation("ecofrog");
-  const pageData = useMemo(
-    () => getEcofrogPage2Data(t, i18n.language),
-    [t, i18n.language],
-  );
+  const pageData = useMemo(() => getEcofrogPage2Data(t), [t, i18n.language]);
   const videoRef = useRef<Video>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isVideoLoading, setIsVideoLoading] = useState(true);
@@ -95,7 +92,7 @@ export default function EcofrogPage2() {
             >
               <Video
                 ref={videoRef}
-                source={{ uri: pageData.column1.video }}
+                source={pageData.column1.video}
                 style={styles.video}
                 resizeMode={ResizeMode.COVER}
                 isLooping
