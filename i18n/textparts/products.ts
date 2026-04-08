@@ -21,7 +21,7 @@ const productVideos: Record<ProductId, { es: string; en: string }> = {
   },
   [ProductId.CP]: {
     es: require("../../assets/products/cp/cp_video_es.mp4"),
-    en: require("../../assets/products/cp/cp_video_en.mp4"),
+    en: require("../../assets/products/cp/cp_video_es.mp4"),
   },
   [ProductId.ELEKTRA]: {
     es: require("../../assets/products/elektra/elektra_video_es.mp4"),

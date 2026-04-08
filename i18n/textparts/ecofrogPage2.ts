@@ -41,7 +41,9 @@ export function getEcofrogPage2Data(t: TFunction) {
         { text: col1DescArr[2], highlight: true, bold: true },
         { text: col1DescArr[3], light: true },
       ] as TextPart[],
-      video: require("../../assets/products/modalEcofrog/ozono_video_es.mp4"),
+      video: isSpanish
+        ? require("../../assets/products/modalEcofrog/ozono_video_es.mp4")
+        : require("../../assets/products/modalEcofrog/ozono_video_en.mp4"),
     },
     column2: {
       description: [
