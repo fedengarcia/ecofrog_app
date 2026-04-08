@@ -9,23 +9,23 @@ function tp(texts: string[], styles: Partial<TextPart>[]): TextPart[] {
 const productVideos: Record<ProductId, { es: string; en: string }> = {
   [ProductId.AVATAR]: {
     es: require("../../assets/products/avatar/avatar_video_es.mp4"),
-    en: "", // TODO: completar con URL en inglés
+    en: require("../../assets/products/avatar/avatar_video_en.mp4"),
   },
   [ProductId.WASH]: {
     es: require("../../assets/products/wash/wash_video_es.mp4"),
-    en: "", // TODO: completar con URL en inglés
+    en: require("../../assets/products/wash/wash_video_en.mp4"),
   },
   [ProductId.TROLLEY]: {
     es: require("../../assets/products/trolley/trolley_video_es.mp4"),
-    en: "", // TODO: completar con URL en inglés
+    en: require("../../assets/products/trolley/trolley_video_en.mp4"),
   },
   [ProductId.CP]: {
     es: require("../../assets/products/cp/cp_video_es.mp4"),
-    en: "", // TODO: completar con URL en inglés
+    en: require("../../assets/products/cp/cp_video_en.mp4"),
   },
   [ProductId.ELEKTRA]: {
     es: require("../../assets/products/elektra/elektra_video_es.mp4"),
-    en: "", // TODO: completar con URL en inglés
+    en: require("../../assets/products/elektra/elektra_video_en.mp4"),
   },
 };
 
