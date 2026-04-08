@@ -28,11 +28,6 @@ export function getEcofrogPage2Data(t: TFunction) {
     description: [
       { text: descArr[0], light: true },
       { text: descArr[1], highlight: true, bold: true },
-      { text: descArr[2], bold: true },
-      { text: descArr[3], light: true },
-      { text: descArr[4], bold: true },
-      { text: descArr[5], light: true },
-      { text: descArr[6], bold: true },
     ] as TextPart[],
     column1: {
       title: [
@@ -45,8 +40,6 @@ export function getEcofrogPage2Data(t: TFunction) {
         { text: col1DescArr[1], light: true },
         { text: col1DescArr[2], highlight: true, bold: true },
         { text: col1DescArr[3], light: true },
-        { text: col1DescArr[4], highlight: true, bold: true },
-        { text: col1DescArr[5], light: true },
       ] as TextPart[],
       video: require("../../assets/products/modalEcofrog/ozono_video_es.mp4"),
     },
@@ -56,7 +49,6 @@ export function getEcofrogPage2Data(t: TFunction) {
         { text: col2DescArr[1], regular: true },
         { text: col2DescArr[2], bold: true },
         { text: col2DescArr[3], regular: true },
-        { text: col2DescArr[4], bold: true },
       ] as TextPart[],
       image: isSpanish
         ? require("../../assets/products/modalEcofrog/advisorsCircle_es.png")

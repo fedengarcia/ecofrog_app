@@ -1,10 +1,10 @@
 {
-  "title": "Let's talk",
-  "description": "Leave us your contact details and we'll send you personalized information about how ",
+  "title": "Let's Talk",
+  "description": "Would you like to know more? Leave your contact details and we will send you all the information you need about ",
   "descriptionBrand": "ECOFROG",
-  "descriptionMiddle": " can help you to clean effectively, safely and ",
-  "descriptionBold": "without chemicals",
-  "descriptionEnd": ".",
+  "descriptionMiddle": ":",
+  "descriptionBold": "",
+  "descriptionEnd": "",
   "fields": {
     "name": "Name and surname",
     "email": "E-mail",
@@ -15,7 +15,7 @@
     "placeholder": "Enter.."
   },
   "checkboxes": {
-    "publicidad": "I agree to receive advertising from ECOFROG about its products and services.",
+    "publicidad": "I agree to receive marketing communications from ECOFROG about its products and services.",
     "privacidad": "I have read and accept the ",
     "privacidadLink": "Privacy Policy"
   },

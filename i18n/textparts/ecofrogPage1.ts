@@ -65,7 +65,6 @@ export function getEcofrogPage1Data(t: TFunction) {
     items: (
       t("ecofrog:page1.items", { returnObjects: true }) as {
         title: string;
-        description: string[];
       }[]
     ).map((item, idx) => ({
       icon: [
@@ -74,15 +73,6 @@ export function getEcofrogPage1Data(t: TFunction) {
         require("../../assets/products/modalEcofrog/users.png"),
       ][idx],
       title: item.title,
-      description:
-        idx === 0
-          ? ([
-              { text: item.description[0], highlight: true, bold: true },
-              { text: item.description[1], medium: true },
-              { text: item.description[2], bold: true },
-              { text: item.description[3], medium: true },
-            ] as TextPart[])
-          : ([{ text: item.description[0], medium: true }] as TextPart[]),
     })),
   };
 }

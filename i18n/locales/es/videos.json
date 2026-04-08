@@ -2,27 +2,27 @@
   "categories": {
     "restaurants": {
       "title": "Restaurantes",
-      "description": "Desinfección eficiente para tus clientes"
+      "description": "Desinfección eficaz"
     },
     "hotels": {
       "title": "Hoteles",
-      "description": "Espacios impecables mejoran la experiencia"
+      "description": "Espacios impecables"
     },
     "educationCenter": {
       "title": "Colectividades",
-      "description": "Entorno seguro para un aprendizaje sostenible"
+      "description": "Entorno seguro"
     },
     "medicalCenter": {
       "title": "Centro Médico",
-      "description": "Máxima seguridad para los pacientes"
+      "description": "Máxima seguridad"
     },
     "catering": {
       "title": "Catering",
-      "description": "Limpieza experta sin productos químicos"
+      "description": "Limpieza sin productos químicos"
     },
     "b2c": {
       "title": "B2C",
-      "description": "Agua ozonizada también en casa"
+      "description": "Agua ozonizada en casa"
     }
   }
 }

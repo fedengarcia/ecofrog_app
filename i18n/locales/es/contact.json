@@ -1,10 +1,10 @@
 {
   "title": "Hablemos",
-  "description": "Déjanos tus datos de contacto y te enviaremos información personalizada sobre cómo ",
+  "description": "¿Quieres saber más? Déjanos tus datos de contacto y te enviaremos toda información que necesites sobre ",
   "descriptionBrand": "ECOFROG",
-  "descriptionMiddle": " puede ayudarte a limpiar de forma eficaz, segura y ",
-  "descriptionBold": "sin productos químicos",
-  "descriptionEnd": ".",
+  "descriptionMiddle": ":",
+  "descriptionBold": "",
+  "descriptionEnd": "",
   "fields": {
     "name": "Nombre y apellido",
     "email": "Correo electrónico",

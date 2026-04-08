@@ -133,10 +133,6 @@ export default function EcofrogPage1() {
               parts={[{ text: item.title, bold: true }]}
               baseStyle={styles.itemTitle}
             />
-            <TextParts
-              parts={item.description}
-              baseStyle={styles.itemDescription}
-            />
           </View>
         </View>
       ))}
@@ -261,13 +257,6 @@ const styles = StyleSheet.create({
     marginBottom: verticalScale(2),
     fontFamily: "Exo-Bold",
     textAlign: "left",
-  },
-  itemDescription: {
-    fontSize: moderateScale(16, 0.3),
-    textAlign: "left",
-    color: "#000",
-    fontFamily: "Exo-Medium",
-    lineHeight: moderateScale(20, 0.3),
   },
   carouselContainer: {
     width: "100%",
