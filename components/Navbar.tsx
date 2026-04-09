@@ -52,7 +52,7 @@ export default function Navbar() {
     },
     {
       id: "H₂O + O₃",
-      label: "💧 Ozono",
+      label: t("navbar.ozono"),
       screen: null,
       onClick: openH2O3Modal,
       icon: null,
