@@ -8,7 +8,7 @@ import {
   Image,
 } from "react-native";
 import { Product } from "../../types/products";
-import { modalStyles, baseStyles } from "./styles";
+import { modalStyles, baseStyles, getDynamicStyles } from "./styles";
 import Header from "./Header";
 import Icons from "./Icons";
 import Columns from "./Columns";
@@ -52,7 +52,12 @@ export default function ProductModal({
       <TouchableWithoutFeedback onPress={onClose}>
         <View style={modalStyles.overlay}>
           <TouchableWithoutFeedback onPress={() => {}}>
-            <View style={modalStyles.modalContainer}>
+            <View
+              style={[
+                modalStyles.modalContainer,
+                { height: getDynamicStyles(product.id).modalContainerHeight },
+              ]}
+            >
               {/* Botón de cerrar */}
               <TouchableOpacity
                 style={modalStyles.closeButton}

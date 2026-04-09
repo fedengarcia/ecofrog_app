@@ -52,10 +52,10 @@ export default function Navbar() {
     },
     {
       id: "H₂O + O₃",
-      label: "H₂O + O₃",
+      label: "💧 Ozono",
       screen: null,
       onClick: openH2O3Modal,
-      icon: informationIcon,
+      icon: null,
     },
     {
       id: "ecofrog",
@@ -89,7 +89,9 @@ export default function Navbar() {
                 ...(option.id !== "" ? styles.navbarOptionButton : {}),
               }}
             >
-              {React.isValidElement(option.icon) ? (
+              {option.icon === null ? (
+                <></>
+              ) : React.isValidElement(option.icon) ? (
                 option.icon
               ) : (
                 <Image

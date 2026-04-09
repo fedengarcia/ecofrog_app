@@ -17,6 +17,7 @@ import { useInactivity } from "../../context/InactivityContext";
 
 export default function EcofrogPage2() {
   const { t, i18n } = useTranslation("ecofrog");
+  const isSpanish = i18n.language.startsWith("es");
   const pageData = useMemo(() => getEcofrogPage2Data(t), [t, i18n.language]);
   const videoRef = useRef<Video>(null);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -118,7 +119,10 @@ export default function EcofrogPage2() {
           <View style={styles.columnImageWrapper}>
             <Image
               source={pageData.column2.image}
-              style={styles.columnImage}
+              style={[
+                styles.columnImage,
+                { top: isSpanish ? "-100%" : "-10%" },
+              ]}
               resizeMode="contain"
             />
           </View>
@@ -276,7 +280,7 @@ const styles = StyleSheet.create({
   },
   columnImage: {
     position: "absolute",
-    top: "-10%",
+    top: "-100%",
     left: "50%",
     width: COLUMN_IMAGE_WIDTH,
     transform: [

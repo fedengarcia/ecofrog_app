@@ -150,13 +150,14 @@ export const iconStyles = StyleSheet.create({
 export const columnStyles = StyleSheet.create({
   bottomContainer: {
     flexDirection: "row",
-    gap: scale(30),
+    gap: scale(38),
     width: "100%",
     flex: 1,
     alignItems: "stretch",
   },
   leftColumn: {
     flex: 1,
+    justifyContent: "center",
   },
   rightColumn: {
     flex: 1,
@@ -256,7 +257,7 @@ export const modalStyles = StyleSheet.create({
   },
   modalContainer: {
     width: width * 0.8,
-    height: height * 0.8,
+    height: height * 0.7,
     backgroundColor: "#fff",
     borderRadius: moderateScale(20, 0.5),
     paddingHorizontal: scale(40),
@@ -291,6 +292,7 @@ export const getDynamicStyles = (productId: ProductId) => {
     bulletColor: color,
     moreInfoButtonColor: color,
     bubbleTitleColor: color,
+    modalContainerHeight: height * (productId === ProductId.CP ? 0.8 : 0.75),
     // Posiciones específicas de imagen según producto
     productImagePosition: {
       top: verticalScale(
@@ -367,7 +369,7 @@ export const getDynamicStyles = (productId: ProductId) => {
     ),
     descriptionLineHeight: moderateScale(
       productId === ProductId.TROLLEY
-        ? 14
+        ? 20
         : productId === ProductId.ELEKTRA
           ? 18
           : 18,
@@ -383,7 +385,7 @@ export const getDynamicStyles = (productId: ProductId) => {
     ),
     bubbleTextLineHeight: moderateScale(
       productId === ProductId.TROLLEY
-        ? 16
+        ? 20
         : productId === ProductId.ELEKTRA
           ? 14
           : 18,

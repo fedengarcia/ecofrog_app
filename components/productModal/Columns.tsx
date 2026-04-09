@@ -185,29 +185,32 @@ export default function Columns({
         )}
 
         {/* Descripción con puntos */}
-        {descrptionWithDots &&
-          descrptionWithDots.map((item, index) => (
-            <View key={index} style={baseStyles.bubbleItem}>
-              <Text
-                style={{
-                  ...baseStyles.bubbleBullet,
-                  color: dynamicStyles.bulletColor,
-                  fontSize: dynamicStyles.bubbleTextFontSize,
-                  lineHeight: dynamicStyles.bubbleTextLineHeight,
-                }}
-              >
-                »
-              </Text>
-              <TextParts
-                parts={item}
-                baseStyle={{
-                  ...baseStyles.bubbleText,
-                  fontSize: dynamicStyles.bubbleTextFontSize,
-                  lineHeight: dynamicStyles.bubbleTextLineHeight,
-                }}
-              />
-            </View>
-          ))}
+        {descrptionWithDots && (
+          <View>
+            {descrptionWithDots.map((item, index) => (
+              <View key={index} style={baseStyles.bubbleItem}>
+                <Text
+                  style={{
+                    ...baseStyles.bubbleBullet,
+                    color: dynamicStyles.bulletColor,
+                    fontSize: dynamicStyles.bubbleTextFontSize,
+                    lineHeight: dynamicStyles.bubbleTextLineHeight,
+                  }}
+                >
+                  »
+                </Text>
+                <TextParts
+                  parts={item}
+                  baseStyle={{
+                    ...baseStyles.bubbleText,
+                    fontSize: dynamicStyles.bubbleTextFontSize,
+                    lineHeight: dynamicStyles.bubbleTextLineHeight,
+                  }}
+                />
+              </View>
+            ))}
+          </View>
+        )}
 
         {/* BubbleText si existe */}
         {bubbleText && bubbleText.items && (
