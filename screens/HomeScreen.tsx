@@ -34,7 +34,7 @@ export default function HomeScreen() {
       />
 
       {/* Language Dropdown */}
-      <LanguageDropdown disabled />
+      <LanguageDropdown />
 
       {/* Logo */}
       <Image

@@ -1,27 +1,25 @@
 import React, {
   createContext,
   useContext,
-  useRef,
-  useEffect,
+  // useRef,
+  // useEffect,
   useState,
   ReactNode,
   useCallback,
 } from "react";
-import { Video, ResizeMode } from "expo-av";
-import { StyleSheet, View, TouchableWithoutFeedback } from "react-native";
-import { NavigationContainerRef } from "@react-navigation/native";
-import { RootStackParamList } from "../navigation/types";
+// import { Video, ResizeMode } from "expo-av";
+// import { StyleSheet, View, TouchableWithoutFeedback } from "react-native";
+// import { NavigationContainerRef } from "@react-navigation/native";
+// import { RootStackParamList } from "../navigation/types";
 
-const INACTIVITY_TIMEOUT = 30000; // 30 segundos
+// const INACTIVITY_TIMEOUT = 30000; // 30 segundos
 
 interface InactivityContextType {
   isVideoPlaying: boolean;
   setIsVideoPlaying: (playing: boolean) => void;
   resetInactivityTimer: () => void;
   showSleepBackground: boolean;
-  setNavigationRef: (
-    ref: NavigationContainerRef<RootStackParamList> | null,
-  ) => void;
+  setNavigationRef: (ref: any) => void;
 }
 
 const InactivityContext = createContext<InactivityContextType | undefined>(
@@ -40,6 +38,38 @@ interface InactivityProviderProps {
   children: ReactNode;
 }
 
+// ============================================================================
+// INACTIVITY PROVIDER DESACTIVADO - Cliente no lo quiere (gasta batería)
+// Para reactivar: descomentar toda la lógica y comentar el provider dummy
+// ============================================================================
+
+export const InactivityProvider: React.FC<InactivityProviderProps> = ({
+  children,
+}) => {
+  // Provider dummy - no hace nada, solo mantiene el contexto para evitar errores
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const resetInactivityTimer = useCallback(() => {}, []);
+  const setNavigationRef = useCallback(() => {}, []);
+
+  const value: InactivityContextType = {
+    isVideoPlaying,
+    setIsVideoPlaying,
+    resetInactivityTimer,
+    showSleepBackground: false,
+    setNavigationRef,
+  };
+
+  return (
+    <InactivityContext.Provider value={value}>
+      {children}
+    </InactivityContext.Provider>
+  );
+};
+
+// ============================================================================
+// CÓDIGO ORIGINAL COMENTADO - Descomentar para reactivar funcionalidad
+// ============================================================================
+/*
 export const InactivityProvider: React.FC<InactivityProviderProps> = ({
   children,
 }) => {
@@ -177,3 +207,4 @@ const styles = StyleSheet.create({
     height: "100%",
   },
 });
+*/
