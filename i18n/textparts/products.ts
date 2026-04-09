@@ -35,8 +35,7 @@ function getVideoUrl(productId: ProductId, language: string): string {
 }
 
 export function getProducts(t: TFunction): Product[] {
-  // const language = t("language") || "es";
-  const language = "es";
+  const language = t("language") || "es";
 
   return [
     {
