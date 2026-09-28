@@ -30,6 +30,7 @@ interface FormData {
   telefono: string;
   localidad: string;
   atendio_asesor: string;
+  comentario: string;
 }
 
 export default function ContactModal({ visible, onClose }: ContactModalProps) {
@@ -39,6 +40,7 @@ export default function ContactModal({ visible, onClose }: ContactModalProps) {
     telefono: "",
     localidad: "",
     atendio_asesor: "",
+    comentario: "",
   });
   const [publicidad, setPublicidad] = useState(false);
   const [privacidad, setPrivacidad] = useState(false);
@@ -56,6 +58,7 @@ export default function ContactModal({ visible, onClose }: ContactModalProps) {
       telefono: "",
       localidad: "",
       atendio_asesor: "",
+      comentario: "",
     });
     setPublicidad(false);
     setPrivacidad(false);
@@ -99,6 +102,7 @@ export default function ContactModal({ visible, onClose }: ContactModalProps) {
               telefono: formData.telefono,
               localidad: formData.localidad,
               atendio_asesor: formData.atendio_asesor || "ninguno",
+              comentario: formData.comentario,
               politicaprivacidad: privacidad,
               publicidad: publicidad,
               url: "https://www.ecofrog.es",
@@ -226,6 +230,16 @@ export default function ContactModal({ visible, onClose }: ContactModalProps) {
                       onChangeText={(value) =>
                         handleChange("atendio_asesor", value)
                       }
+                    />
+                  </View>
+                  <View style={styles.inputGroup}>
+                    <Text style={styles.inputLabel}>{t("fields.comment")}</Text>
+                    <TextInput
+                      style={styles.input}
+                      placeholder={t("fields.placeholder")}
+                      placeholderTextColor="#999"
+                      value={formData.comentario}
+                      onChangeText={(value) => handleChange("comentario", value)}
                     />
                   </View>
                 </View>

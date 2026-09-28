@@ -12,6 +12,7 @@
     "telephonePlaceholder": "+34...",
     "location": "Localidad",
     "advisor": "Asesor que lo atendió",
+    "comment": "Comentario",
     "placeholder": "Introduce.."
   },
   "checkboxes": {

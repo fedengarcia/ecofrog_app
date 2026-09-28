@@ -12,6 +12,7 @@
     "telephonePlaceholder": "+34...",
     "location": "Location",
     "advisor": "Advisor who attended you",
+    "comment": "Comment",
     "placeholder": "Enter.."
   },
   "checkboxes": {
